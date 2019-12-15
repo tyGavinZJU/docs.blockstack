@@ -2,7 +2,7 @@
 # get the content from the downstream repos
 # needs jq "brew install jq"
 
-collectionList=$(<collections.json)
+collectionList=$(<collections-CN.json)
 
 
 for collection in $(echo "$collectionList" | jq -r '.collections[] | @base64'); do
@@ -20,7 +20,7 @@ for collection in $(echo "$collectionList" | jq -r '.collections[] | @base64'); 
     echo "Getting the _$theName"
 
     rm -rf _$theName
-    svn checkout $theRepo/trunk/docs _$theName
+    svn checkout $theRepo/trunk/$theName _$theName
 
 
     #
