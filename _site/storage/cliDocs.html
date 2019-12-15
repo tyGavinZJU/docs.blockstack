@@ -1,0 +1,3459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <!-- Begin Jekyll GTM tag v1.0.1 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TPGGRT5');</script>
+<!-- End Jekyll GTM tag v1.0.1 -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>blockstack_cli reference</title>
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="blockstack_cli reference" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Storing user data with Blockstack" />
+<meta property="og:description" content="Storing user data with Blockstack" />
+<link rel="canonical" href="https://docs.blockstack.org/storage/cliDocs.html" />
+<meta property="og:url" content="https://docs.blockstack.org/storage/cliDocs.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-16T03:04:34+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@blockstack" />
+<meta name="twitter:creator" content="@Blockstack" />
+<script type="application/ld+json">
+{"description":"Storing user data with Blockstack","headline":"blockstack_cli reference","@type":"BlogPosting","image":"https://docs.blockstack.org/assets/img/touch-icon.png","url":"https://docs.blockstack.org/storage/cliDocs.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/storage/cliDocs.html"},"author":{"@type":"Person","name":"Blockstack"},"dateModified":"2019-12-16T03:04:34+08:00","datePublished":"2019-12-16T03:04:34+08:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>blockstack_cli reference | Blockstack</title>
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="blockstack_cli reference" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Storing user data with Blockstack" />
+<meta property="og:description" content="Storing user data with Blockstack" />
+<link rel="canonical" href="https://docs.blockstack.org/storage/cliDocs.html" />
+<meta property="og:url" content="https://docs.blockstack.org/storage/cliDocs.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-16T03:04:34+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@blockstack" />
+<meta name="twitter:creator" content="@Blockstack" />
+<script type="application/ld+json">
+{"description":"Storing user data with Blockstack","headline":"blockstack_cli reference","@type":"BlogPosting","image":"https://docs.blockstack.org/assets/img/touch-icon.png","url":"https://docs.blockstack.org/storage/cliDocs.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/storage/cliDocs.html"},"author":{"@type":"Person","name":"Blockstack"},"dateModified":"2019-12-16T03:04:34+08:00","datePublished":"2019-12-16T03:04:34+08:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js" ></script>
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125894815-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125894815-1');
+</script>
+
+  
+  <!-- https://www.bryanbraun.com/anchorjs/  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+  <script type"text/javascript" src="https://code.jquery.com/jquery-latest.min.js">
+    switcherTab('uk-tab-instance');
+
+    function switcherTab(id){
+        $('#'+id+' a[href = "'+window.location.hash+'"]').parent('li').click();
+
+        $('#'+id+' a').click(function(){
+            var val = $(this).attr('href');
+            window.location.hash = val.replace("#", "");
+        });
+    }
+  </script>
+  	<!-- Load jquery.cookie plugin (optional) -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.cookie.js"></script>
+	<!-- Load jquery.navgoco plugin js and css files -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.navgoco.js"></script>
+  <link rel="stylesheet" href="/assets/navgoco/jquery.navgoco.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.nav').navgoco({
+          caretHtml: '<i class="some-random-icon-class"></i>',
+          accordion: true,
+          openClass: 'open',
+          slide: {
+            duration: 400,
+            easing: 'swing'
+          }
+        });
+    });
+  </script>
+</head>
+
+
+    <body>
+    <!-- Begin Jekyll GTM tag v1.0.1 -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPGGRT5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.1 -->
+
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left uk-visible@m">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
+             &nbsp;&nbsp;&nbsp;
+
+             <svg style="width:141.602;height:11.487px" viewBox="0 0 141.602 11.487" enable-background="new 0 0 141.602 11.487"><path fill="#000000" d="M5.471,7.791c0,0.511-0.16,0.875-0.488,1.111C4.631,9.158,4.097,9.287,3.398,9.287H2.387V6.456h1.011 C5.256,6.456,5.471,7.219,5.471,7.791z M4.554,4.223C4.29,4.448,3.82,4.562,3.16,4.562H2.387V2.2h0.821 c0.611,0,1.066,0.094,1.352,0.279C4.81,2.641,4.933,2.907,4.933,3.292C4.933,3.704,4.809,4.008,4.554,4.223z M6.004,5.338 c0.325-0.181,0.59-0.418,0.79-0.709c0.327-0.476,0.493-1.001,0.493-1.562c0-0.53-0.105-0.989-0.313-1.362 c-0.208-0.374-0.5-0.677-0.867-0.9C5.754,0.59,5.333,0.432,4.855,0.335C4.391,0.24,3.879,0.192,3.334,0.192h-3.06 C0.123,0.192,0,0.317,0,0.471v10.545c0,0.154,0.123,0.278,0.274,0.278h3.315c0.591,0,1.143-0.065,1.645-0.194 c0.513-0.132,0.966-0.339,1.345-0.615c0.388-0.283,0.694-0.641,0.91-1.067C7.702,8.992,7.811,8.488,7.811,7.92 c0-0.78-0.226-1.413-0.672-1.879C6.847,5.737,6.467,5.502,6.004,5.338z M22.197,9.158h-4.595V0.471c0-0.153-0.123-0.278-0.274-0.278 h-1.824c-0.151,0-0.273,0.125-0.273,0.278v10.545c0,0.154,0.122,0.278,0.273,0.278h6.693c0.151,0,0.274-0.124,0.274-0.278v-1.58 C22.47,9.282,22.348,9.158,22.197,9.158z M35.076,5.695c0,0.567-0.051,1.086-0.151,1.543c-0.1,0.45-0.24,0.836-0.416,1.149 c-0.167,0.299-0.37,0.53-0.603,0.688c-0.461,0.312-1.061,0.3-1.505-0.001c-0.233-0.157-0.436-0.389-0.604-0.688 c-0.175-0.313-0.312-0.699-0.407-1.146c-0.096-0.458-0.144-0.978-0.144-1.546c0-1.126,0.187-2.013,0.556-2.638 c0.346-0.587,0.791-0.873,1.36-0.873c0.568,0,1.012,0.285,1.359,0.873C34.889,3.682,35.076,4.569,35.076,5.695z M36.319,1.541 c-0.378-0.494-0.844-0.879-1.381-1.144c-1.076-0.529-2.477-0.529-3.553,0c-0.538,0.265-1.003,0.65-1.381,1.144 c-0.373,0.487-0.669,1.09-0.879,1.792c-0.208,0.696-0.313,1.49-0.313,2.362c0,0.882,0.105,1.685,0.313,2.386 c0.21,0.706,0.504,1.318,0.876,1.821c0.378,0.511,0.844,0.908,1.382,1.179c0.538,0.27,1.136,0.407,1.779,0.407 c0.642,0,1.24-0.137,1.778-0.408c0.538-0.27,1.003-0.667,1.382-1.178c0.372-0.503,0.667-1.115,0.876-1.821 c0.208-0.7,0.314-1.502,0.314-2.386c0-0.873-0.105-1.667-0.314-2.363C36.988,2.631,36.692,2.028,36.319,1.541z M51.29,8.346 c-0.052-0.058-0.125-0.092-0.203-0.092c-0.077,0-0.151,0.033-0.203,0.092c-0.273,0.308-0.566,0.549-0.871,0.715 c-0.602,0.33-1.469,0.308-2.099,0.002c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.423-0.675-0.554-1.116 c-0.134-0.45-0.203-0.968-0.203-1.539c0-0.56,0.068-1.07,0.203-1.515c0.132-0.437,0.316-0.81,0.548-1.111 c0.227-0.293,0.504-0.522,0.825-0.68c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.543,0.333,0.775,0.568 c0.054,0.054,0.147,0.088,0.2,0.081c0.075-0.002,0.146-0.036,0.196-0.092l1.03-1.161c0.098-0.11,0.094-0.278-0.01-0.383 c-0.355-0.361-0.799-0.687-1.317-0.968c-1.105-0.597-2.643-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149 c-0.451,0.498-0.809,1.113-1.064,1.827c-0.253,0.71-0.381,1.521-0.381,2.408c0,0.899,0.128,1.712,0.381,2.417 c0.255,0.709,0.614,1.317,1.066,1.805c0.454,0.489,0.993,0.865,1.603,1.115c0.607,0.249,1.268,0.374,1.966,0.374 c0.695,0,1.333-0.142,1.897-0.423c0.559-0.279,1.068-0.684,1.513-1.204c0.09-0.106,0.089-0.264-0.004-0.368L51.29,8.346z M64.109,4.608l3.075-3.966c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.245-0.157h-2.046 c-0.084,0-0.163,0.039-0.215,0.106l-3.254,4.218V0.47c0-0.153-0.123-0.277-0.274-0.277h-1.855c-0.151,0-0.274,0.124-0.274,0.277 v10.546c0,0.153,0.122,0.278,0.274,0.278h1.855c0.151,0,0.274-0.125,0.274-0.278V8.034l1.185-1.483l2.392,4.594 c0.048,0.091,0.141,0.148,0.242,0.148h2.046c0.097,0,0.186-0.052,0.236-0.138c0.049-0.085,0.05-0.19,0.003-0.276L64.109,4.608z M81.006,6.088c-0.218-0.244-0.478-0.462-0.773-0.647c-0.286-0.179-0.606-0.339-0.94-0.47l-1.368-0.598 c-0.235-0.097-0.461-0.189-0.679-0.276c-0.196-0.079-0.371-0.169-0.516-0.27c-0.134-0.092-0.24-0.197-0.315-0.311 c-0.065-0.099-0.097-0.22-0.097-0.369c0-0.297,0.112-0.514,0.351-0.683c0.263-0.187,0.64-0.281,1.12-0.281 c0.437,0,0.833,0.074,1.179,0.22c0.355,0.151,0.702,0.36,1.03,0.623c0.116,0.094,0.287,0.074,0.381-0.044l0.952-1.193 c0.091-0.114,0.079-0.279-0.026-0.38c-0.456-0.429-0.993-0.775-1.597-1.028c-1.114-0.467-2.435-0.495-3.459-0.144 c-0.469,0.161-0.88,0.389-1.221,0.678c-0.345,0.292-0.618,0.638-0.815,1.031c-0.199,0.398-0.299,0.834-0.299,1.296 c0,0.422,0.072,0.806,0.213,1.141c0.139,0.33,0.328,0.623,0.561,0.873c0.228,0.243,0.488,0.454,0.771,0.626 c0.277,0.169,0.564,0.312,0.841,0.42l1.425,0.634c0.249,0.095,0.479,0.19,0.692,0.285c0.198,0.088,0.367,0.184,0.504,0.285 c0.122,0.09,0.216,0.193,0.281,0.308c0.06,0.107,0.091,0.246,0.091,0.411c0,0.322-0.121,0.563-0.381,0.76 c-0.278,0.21-0.709,0.316-1.28,0.316c-0.467,0-0.934-0.103-1.388-0.307C75.78,8.788,75.358,8.514,74.99,8.18 c-0.056-0.05-0.127-0.077-0.201-0.07c-0.073,0.005-0.141,0.039-0.189,0.096l-1.078,1.274c-0.095,0.113-0.087,0.283,0.02,0.385 c0.541,0.516,1.167,0.92,1.862,1.2c0.695,0.281,1.434,0.423,2.195,0.423c0.63,0,1.205-0.09,1.707-0.265 c0.506-0.178,0.942-0.422,1.294-0.729c0.355-0.309,0.632-0.673,0.823-1.085c0.191-0.412,0.288-0.858,0.288-1.328 c0-0.419-0.062-0.797-0.185-1.123C81.404,6.632,81.229,6.339,81.006,6.088z M96.557,0.192h-8.374c-0.151,0-0.273,0.124-0.273,0.278 v1.58c0,0.154,0.122,0.278,0.273,0.278h2.994v8.687c0,0.154,0.122,0.278,0.274,0.278h1.84c0.151,0,0.273-0.124,0.273-0.278V2.328 h2.994c0.151,0,0.274-0.124,0.274-0.278v-1.58C96.831,0.317,96.708,0.192,96.557,0.192z M107.143,2.902 c0.074,0.282,0.149,0.566,0.226,0.851l0.725,2.664h-1.906l0.265-0.934c0.159-0.561,0.315-1.135,0.469-1.723 C106.996,3.473,107.071,3.188,107.143,2.902z M108.512,0.384c-0.037-0.114-0.142-0.192-0.261-0.192h-2.157 c-0.118,0-0.223,0.077-0.26,0.192l-3.362,10.546c-0.027,0.085-0.012,0.177,0.04,0.249c0.051,0.072,0.134,0.115,0.221,0.115h1.871 c0.122,0,0.229-0.082,0.263-0.201l0.752-2.653h3.044l0.736,2.651c0.034,0.12,0.141,0.203,0.263,0.203h1.951 c0.088,0,0.17-0.043,0.221-0.115c0.052-0.071,0.066-0.164,0.039-0.249L108.512,0.384z M125.302,8.346 c-0.104-0.117-0.302-0.117-0.406,0c-0.273,0.308-0.566,0.548-0.87,0.715c-0.603,0.329-1.469,0.308-2.1,0.002 c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.422-0.675-0.554-1.116c-0.134-0.449-0.202-0.966-0.202-1.539 c0-0.561,0.068-1.071,0.202-1.515c0.132-0.437,0.316-0.811,0.549-1.111c0.226-0.293,0.503-0.522,0.823-0.68 c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.544,0.332,0.775,0.567c0.053,0.055,0.131,0.089,0.2,0.082 c0.075-0.002,0.146-0.035,0.196-0.092l1.031-1.161c0.098-0.11,0.093-0.278-0.01-0.383c-0.355-0.361-0.8-0.687-1.318-0.968 c-1.105-0.597-2.644-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149c-0.451,0.498-0.809,1.113-1.063,1.827 c-0.254,0.71-0.382,1.521-0.382,2.409c0,0.899,0.128,1.712,0.382,2.417c0.254,0.709,0.612,1.317,1.065,1.805 c0.453,0.489,0.993,0.864,1.604,1.115c0.606,0.249,1.268,0.374,1.965,0.374c0.695,0,1.333-0.142,1.897-0.423 c0.559-0.279,1.067-0.684,1.514-1.204c0.09-0.106,0.089-0.264-0.004-0.368L125.302,8.346z M141.567,10.88l-3.448-6.272l3.075-3.966 c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.246-0.157h-2.045c-0.084,0-0.164,0.039-0.215,0.106l-3.254,4.217 V0.47c0-0.153-0.122-0.277-0.274-0.277h-1.856c-0.151,0-0.274,0.124-0.274,0.277v10.546c0,0.153,0.123,0.278,0.274,0.278h1.856 c0.151,0,0.274-0.125,0.274-0.278V8.035l1.185-1.484l2.392,4.594c0.047,0.091,0.141,0.148,0.242,0.148h2.045 c0.097,0,0.187-0.052,0.236-0.138C141.614,11.071,141.615,10.966,141.567,10.88z"></path></svg>
+        </a>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                  <!--  -->
+                    
+                    
+                         <h5>Introduction to Gaia storage</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/overview.html">A decentralized storage architecture</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/authentication.html">Authentication and Gaia</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/write-to-read.html">Storage write and read</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/hub-choice.html">Hubs and user choice</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>How to hub</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/hub-operation.html">Understand hub operation</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/amazon-s3-deploy.html">Configure a hub on Amazon EC2</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/hello-hub-choice.html">Hello hub choice tutorial</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/gaia-admin.html">Use the admin service</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Reference</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/config-schema.html">Hub configuration parameters</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/android_ref.html">Blockstack Android Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/ios_ref.html">Blockstack iOS Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class="uk-active"><a href="/storage/cliDocs.html">blockstack_cli reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/core_ref.html">Blockstack CORE API</a></li>
+                    
+                    </ul>
+                    
+                  <!--  -->
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article markdown="span" class="uk-article">
+
+                    <h1 class="uk-article-title">blockstack_cli reference</h1>
+
+                    
+
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2019-12-16T03:04:34+08:00" itemprop="datePublished">
+    
+    Dec 16, 2019
+    <!--  -->
+
+
+<a "target="_blank" href="https://github.com/blockstack/docs.blockstack/blob/master/_storage/cliDocs.md" class="btn btn-default githubEditButton" role="button">
+  <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+  
+</time>
+
+                    </div>
+
+                    <div markdown="span" class="article-content">
+                        
+<p>The command line is intended for developers only. Developers can use the command
+line to test and debug Blockstack applications in ways that the Blockstack
+Browser does not yet support. Using the command line, developers can:</p>
+
+<ul>
+  <li>Generate and Broadcast all supported types of Blockstack transactions</li>
+  <li>Load, store, and list data in Gaia hubs</li>
+  <li>Generate owner, payment and application keys from a seed phrase</li>
+  <li>Query Blockstack core nodes</li>
+  <li>Implement a minimum viable authentication flow</li>
+</ul>
+
+<div class="uk-alert-danger" uk-alert=""><b>Warning:</b> Many of the commands operate on unencrypted
+private keys. For this reason, DO NOT use this tool for day-to-day tasks as you
+risk the security of your keys.</div>
+
+<p>You must <a href="#installCommandLine">install the command line</a> before you
+can use the commands.</p>
+
+<h2 class="no_toc" id="list-of-commands">List of commands</h2>
+
+<p>To see the usage and options for the command in general, enter <code class="highlighter-rouge">blockstack-cli</code> without any subcommands. To see a list of subcommands enter <code class="highlighter-rouge">blockstack-cli help</code>. Enter <code class="highlighter-rouge">blockstack-cli SUBCOMMAND_NAME help</code> to see a subcommand with its usage. The following are the available subcommands:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#announce" id="markdown-toc-announce">announce</a></li>
+  <li><a href="#authenticator" id="markdown-toc-authenticator">authenticator</a></li>
+  <li><a href="#balance" id="markdown-toc-balance">balance</a></li>
+  <li><a href="#convert_address" id="markdown-toc-convert_address">convert_address</a></li>
+  <li><a href="#decrypt_keychain" id="markdown-toc-decrypt_keychain">decrypt_keychain</a></li>
+  <li><a href="#docs" id="markdown-toc-docs">docs</a></li>
+  <li><a href="#encrypt_keychain" id="markdown-toc-encrypt_keychain">encrypt_keychain</a></li>
+  <li><a href="#gaia_dump_bucket" id="markdown-toc-gaia_dump_bucket">gaia_dump_bucket</a></li>
+  <li><a href="#gaia_getfile" id="markdown-toc-gaia_getfile">gaia_getfile</a></li>
+  <li><a href="#gaia_putfile" id="markdown-toc-gaia_putfile">gaia_putfile</a></li>
+  <li><a href="#gaia_listfiles" id="markdown-toc-gaia_listfiles">gaia_listfiles</a></li>
+  <li><a href="#gaia_restore_bucket" id="markdown-toc-gaia_restore_bucket">gaia_restore_bucket</a></li>
+  <li><a href="#gaia_sethub" id="markdown-toc-gaia_sethub">gaia_sethub</a></li>
+  <li><a href="#get_account_history" id="markdown-toc-get_account_history">get_account_history</a></li>
+  <li><a href="#get_account_at" id="markdown-toc-get_account_at">get_account_at</a></li>
+  <li><a href="#get_address" id="markdown-toc-get_address">get_address</a></li>
+  <li><a href="#get_blockchain_record" id="markdown-toc-get_blockchain_record">get_blockchain_record</a></li>
+  <li><a href="#get_blockchain_history" id="markdown-toc-get_blockchain_history">get_blockchain_history</a></li>
+  <li><a href="#get_confirmations" id="markdown-toc-get_confirmations">get_confirmations</a></li>
+  <li><a href="#get_namespace_blockchain_record" id="markdown-toc-get_namespace_blockchain_record">get_namespace_blockchain_record</a></li>
+  <li><a href="#get_app_keys" id="markdown-toc-get_app_keys">get_app_keys</a></li>
+  <li><a href="#get_owner_keys" id="markdown-toc-get_owner_keys">get_owner_keys</a></li>
+  <li><a href="#get_payment_key" id="markdown-toc-get_payment_key">get_payment_key</a></li>
+  <li><a href="#get_zonefile" id="markdown-toc-get_zonefile">get_zonefile</a></li>
+  <li><a href="#help" id="markdown-toc-help">help</a></li>
+  <li><a href="#lookup" id="markdown-toc-lookup">lookup</a></li>
+  <li><a href="#names" id="markdown-toc-names">names</a></li>
+  <li><a href="#make_keychain" id="markdown-toc-make_keychain">make_keychain</a></li>
+  <li><a href="#make_zonefile" id="markdown-toc-make_zonefile">make_zonefile</a></li>
+  <li><a href="#name_import" id="markdown-toc-name_import">name_import</a></li>
+  <li><a href="#namespace_preorder" id="markdown-toc-namespace_preorder">namespace_preorder</a></li>
+  <li><a href="#namespace_reveal" id="markdown-toc-namespace_reveal">namespace_reveal</a></li>
+  <li><a href="#namespace_ready" id="markdown-toc-namespace_ready">namespace_ready</a></li>
+  <li><a href="#price" id="markdown-toc-price">price</a></li>
+  <li><a href="#price_namespace" id="markdown-toc-price_namespace">price_namespace</a></li>
+  <li><a href="#profile_sign" id="markdown-toc-profile_sign">profile_sign</a></li>
+  <li><a href="#profile_store" id="markdown-toc-profile_store">profile_store</a></li>
+  <li><a href="#profile_verify" id="markdown-toc-profile_verify">profile_verify</a></li>
+  <li><a href="#renew" id="markdown-toc-renew">renew</a></li>
+  <li><a href="#register" id="markdown-toc-register">register</a></li>
+  <li><a href="#register_addr" id="markdown-toc-register_addr">register_addr</a></li>
+  <li><a href="#register_subdomain" id="markdown-toc-register_subdomain">register_subdomain</a></li>
+  <li><a href="#revoke" id="markdown-toc-revoke">revoke</a></li>
+  <li><a href="#send_btc" id="markdown-toc-send_btc">send_btc</a></li>
+  <li><a href="#send_tokens" id="markdown-toc-send_tokens">send_tokens</a></li>
+  <li><a href="#transfer" id="markdown-toc-transfer">transfer</a></li>
+  <li><a href="#tx_preorder" id="markdown-toc-tx_preorder">tx_preorder</a></li>
+  <li><a href="#tx_register" id="markdown-toc-tx_register">tx_register</a></li>
+  <li><a href="#update" id="markdown-toc-update">update</a></li>
+  <li><a href="#whois" id="markdown-toc-whois">whois</a></li>
+  <li><a href="#zonefile_push" id="markdown-toc-zonefile_push">zonefile_push</a>    <ul>
+      <li><a href="#troubleshooting-the-cli-installation" id="markdown-toc-troubleshooting-the-cli-installation">Troubleshooting the CLI installation</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="announce">announce</h2>
+
+<p><strong>Group</strong>: Peer Services</p>
+
+<p>Broadcast a message on the blockchain for subscribers to read.  The <code class="highlighter-rouge">MESSAGE_HASH</code> argument must be the hash of a previously-announced zone file.  The <code class="highlighter-rouge">OWNER_KEY</code> used to sign the transaction must correspond to the Blockstack ID to which other users have already subscribed.  <code class="highlighter-rouge">OWNER_KEY</code> can be a single private key or a serialized multisig private key bundle.</p>
+
+<p>If this command succeeds, it will print a transaction ID.  The rest of the Blockstack peer network will process it once the transaction reaches 7 confirmations.</p>
+
+<p>Examples:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Tip: You can obtain the owner key with the get_owner_keys command
+$ export OWNER_KEY="136ff26efa5db6f06b28f9c8c7a0216a1a52598045162abfe435d13036154a1b01"
+$ blockstack-cli announce 737c631c7c5d911c6617993c21fba731363f1cfe "$OWNER_KEY"
+d51749aeec2803e91a2f8bdec8d3e413491fd816b4962372b214ab74acb0bba8
+
+$ export OWNER_KEY="2,136ff26efa5db6f06b28f9c8c7a0216a1a52598045162abfe435d13036154a1b01,1885cba486a42960499d1f137ef3a475725ceb11f45d74631f9928280196f67401,2418981c7f3a91d4467a65a518e14fafa30e07e6879c11fab7106ea72b49a7cb01"
+$ blockstack-cli announce 737c631c7c5d911c6617993c21fba731363f1cfe "$OWNER_KEY"
+8136a1114098893b28a693e8d84451abf99ee37ef8766f4bc59808eed76968c9
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">message_hash</td>
+<td>string</td>
+<td>zonefile_hash</td>
+<td><code style="font-size:10px">^([0-9a-f]{40})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="authenticator">authenticator</h2>
+
+<p><strong>Group</strong>: Authentication</p>
+
+<p>Run an authentication endpoint for the set of names owned by the given backup phrase.  Send applications the given Gaia hub URL on sign-in, so the application will use it to read/write user data.</p>
+
+<p>You can supply your encrypted backup phrase instead of the raw backup phrase.  If so, then you will be prompted for your password before any authentication takes place.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export BACKUP_PHRASE="oak indicate inside poet please share dinner monitor glow hire source perfect"
+$ export APP_GAIA_HUB="https://1.2.3.4"
+$ export PROFILE_GAIA_HUB="https://hub.blockstack.org"
+$ blockstack-cli authenticator "$APP_GAIA_HUB" "$BACKUP_PHRASE" "$PROFILE_GAIA_HUB" 8888
+Press Ctrl+C to exit
+Authentication server started on 8888
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-1">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">app_gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">backup_phrase</td>
+<td>string</td>
+<td>12_words_or_ciphertext</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">profile_gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">port</td>
+<td>string</td>
+<td>portnum</td>
+<td><code style="font-size:10px">^[0-9]+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="balance">balance</h2>
+
+<p><strong>Group</strong>: Account Management</p>
+
+<p>Query the balance of an account.  Returns the balances of each kind of token that the account owns.  The balances will be in the <em>smallest possible units</em> of the token (i.e. satoshis for BTC, microStacks for Stacks, etc.).</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli balance 16pm276FpJYpm7Dv3GEaRqTVvGPTdceoY4
+{
+  "BTC": "123456"
+  "STACKS": "123456"
+}
+$ blockstack-cli balance SPZY1V53Z4TVRHHW9Z7SFG8CZNRAG7BD8WJ6SXD0
+{
+  "BTC": "123456"
+  "STACKS": "123456"
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-2">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">address</td>
+<td>string</td>
+<td>address</td>
+<td><code style="font-size:10px">^([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35})$|^([0123456789ABCDEFGHJKMNPQRSTVWXYZ]+)$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="convert_address">convert_address</h2>
+
+<p><strong>Group</strong>: Account Management</p>
+
+<p>Convert a Bitcoin address to a Stacks address and vice versa.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli convert_address 12qdRgXxgNBNPnDeEChy3fYTbSHQ8nfZfD
+{
+  "STACKS": "SPA2MZWV9N67TBYVWTE0PSSKMJ2F6YXW7CBE6YPW",
+  "BTC": "12qdRgXxgNBNPnDeEChy3fYTbSHQ8nfZfD"
+}
+$ blockstack-cli convert_address SPA2MZWV9N67TBYVWTE0PSSKMJ2F6YXW7CBE6YPW
+{
+  "STACKS": "SPA2MZWV9N67TBYVWTE0PSSKMJ2F6YXW7CBE6YPW",
+  "BTC": "12qdRgXxgNBNPnDeEChy3fYTbSHQ8nfZfD"
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-3">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">address</td>
+<td>string</td>
+<td>address</td>
+<td><code style="font-size:10px">^([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35})$|^([0123456789ABCDEFGHJKMNPQRSTVWXYZ]+)$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="decrypt_keychain">decrypt_keychain</h2>
+
+<p><strong>Group</strong>: Key Management</p>
+
+<p>Decrypt an encrypted backup phrase with a password.  Decrypts to a 12-word backup phrase if done correctly.  The password will be prompted if not given.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # password is "asdf"
+$ blockstack-cli decrypt_keychain "bfMDtOucUGcJXjZo6vkrZWgEzue9fzPsZ7A6Pl4LQuxLI1xsVF0VPgBkMsnSLCmYS5YHh7R3mNtMmX45Bq9sNGPfPsseQMR0fD9XaHi+tBg=
+Enter password:
+section amount spend resemble spray verify night immune tattoo best emotion parrot
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-4">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">encrypted_backup_phrase</td>
+<td>string</td>
+<td>encrypted_backup_phrase</td>
+<td><code style="font-size:10px">^[^ ]+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">password</td>
+<td>string</td>
+<td>password</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="docs">docs</h2>
+
+<p><strong>Group</strong>: CLI</p>
+
+<p>Dump the documentation for all commands as JSON to standard out.</p>
+
+<h3 class="no_toc" id="arguments-5">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">format</td>
+<td>string</td>
+<td>output_format</td>
+<td><code style="font-size:10px">^json$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="encrypt_keychain">encrypt_keychain</h2>
+
+<p><strong>Group</strong>: Key Management</p>
+
+<p>Encrypt a 12-word backup phrase, which can be decrypted later with the <code class="highlighter-rouge">decrypt_backup_phrase</code> command.  The password will be prompted if not given.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ # password is "asdf"
+ $ blockstack-cli encrypt_keychain "section amount spend resemble spray verify night immune tattoo best emotion parrot"
+ Enter password:
+ Enter password again:
+ M+DnBHYb1fgw4N3oZ+5uTEAua5bAWkgTW/SjmmBhGGbJtjOtqVV+RrLJEJOgT35hBon4WKdGWye2vTdgqDo7+HIobwJwkQtN2YF9g3zPsKk=
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-6">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">backup_phrase</td>
+<td>string</td>
+<td>backup_phrase</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">password</td>
+<td>string</td>
+<td>password</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="gaia_dump_bucket">gaia_dump_bucket</h2>
+
+<p><strong>Group</strong>: Gaia</p>
+
+<p>Download the contents of a Gaia hub bucket to a given directory.  The <code class="highlighter-rouge">GAIA_HUB</code> argument must correspond to the <em>write</em> endpoint of the Gaia hub – that is, you should be able to fetch <code class="highlighter-rouge">$GAIA_HUB/hub_info</code>.  If <code class="highlighter-rouge">DUMP_DIR</code> does not exist, it will be created.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export BACKUP_PHRASE="section amount spend resemble spray verify night immune tattoo best emotion parrot
+$ blockstack-cli gaia_dump_bucket hello.id.blockstack https://sample.app https://hub.blockstack.org "$BACKUP_PHRASE" ./backups
+Download 3 files...
+Download hello_world to ./backups/hello_world
+Download dir/format to ./backups/dir\x2fformat
+Download /.dotfile to ./backups/\x2f.dotfile
+3
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-7">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">name_or_id_address</td>
+<td>string</td>
+<td>name_or_id_address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$|^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">app_origin</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">backup_phrase</td>
+<td>string</td>
+<td>12_words_or_ciphertext</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">dump_dir</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="gaia_getfile">gaia_getfile</h2>
+
+<p><strong>Group</strong>: Gaia</p>
+
+<p>Get a file from another user’s Gaia hub.  Prints the file data to stdout.  If you want to read an encrypted file, and/or verify a signed file, then you must pass an app private key, and pass 1 for <code class="highlighter-rouge">DECRYPT</code> and/or <code class="highlighter-rouge">VERIFY</code>.  If the file is encrypted, and you do not pass an app private key, then this command downloads the ciphertext.  If the file is signed, and you want to download its data and its signature, then you must run this command twice – once to get the file contents at <code class="highlighter-rouge">FILENAME</code>, and once to get the signature (whose name will be <code class="highlighter-rouge">FILENAME</code>.sig).</p>
+
+<p>Gaia is a key-value store, so it does not have any built-in notion of directories.  However, most underlying storage systems do – directory separators in the name of a file in Gaia may be internally treated as first-class directories (it depends on the Gaia hub’s driver).As such, repeated directory separators will be treated as a single directory separator by this command.  For example, the file name <code class="highlighter-rouge">a/b.txt</code>, <code class="highlighter-rouge">/a/b.txt</code>, and <code class="highlighter-rouge">///a////b.txt</code> will be treated as identical.</p>
+
+<p>Example without encryption:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Get an unencrypted, unsigned file
+$ blockstack-cli gaia_getfile ryan.id http://public.ykliao.com statuses.json
+[{"id":0,"text":"Hello, Blockstack!","created_at":1515786983492}]
+</code></pre></div></div>
+
+<p>Example with encryption:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Get an encrypted file without decrypting
+$ blockstack-cli gaia_getfile ryan.id https://app.graphitedocs.com documentscollection.json
+    $ # Get an encrypted file, and decrypt it
+$ # Tip: You can obtain the app key with the get_app_keys command
+$ export APP_KEY="3ac770e8c3d88b1003bf4a0a148ceb920a6172bdade8e0325a1ed1480ab4fb19"
+$ blockstack-cli gaia_getfile ryan.id https://app.graphitedocs.com documentscollection.json "$APP_KEY" 1 0
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-8">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">app_origin</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">filename</td>
+<td>string</td>
+<td>filename</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">app_private_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">decrypt</td>
+<td>string</td>
+<td>boolean</td>
+<td><code style="font-size:10px">^(0|1|true|false)$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">verify</td>
+<td>string</td>
+<td>boolean</td>
+<td><code style="font-size:10px">^(0|1|true|false)$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="gaia_putfile">gaia_putfile</h2>
+
+<p><strong>Group</strong>: Gaia</p>
+
+<p>Put a file into a given Gaia hub, authenticating with the given app private key.  Optionally encrypt and/or sign the data with the given app private key.  If the file is successfully stored, this command prints out the URLs at which it can be fetched.</p>
+
+<p>Gaia is a key-value store, so it does not have any built-in notion of directories.  However, most underlying storage systems do – directory separators in the name of a file in Gaia may be internally treated as first-class directories (it depends on the Gaia hub’s driver).As such, repeated directory separators will be treated as a single directory separator by this command.  For example, the file name <code class="highlighter-rouge">a/b.txt</code>, <code class="highlighter-rouge">/a/b.txt</code>, and <code class="highlighter-rouge">///a////b.txt</code> will be treated as identical.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Store 4 versions of a file: plaintext, encrypted, signed, and encrypted+signed
+$ # Tip: You can obtain the app key with the get_app_keys command.
+$ export APP_KEY="3ac770e8c3d88b1003bf4a0a148ceb920a6172bdade8e0325a1ed1480ab4fb19"
+$ blockstack-cli gaia_putfile https://hub.blockstack.org "$APP_KEY" /path/to/file.txt file.txt
+{
+   "urls": "https://gaia.blockstack.org/hub/19KAzYp4kSKozeAGMUsnuqkEGdgQQLEvwo/file.txt"
+}
+$ blockstack-cli gaia_putfile https://hub.blockstack.org "$APP_KEY" /path/to/file.txt file-encrypted.txt 1
+{
+   "urls": "https://gaia.blockstack.org/hub/19KAzYp4kSKozeAGMUsnuqkEGdgQQLEvwo/file-encrypted.txt"
+}
+$ blockstack-cli gaia_putfile https://hub.blockstack.org "$APP_KEY" /path/to/file.txt file-signed.txt 0 1
+{
+   "urls": "https://gaia.blockstack.org/hub/19KAzYp4kSKozeAGMUsnuqkEGdgQQLEvwo/file-signed.txt"
+}
+$ blockstack-cli gaia_putfile https://hub.blockstack.org "$APP_KEY" /path/to/file.txt file-encrypted-signed.txt 1 1
+{
+   "urls": "https://gaia.blockstack.org/hub/19KAzYp4kSKozeAGMUsnuqkEGdgQQLEvwo/file-encrypted-signed.txt"
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-9">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">app_private_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">data_path</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">gaia_filename</td>
+<td>string</td>
+<td>filename</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">encrypt</td>
+<td>string</td>
+<td>boolean</td>
+<td><code style="font-size:10px">^(0|1|true|false)$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">sign</td>
+<td>string</td>
+<td>boolean</td>
+<td><code style="font-size:10px">^(0|1|true|false)$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="gaia_listfiles">gaia_listfiles</h2>
+
+<p><strong>Group</strong>: Gaia</p>
+
+<p>List all the files in a Gaia hub bucket.  You must have the private key for the bucket in order to list its contents.  The command prints each file name on its own line, and when finished, it prints the number of files listed.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Tip: You can obtain the app key with the get_app_keys command.
+$ export APP_KEY="3ac770e8c3d88b1003bf4a0a148ceb920a6172bdade8e0325a1ed1480ab4fb19"
+$ blockstack-cli gaia_listfiles "https://hub.blockstack.org" "$APP_KEY"
+hello_world
+dir/format
+/.dotfile
+3
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-10">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">app_private_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="gaia_restore_bucket">gaia_restore_bucket</h2>
+
+<p><strong>Group</strong>: Gaia</p>
+
+<p>Upload the contents of a previously-dumped Gaia bucket to a new Gaia hub.  The <code class="highlighter-rouge">GAIA_HUB</code> argument must correspond to the <em>write</em> endpoint of the Gaia hub – that is, you should be able to fetch <code class="highlighter-rouge">$GAIA_HUB/hub_info</code>.  <code class="highlighter-rouge">DUMP_DIR</code> must contain the file contents created by a previous successful run of the gaia_dump_bucket command, and both <code class="highlighter-rouge">NAME_OR_ID_ADDRESS</code> and <code class="highlighter-rouge">APP_ORIGIN</code> must be the same as they were when it was run.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export BACKUP_PHRASE="section amount spend resemble spray verify night immune tattoo best emotion parrot"
+$ blockstack-cli gaia_restore_bucket hello.id.blockstack https://sample.app https://new.gaia.hub "$BACKUP_PHRASE" ./backups
+Uploaded ./backups/hello_world to https://new.gaia.hub/hub/1Lr8ggSgdmfcb4764woYutUfFqQMjEoKHc/hello_world
+Uploaded ./backups/dir\x2fformat to https://new.gaia.hub/hub/1Lr8ggSgdmfcb4764woYutUfFqQMjEoKHc/dir/format
+Uploaded ./backups/\x2f.dotfile to https://new.gaia.hub/hub/1Lr8ggSgdmfcb4764woYutUfFqQMjEoKHc//.dotfile
+3
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-11">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">name_or_id_address</td>
+<td>string</td>
+<td>name_or_id_address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$|^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">app_origin</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">backup_phrase</td>
+<td>string</td>
+<td>12_words_or_ciphertext</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">dump_dir</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="gaia_sethub">gaia_sethub</h2>
+
+<p><strong>Group</strong>: Gaia</p>
+
+<p>Set the Gaia hub for a particular application for a Blockstack ID.  If the command succeeds, the URLs to your updated profile will be printed and your profile will contain an entry in its “apps” key that links the given <code class="highlighter-rouge">APP_ORIGIN</code> to the given <code class="highlighter-rouge">APP_GAIA_HUB</code>.</p>
+
+<p>NOTE: Both <code class="highlighter-rouge">OWNER_GAIA_HUB</code> and <code class="highlighter-rouge">APP_GAIA_HUB</code> must be the <em>write</em> endpoints of their respective Gaia hubs.</p>
+
+<p>Your 12-word phrase (in either raw or encrypted form) is required to re-sign and store your profile and to generate an app-specific key and Gaia bucket.  If you give the encrypted backup phrase, you will be prompted for a password.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export BACKUP_PHRASE="soap fog wealth upon actual blossom neither timber phone exile monkey vocal"
+$ blockstack-cli gaia_sethub hello_world.id https://hub.blockstack.org https://my.cool.app https://my.app.gaia.hub "$BACKUP_PHRASE"
+{
+  "profileUrls": {
+    "error": null,
+    "dataUrls": [
+      "https://gaia.blockstack.org/hub/1ArdkA2oLaKnbNbLccBaFhEV4pYju8hJ82/profile.json"
+    ]
+  }
+}
+
+$ # You can check the new apps entry with curl and jq as follows:
+$ curl -sL https://gaia.blockstack.org/hub/1ArdkA2oLaKnbNbLccBaFhEV4pYju8hJ82/profile.json | jq ".[0].decodedToken.payload.claim.apps"
+{
+  "https://my.cool.app": "https://my.app.gaia.hub/hub/1EqzyQLJ15KG1WQmi5cf1HtmSeqS1Wb8tY/"
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-12">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">app_origin</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">app_gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">backup_phrase</td>
+<td>string</td>
+<td>12_words_or_ciphertext</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_account_history">get_account_history</h2>
+
+<p><strong>Group</strong>: Account Management</p>
+
+<p>Query the history of account debits and credits over a given block range.  Returns the history one page at a time.  An empty result indicates that the page number has exceeded the number of historic operations in the given block range.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli get_account_history SP2H7VMY13ESQDAD5808QEY1EMGESMHZWBJRTN2YA 0
+[
+  {
+    "address": "SP2H7VMY13ESQDAD5808QEY1EMGESMHZWBJRTN2YA",
+    "block_id": 56789
+    "credit_value": "100000000000",
+    "debit_value": "0",
+    "lock_transfer_block_id": 0,
+    "txid": "0e5db84d94adff5b771262b9df015164703b39bb4a70bf499a1602b858a0a5a1",
+    "type": "STACKS",
+    "vtxindex": 0
+  },
+  {
+    "address": "SP2H7VMY13ESQDAD5808QEY1EMGESMHZWBJRTN2YA",
+    "block_id": 56790,
+    "credit_value": "100000000000",
+    "debit_value": "64000000000",
+    "lock_transfer_block_id": 0,
+    "txid": "5a0c67144626f7bd4514e4de3f3bbf251383ca13887444f326bac4bc8b8060ee",
+    "type": "STACKS",
+    "vtxindex": 1
+  },
+  {
+    "address": "SP2H7VMY13ESQDAD5808QEY1EMGESMHZWBJRTN2YA",
+    "block_id": 56791,
+    "credit_value": "100000000000",
+    "debit_value": "70400000000",
+    "lock_transfer_block_id": 0,
+    "txid": "e54c271d6a9feb4d1859d32bc99ffd713493282adef5b4fbf50bca9e33fc0ecc",
+    "type": "STACKS",
+    "vtxindex": 2
+  },
+  {
+    "address": "SP2H7VMY13ESQDAD5808QEY1EMGESMHZWBJRTN2YA",
+    "block_id": 56792,
+    "credit_value": "100000000000",
+    "debit_value": "76800000000",
+    "lock_transfer_block_id": 0,
+    "txid": "06e0d313261baefec1e59783e256ab487e17e0e776e2fdab0920cc624537e3c8",
+    "type": "STACKS",
+    "vtxindex": 3
+  }
+]
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-13">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">address</td>
+<td>string</td>
+<td>address</td>
+<td><code style="font-size:10px">^([0123456789ABCDEFGHJKMNPQRSTVWXYZ]+)$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">page</td>
+<td>string</td>
+<td>integer</td>
+<td><code style="font-size:10px">^[0-9]+$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_account_at">get_account_at</h2>
+
+<p><strong>Group</strong>: Account Management</p>
+
+<p>Query the list of token debits and credits on a given address that occurred at a particular block height.  Does not include BTC debits and credits; only Stacks.</p>
+
+<p>Example</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli -t get_account_at SP2NTAQFECYGSTE1W47P71FG21H8F00KZZWFGEVKQ 56789
+[
+  {
+    "debit_value": "0",
+    "block_id": 56789
+    "lock_transfer_block_id": 0,
+    "txid": "291817c78a865c1f72938695218a48174265b2358e89b9448edc89ceefd66aa0",
+    "address": "SP2NTAQFECYGSTE1W47P71FG21H8F00KZZWFGEVKQ",
+    "credit_value": "1000000000000000000",
+    "type": "STACKS",
+    "vtxindex": 0
+  }
+]
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-14">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">address</td>
+<td>string</td>
+<td>address</td>
+<td><code style="font-size:10px">^([0123456789ABCDEFGHJKMNPQRSTVWXYZ]+)$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">blocknumber</td>
+<td>string</td>
+<td>integer</td>
+<td><code style="font-size:10px">^[0-9]+$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_address">get_address</h2>
+
+<p><strong>Group</strong>: Key Management</p>
+
+<p>Get the address of a private key or multisig private key bundle.  Gives the BTC and STACKS addresses</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli get_address f5185b9ca93bdcb5753fded3b097dab8547a8b47d2be578412d0687a9a0184cb01
+{
+  "BTC": "1JFhWyVPpZQjbPcXFtpGtTmU22u4fhBVmq",
+  "STACKS": "SP2YM3J4KQK09V670TD6ZZ1XYNYCNGCWCVVKSDFWQ"
+}
+$ blockstack-cli get_address 1,f5185b9ca93bdcb5753fded3b097dab8547a8b47d2be578412d0687a9a0184cb01,ff2ff4f4e7f8a1979ffad4fc869def1657fd5d48fc9cf40c1924725ead60942c01
+{
+  "BTC": "363pKBhc5ipDws1k5181KFf6RSxhBZ7e3p",
+  "STACKS": "SMQWZ30EXVG6XEC1K4QTDP16C1CAWSK1JSWMS0QN"
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-15">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">private_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_blockchain_record">get_blockchain_record</h2>
+
+<p><strong>Group</strong>: Querying Blockstack IDs</p>
+
+<p>Get the low-level blockchain-hosted state for a Blockstack ID.  This command is used mainly for debugging and diagnostics.  You should not rely on it to be stable.</p>
+
+<h3 class="no_toc" id="arguments-16">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_blockchain_history">get_blockchain_history</h2>
+
+<p><strong>Group</strong>: Querying Blockstack IDs</p>
+
+<p>Get the low-level blockchain-hosted history of operations on a Blockstack ID.  This command is used mainly for debugging and diagnostics, and is not guaranteed to be stable across releases.</p>
+
+<h3 class="no_toc" id="arguments-17">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">page</td>
+<td>string</td>
+<td>page_number</td>
+<td><code style="font-size:10px">^[0-9]+$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_confirmations">get_confirmations</h2>
+
+<p><strong>Group</strong>: Peer Services</p>
+
+<p>Get the block height and number of confirmations for a transaction.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli get_confirmations e41ce043ab64fd5a5fd382fba21acba8c1f46cbb1d7c08771ada858ce7d29eea
+{
+  "blockHeight": 567890,
+  "confirmations": 7,
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-18">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">txid</td>
+<td>string</td>
+<td>transaction_id</td>
+<td><code style="font-size:10px">^([0-9a-f]{64})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_namespace_blockchain_record">get_namespace_blockchain_record</h2>
+
+<p><strong>Group</strong>: Namespace Operations</p>
+
+<p>Get the low-level blockchain-hosted state for a Blockstack namespace.  This command is used mainly for debugging and diagnostics, and is not guaranteed to be stable across releases.</p>
+
+<h3 class="no_toc" id="arguments-19">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">namespace_id</td>
+<td>string</td>
+<td>namespace_id</td>
+<td><code style="font-size:10px">^([0-9a-z_-]{1,19})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_app_keys">get_app_keys</h2>
+
+<p><strong>Group</strong>: Key Management</p>
+
+<p>Get the application private key from a 12-word backup phrase and a name or ID-address.  This is the private key used to sign data in Gaia, and its address is the Gaia bucket address.  If you provide your encrypted backup phrase, you will be asked to decrypt it.  If you provide a name instead of an ID-address, its ID-address will be queried automatically (note that this means that the name must already be registered).</p>
+
+<p>NOTE: This command does NOT verify whether or not the name or ID-address was created by the backup phrase. You should do this yourself via the <code class="highlighter-rouge">get_owner_keys</code> command if you are not sure.</p>
+
+<p>There are two derivation paths emitted by this command:  a <code class="highlighter-rouge">keyInfo</code> path and a <code class="highlighter-rouge">legacyKeyInfo</code>path.  You should use the one that matches the Gaia hub read URL’s address, if you have already signed in before.  If not, then you should use the <code class="highlighter-rouge">keyInfo</code> path when possible.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export BACKUP_PHRASE="one race buffalo dynamic icon drip width lake extra forest fee kit"
+$ blockstack-cli get_app_keys "$BACKUP_PHRASE" example.id.blockstack https://my.cool.dapp
+{
+  "keyInfo": {
+    "privateKey": "TODO",
+    "address": "TODO"
+  },
+  "legacyKeyInfo": {
+    "privateKey": "90f9ec4e13fb9a00243b4c1510075157229bda73076c7c721208c2edca28ea8b",
+    "address": "1Lr8ggSgdmfcb4764woYutUfFqQMjEoKHc"
+  },
+  "ownerKeyIndex": 0
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-20">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">backup_phrase</td>
+<td>string</td>
+<td>12_words_or_ciphertext</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">name_or_id_address</td>
+<td>string</td>
+<td>name-or-id-address</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$|^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">app_origin</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">^http[s]?://.+$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_owner_keys">get_owner_keys</h2>
+
+<p><strong>Group</strong>: Key Management</p>
+
+<p>Get the list of owner private keys and ID-addresses from a 12-word backup phrase.  Pass non-zero values for INDEX to generate the sequence of ID-addresses that can be used to own Blockstack IDs.  If you provide an encrypted 12-word backup phrase, you will be asked for your password to decrypt it.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # get the first 3 owner keys and addresses for a backup phrase
+$ export BACKUP_PHRASE="soap fog wealth upon actual blossom neither timber phone exile monkey vocal"
+$ blockstack-cli get_owner_keys "$BACKUP_PHRASE" 3
+[
+  {
+    "privateKey": "14b0811d5cd3486d47279d8f3a97008647c64586b121e99862c18863e2a4183501",
+    "version": "v0.10-current",
+    "index": 0,
+    "idAddress": "ID-1ArdkA2oLaKnbNbLccBaFhEV4pYju8hJ82"
+  },
+  {
+    "privateKey": "1b3572d8dd6866828281ac6cf135f04153210c1f9b123743eccb795fd3095e4901",
+    "version": "v0.10-current",
+    "index": 1,
+    "idAddress": "ID-18pR3UpD1KFrnk88a3MGZmG2dLuZmbJZ25"
+  },
+  {
+    "privateKey": "b19b6d62356db96d570fb5f08b78f0aa7f384525ba3bdcb96fbde29b8e11710d01",
+    "version": "v0.10-current",
+    "index": 2,
+    "idAddress": "ID-1Gx4s7ggkjENw3wSY6bNd1CwoQKk857AqN"
+  }
+]
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-21">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">backup_phrase</td>
+<td>string</td>
+<td>12_words_or_ciphertext</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">index</td>
+<td>string</td>
+<td>integer</td>
+<td><code style="font-size:10px">^[0-9]+$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_payment_key">get_payment_key</h2>
+
+<p><strong>Group</strong>: Key Management</p>
+
+<p>Get the payment private key from a 12-word backup phrase.  If you provide an encrypted backup phrase, you will be asked for your password to decrypt it.  This command will tell you your Bitcoin and Stacks token addresses as well.</p>
+
+<p>Example</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli get_payment_key "soap fog wealth upon actual blossom neither timber phone exile monkey vocal"
+[
+  {
+    "privateKey": "4023435e33da4aff0775f33e7b258f257fb20ecff039c919b5782313ab73afb401",
+    "address": {
+      "BTC": "1ybaP1gaRwRSWRE4f8JXo2W8fiTZmA4rV",
+      "STACKS": "SP5B89ZJAQHBRXVYP15YB5PAY5E24FEW9K4Q63PE"
+    },
+    "index": 0
+  }
+]
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-22">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">backup_phrase</td>
+<td>string</td>
+<td>12_words_or_ciphertext</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="get_zonefile">get_zonefile</h2>
+
+<p><strong>Group</strong>: Peer Services</p>
+
+<p>Get a zone file by hash.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli get_zonefile ee77ad484b7b229f09461e4c2b6d3bd3e152ba95
+$ORIGIN ryanshea.id
+$TTL 3600
+_http._tcp URI 10 1 "https://gaia.blockstack.org/hub/15BcxePn59Y6mYD2fRLCLCaaHScefqW2No/1/profile.json"
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-23">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">zonefile_hash</td>
+<td>string</td>
+<td>zonefile_hash</td>
+<td><code style="font-size:10px">^([0-9a-f]{40})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="help">help</h2>
+
+<p><strong>Group</strong>: CLI</p>
+
+<p>Get the usage string for a CLI command</p>
+
+<h3 class="no_toc" id="arguments-24">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">command</td>
+<td>string</td>
+<td>command</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="lookup">lookup</h2>
+
+<p><strong>Group</strong>: Querying Blockstack IDs</p>
+
+<p>Get and authenticate the profile and zone file for a Blockstack ID.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli lookup example.id
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-25">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="names">names</h2>
+
+<p><strong>Group</strong>: Querying Blockstack IDs</p>
+
+<p>Get the list of Blockstack IDs owned by an ID-address.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli names ID-1FpBChfzHG3TdQQRKWAipbLragCUArueG9
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-26">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">id_address</td>
+<td>string</td>
+<td>id-address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="make_keychain">make_keychain</h2>
+
+<p><strong>Group</strong>: Key Management</p>
+
+<p>Generate the owner and payment private keys, optionally from a given 12-word backup phrase.  If no backup phrase is given, a new one will be generated.  If you provide your encrypted backup phrase, you will be asked to decrypt it.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli make_keychain
+{
+  "mnemonic": "apart spin rich leader siren foil dish sausage fee pipe ethics bundle",
+  "ownerKeyInfo": {
+    "idAddress": "ID-192yxWSvZrss3f4ZY48tUMJJxQvuB6DcXE",
+    "index": 0,
+    "privateKey": "c0a1c606bf509059be1be27aeb88a60bb530910e16e2e605c7ef9e20a0d6bbb001",
+    "version": "v0.10-current"
+  },
+  "paymentKeyInfo": {
+    "address": {
+      "BTC": "1MRq8Vzb2pCVx9fcrBThWaV7reHhudt3ix",
+      "STACKS": "SP3G19B6J50FH6JGXAKS06N6WA1XPJCKKM4JCHC2D"
+    },
+    "index": 0,
+    "privateKey": "56d30f2b605ed114c7dc45599ae521c525d07e1286fbab67452a6586ea49332a01"
+  }
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-27">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">backup_phrase</td>
+<td>string</td>
+<td>12_words_or_ciphertext</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="make_zonefile">make_zonefile</h2>
+
+<p><strong>Group</strong>: Peer Services</p>
+
+<p>Generate a zone file for a Blockstack ID with the given profile URL.  If you know the ID-address for the Blockstack ID, the profile URL usually takes the form of:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {GAIA_URL_PREFIX}/{ADDRESS}/profile.json
+</code></pre></div></div>
+
+<p>where <code class="highlighter-rouge">{GAIA_URL_PREFIX}</code> is the <em>read</em> endpoint of your Gaia hub (e.g. https://gaia.blockstack.org/hub) and <code class="highlighter-rouge">{ADDRESS}</code> is the base58check part of your ID-address (i.e. the string following ‘ID-‘).</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ blockstack-cli make_zonefile example.id ID-1ArdkA2oLaKnbNbLccBaFhEV4pYju8hJ82 https://my.gaia.hub/hub
+ $ORIGIN example.id
+ $TTL 3600
+ _http._tcp      IN      URI     10      1       "https://my.gaia.hub/hub/1ArdkA2oLaKnbNbLccBaFhEV4pYju8hJ82/profile.json"
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-28">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">id_address</td>
+<td>string</td>
+<td>ID-address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">gaia_url_prefix</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">resolver_url</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="name_import">name_import</h2>
+
+<p><strong>Group</strong>: Namespace Operations</p>
+
+<p>Import a name into a namespace you revealed.  The <code class="highlighter-rouge">REVEAL_KEY</code> must be the same as the key that revealed the namespace.  You can only import a name into a namespace if the namespace has not yet been launched (i.e. via <code class="highlighter-rouge">namespace_ready</code>), and if the namespace was revealed less than a year ago (52595 blocks ago).</p>
+
+<p>A zone file will be generated for this name automatically, if “ZONEFILE” is not given.  By default, the zone file will have a URL to the name owner’s profile prefixed by <code class="highlighter-rouge">GAIA_URL_PREFIX</code>.  If you know the <em>write</em> endpoint for the name owner’s Gaia hub, you can find out the <code class="highlighter-rouge">GAIA_URL_PREFIX</code> to use with <code class="highlighter-rouge">curl "$GAIA_HUB/hub_info"</code>.</p>
+
+<p>If you specify an argument for <code class="highlighter-rouge">ZONEFILE</code>, then the <code class="highlighter-rouge">GAIA_URL_PREFIX</code> argument is ignored in favor of your custom zone file on disk.</p>
+
+<p>If you specify a valid zone file hash for <code class="highlighter-rouge">ZONEFILE_HASH</code> then it will be used in favor of both <code class="highlighter-rouge">ZONEFILE</code> and <code class="highlighter-rouge">GAIA_URL_PREFIX</code>.  The zone file hash will be incorporated directly into the name-import transaction.</p>
+
+<p>This command prints out a transaction ID if it succeeds, and it replicates the zone file (if given) to a transaction broadcaster (you can choose which one with -T).  The zone file will be automatically broadcast to the Blockstack peer network when the transaction confirms.  Alternatively, you can do so yourself with the <code class="highlighter-rouge">zonefile_push</code> command.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export REVEAL_KEY="bfeffdf57f29b0cc1fab9ea197bb1413da2561fe4b83e962c7f02fbbe2b1cd5401"
+$ export ID_ADDRESS="ID-18e1bqU7B5qUPY3zJgMLxDnexyStTeSnvV"
+$ blockstack-cli name_import example.id "$ID_ADDRESS" https://gaia.blockstack.org/hub "$REVEAL_KEY"
+f726309cea7a9db364307466dc0e0e759d5c0d6bad1405e2fd970740adc7dc45
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-29">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">id_address</td>
+<td>string</td>
+<td>id-address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">gaia_url_prefix</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">reveal_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile_hash</td>
+<td>string</td>
+<td>zonefile_hash</td>
+<td><code style="font-size:10px">^([0-9a-f]{40})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="namespace_preorder">namespace_preorder</h2>
+
+<p><strong>Group</strong>: Namespace Operations</p>
+
+<p>Preorder a namespace.  This is the first of three steps to creating a namespace.  Once this transaction is confirmed, you will need to use the <code class="highlighter-rouge">namespace_reveal</code> command to reveal the namespace (within 24 hours, or 144 blocks).</p>
+
+<h3 class="no_toc" id="arguments-30">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">namespace_id</td>
+<td>string</td>
+<td>namespace_id</td>
+<td><code style="font-size:10px">^([0-9a-z_-]{1,19})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">reveal_address</td>
+<td>string</td>
+<td>address</td>
+<td><code style="font-size:10px">^([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="namespace_reveal">namespace_reveal</h2>
+
+<p><strong>Group</strong>: Namespace Operations</p>
+
+<p>Reveal a preordered namespace, and set the price curve and payment options.  This is the second of three steps required to create a namespace, and must be done shortly after the associated <code class="highlighter-rouge">namespace_preorder</code> command.</p>
+
+<h3 class="no_toc" id="arguments-31">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">namespace_id</td>
+<td>string</td>
+<td>namespace_id</td>
+<td><code style="font-size:10px">^([0-9a-z_-]{1,19})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">reveal_address</td>
+<td>string</td>
+<td>address</td>
+<td><code style="font-size:10px">^([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">version</td>
+<td>string</td>
+<td>2-byte-integer</td>
+<td><code style="font-size:10px">^-?[0-9]+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">lifetime</td>
+<td>string</td>
+<td>4-byte-integer</td>
+<td><code style="font-size:10px">^-?[0-9]+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">coefficient</td>
+<td>string</td>
+<td>1-byte-integer</td>
+<td><code style="font-size:10px">^-?[0-9]+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">base</td>
+<td>string</td>
+<td>1-byte-integer</td>
+<td><code style="font-size:10px">^-?[0-9]+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">price_buckets</td>
+<td>string</td>
+<td>csv-of-16-nybbles</td>
+<td><code style="font-size:10px">^([0-9]{1,2},){15}[0-9]{1,2}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">nonalpha_discount</td>
+<td>string</td>
+<td>nybble</td>
+<td><code style="font-size:10px">^-?[0-9]+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">no_vowel_discount</td>
+<td>string</td>
+<td>nybble</td>
+<td><code style="font-size:10px">^-?[0-9]+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="namespace_ready">namespace_ready</h2>
+
+<p><strong>Group</strong>: Namespace Operations</p>
+
+<p>Launch a revealed namespace.  This is the third and final step of creating a namespace.  Once launched, you will not be able to import names anymore.</p>
+
+<h3 class="no_toc" id="arguments-32">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">namespace_id</td>
+<td>string</td>
+<td>namespace_id</td>
+<td><code style="font-size:10px">^([0-9a-z_-]{1,19})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">reveal_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="price">price</h2>
+
+<p><strong>Group</strong>: Querying Blockstack IDs</p>
+
+<p>Get the price of an on-chain Blockstack ID.  Its namespace must already exist.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli price example.id
+{
+  "units": "BTC",
+  "amount": "5500"
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-33">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="price_namespace">price_namespace</h2>
+
+<p><strong>Group</strong>: Namespace Operations</p>
+
+<p>Get the price of a namespace.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # get the price of the .hello namespace
+$ blockstack-cli price_namespace hello
+{
+  "units": "BTC",
+  "amount": "40000000"
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-34">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">namespace_id</td>
+<td>string</td>
+<td>namespace_id</td>
+<td><code style="font-size:10px">^([0-9a-z_-]{1,19})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="profile_sign">profile_sign</h2>
+
+<p><strong>Group</strong>: Profiles</p>
+
+<p>Sign a profile on disk with a given owner private key.  Print out the signed profile JWT.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Tip: you can get the owner key from your 12-word backup phrase using the get_owner_keys command
+$ blockstack-cli profile_sign /path/to/profile.json 0ffd299af9c257173be8486ef54a4dd1373407d0629ca25ca68ff24a76be09fb01
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-35">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">profile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="profile_store">profile_store</h2>
+
+<p><strong>Group</strong>: Profiles</p>
+
+<p>Store a profile on disk to a Gaia hub.  <code class="highlighter-rouge">USER_ID</code> can be either a Blockstack ID or an ID-address.  The <code class="highlighter-rouge">GAIA_HUB</code> argument must be the <em>write</em> endpoint for the user’s Gaia hub (e.g. https://hub.blockstack.org).  You can verify this by ensuring that you can run <code class="highlighter-rouge">curl "$GAIA_HUB/hub_info"</code> successfully.</p>
+
+<h3 class="no_toc" id="arguments-36">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">user_id</td>
+<td>string</td>
+<td>name-or-id-address</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$|^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">profile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="profile_verify">profile_verify</h2>
+
+<p><strong>Group</strong>: Profiles</p>
+
+<p>Verify a JWT encoding a profile on disk using an ID-address.  Prints out the contained profile on success.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # get the raw profile JWT
+$ curl -sL https://raw.githubusercontent.com/jcnelson/profile/master/judecn.id &gt; /tmp/judecn.id.jwt
+$ # Tip: you can get the ID-address for a name with the "whois" command
+$ blockstack-cli profile_verify /tmp/judecn.id.jwt ID-16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-37">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">profile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">id_address</td>
+<td>string</td>
+<td>id-address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$|^([0-9a-f]{66,130})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="renew">renew</h2>
+
+<p><strong>Group</strong>: Blockstack ID Management</p>
+
+<p>Renew a name.  Optionally transfer it to a new owner address (<code class="highlighter-rouge">NEW_ID_ADDRESS</code>), and optionally load up and give it a new zone file on disk (<code class="highlighter-rouge">ZONEFILE</code>).  If the command succeeds, it prints out a transaction ID.  You can use with the <code class="highlighter-rouge">get_confirmations</code> command to track its confirmations on the underlying blockchain – once it reaches 7 confirmations, the rest of the Blockstack peer network will process it.</p>
+
+<p>If you create a new zonefile for your name, you will need to later use <code class="highlighter-rouge">zonefile_push</code> to replicate the zone file to the Blockstack peer network once the transaction reaches 7 confirmations.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Tip: you can get your owner key from your backup phrase with "get_owner_keys".
+$ # Tip: you can get your payment key from your backup phrase with "get_payment_key".
+$ export OWNER="136ff26efa5db6f06b28f9c8c7a0216a1a52598045162abfe435d13036154a1b01"
+$ export PAYMENT="bfeffdf57f29b0cc1fab9ea197bb1413da2561fe4b83e962c7f02fbbe2b1cd5401"
+$ blockstack-cli renew hello_world.id "$OWNER" "$PAYMENT"
+3d8945ce76d4261678d76592b472ed639a10d4298f9d730af4edbbc3ec02882e
+
+$ # Renew with a new owner
+$ export NEW_OWNER="ID-141BcmFVbEuuMb7Bd6umXyV6ZD1WYomYDE"
+$ blockstack-cli renew hello_world.id "$OWNER" "$PAYMENT" "$NEW_OWNER"
+33865625ef3f1b607111c0dfba9e58604927173bd2e299a343e19aa6d2cfb263
+
+$ # Renew with a new zone file.
+$ # Tip: you can create a new zonefile with the "make_zonefile" command.
+$ export ZONEFILE_PATH="/path/to/new/zonefile.txt"
+$ blockstack-cli renew hello_world.id "$OWNER" "$PAYMENT" --zonefile "$ZONEFILE_PATH"
+e41ce043ab64fd5a5fd382fba21acba8c1f46cbb1d7c08771ada858ce7d29eea
+$ # wait 7 confirmations
+$ blockstack-cli get_confirmations e41ce043ab64fd5a5fd382fba21acba8c1f46cbb1d7c08771ada858ce7d29eea
+{
+  "blockHeight": 567890,
+  "confirmations": 7,
+}
+$ blockstack-cli -H https://core.blockstack.org zonefile_push "$ZONEFILE_PATH"
+[
+  "https://core.blockstack.org"
+]
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-38">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>on-chain-blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">new_id_address</td>
+<td>string</td>
+<td>id-address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile_hash</td>
+<td>string</td>
+<td>zonefile_hash</td>
+<td><code style="font-size:10px">^([0-9a-f]{40})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="register">register</h2>
+
+<p><strong>Group</strong>: Blockstack ID Management</p>
+
+<p>If you are trying to register a name for a <em>private key</em>, use this command.</p>
+
+<p>Register a name to a single name-owning private key.  After successfully running this command, and after waiting a couple hours, your name will be ready to use and will resolve to a signed empty profile hosted on the given Gaia hub (<code class="highlighter-rouge">GAIA_HUB</code>).</p>
+
+<p>Behind the scenes, this will generate and send two transactions and generate and replicate a zone file with the given Gaia hub URL (<code class="highlighter-rouge">GAIA_HUB</code>).  Note that the <code class="highlighter-rouge">GAIA_HUB</code> argument must correspond to the <em>write</em> endpoint of the Gaia hub (i.e. you should be able to run <code class="highlighter-rouge">curl "$GAIA_HUB/hub_info"</code> and get back data).  If you are using Blockstack PBC’s default Gaia hub, pass “https://hub.blockstack.org” for this argument.</p>
+
+<p>By default, this command generates a zone file automatically that points to the Gaia hub’s read endpoint (which is queried on-the-fly from <code class="highlighter-rouge">GAIA_HUB</code>).  If you instead want to have a custom zone file for this name, you can specify a path to it on disk with the <code class="highlighter-rouge">ZONEFILE</code> argument.</p>
+
+<p>If this command completes successfully, your name will be ready to use once both transactions have 7+ confirmations.  You can use the <code class="highlighter-rouge">get_confirmations</code> command to track the confirmations on the transaction IDs returned by this command.</p>
+
+<p>WARNING: You should <em>NOT</em> use the payment private key (<code class="highlighter-rouge">PAYMENT_KEY</code>) while the name is being confirmed.  If you do so, you could double-spend one of the pending transactions and lose your name.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export OWNER="136ff26efa5db6f06b28f9c8c7a0216a1a52598045162abfe435d13036154a1b01"
+$ export PAYMENT="bfeffdf57f29b0cc1fab9ea197bb1413da2561fe4b83e962c7f02fbbe2b1cd5401"
+$ blockstack-cli register example.id "$OWNER" "$PAYMENT" https://hub.blockstack.org
+9bb908bfd4ab221f0829167a461229172184fc825a012c4e551533aa283207b1
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-39">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>on-chain-blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="register_addr">register_addr</h2>
+
+<p><strong>Group</strong>: Blockstack ID Management</p>
+
+<p>If you are trying to register a name for an <em>ID-address</em>, use this command.</p>
+
+<p>Register a name to someone’s ID-address.  After successfully running this command and waiting a couple of hours, the name will be registered on-chain and have a zone file with a URL to where the owner’s profile should be.  This command does NOT generate, sign, or replicate a profile for the name—the name owner will need to do this separately, once the name is registered.</p>
+
+<p>Behind the scenes, this command will generate two transactions, and generate and replicate a zone file with the given Gaia hub read URL (<code class="highlighter-rouge">GAIA_URL_PREFIX</code>).  Note that the <code class="highlighter-rouge">GAIA_URL_PREFIX</code> argument must correspond to the <em>read</em> endpoint of the Gaia hub (e.g. if you are using Blockstack PBC’s default Gaia hub, this is “https://gaia.blockstack.org/hub”). If you know the <em>write</em> endpoint of the name owner’s Gaia hub, you can find the right value for <code class="highlighter-rouge">GAIA_URL_PREFIX</code> by running <code class="highlighter-rouge">curl "$GAIA_HUB/hub_info"</code> .</p>
+
+<p>No profile will be generated or uploaded by this command.  Instead, this command generates a zone file that will include the URL to a profile based on the <code class="highlighter-rouge">GAIA_URL_PREFIX</code> argument.</p>
+
+<p>The zone file will be generated automatically from the <code class="highlighter-rouge">GAIA_URL_PREFIX</code> argument.  If you need to use a custom zone file, you can pass the path to it on disk via the <code class="highlighter-rouge">ZONEFILE</code> argument.</p>
+
+<p>If this command completes successfully, the name will be ready to use in a couple of hours—that is, once both transactions have 7+ confirmations. You can use the <code class="highlighter-rouge">get_confirmations</code> command to track the confirmations.</p>
+
+<p>WARNING: You should <em>NOT</em> use the payment private key (<code class="highlighter-rouge">PAYMENT_KEY</code>) while the name is being confirmed.  If you do so, you could double-spend one of the pending transactions and lose the name.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export ID_ADDRESS="ID-18e1bqU7B5qUPY3zJgMLxDnexyStTeSnvV"
+$ export PAYMENT="bfeffdf57f29b0cc1fab9ea197bb1413da2561fe4b83e962c7f02fbbe2b1cd5401"
+$ blockstack-cli register_addr example.id "$ID_ADDRESS" "$PAYMENT" https://gaia.blockstack.org/hub
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-40">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">id-address</td>
+<td>string</td>
+<td>id-address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">gaia_url_prefix</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="register_subdomain">register_subdomain</h2>
+
+<p><strong>Group</strong>: Blockstack ID Management</p>
+
+<p>Register a subdomain.  This will generate and sign a subdomain zone file record with the given <code class="highlighter-rouge">GAIA_HUB</code> URL and send it to the given subdomain registrar (<code class="highlighter-rouge">REGISTRAR</code>).</p>
+
+<p>This command generates, signs, and uploads a profile to the <code class="highlighter-rouge">GAIA_HUB</code> url.  Note that the <code class="highlighter-rouge">GAIA_HUB</code> argument must correspond to the <em>write</em> endpoint of your Gaia hub (i.e. you should be able to run <code class="highlighter-rouge">curl "$GAIA_HUB/hub_info"</code>  successfully).  If you are using Blockstack PBC’s default Gaia hub, this argument should be “https://hub.blockstack.org”.</p>
+
+<p>WARNING: At this time, no validation will occur on the registrar URL.  Be sure that the URL corresponds to the registrar for the on-chain name before running this command!</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export OWNER="6e50431b955fe73f079469b24f06480aee44e4519282686433195b3c4b5336ef01"
+$ # NOTE: https://registrar.blockstack.org is the registrar for personal.id!
+$ blockstack-cli register_subdomain hello.personal.id "$OWNER" https://hub.blockstack.org https://registrar.blockstack.org
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-41">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">gaia_hub</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">registrar</td>
+<td>string</td>
+<td>url</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="revoke">revoke</h2>
+
+<p><strong>Group</strong>: Blockstack ID Management</p>
+
+<p>Revoke a name.  This renders it unusable until it expires (if ever).  This command prints out the transaction ID if it succeeds.  Once the transaction confirms, the name will be revoked by each node in the peer network.  This command only works for on-chain names, not subdomains.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Tip: you can get your owner and payment keys from your 12-word backup phrase using the get_owner_keys and get_payment_key commands.
+$ export OWNER="6e50431b955fe73f079469b24f06480aee44e4519282686433195b3c4b5336ef01"
+$ export PAYMENT="bfeffdf57f29b0cc1fab9ea197bb1413da2561fe4b83e962c7f02fbbe2b1cd5401"
+$ blockstack-cli revoke example.id "$OWNER" "$PAYMENT"
+233b559c97891affa010567bd582110508d0236b4e3f88d3b1d0731629e030b0
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-42">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>on-chain-blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="send_btc">send_btc</h2>
+
+<p><strong>Group</strong>: Account Management</p>
+
+<p>Send some Bitcoin (in satoshis) from a payment key to an address.  Up to the given amount will be spent, but likely less—the actual amount sent will be the amount given, minus the transaction fee.  For example, if you want to send 10000 satoshis but the transaction fee is 2000 satoshis, then the resulting transaction will send 8000 satoshis to the given address.  This is to ensure that this command does not <em>over</em>-spend your Bitcoin.  If you want to check the amount before spending, pass the <code class="highlighter-rouge">-x</code> flag to see the raw transaction.</p>
+
+<p>If the command succeeds, it prints out the transaction ID.  You can track its confirmations with the <code class="highlighter-rouge">get_confirmations</code> command.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export PAYMENT="bfeffdf57f29b0cc1fab9ea197bb1413da2561fe4b83e962c7f02fbbe2b1cd5401"
+$ blockstack-cli send_btc 18qTSE5PPQmypwKKej7QX5Db2XAttgYeA1 123456 "$PAYMENT"
+c7e239fd24da30e36e011e6bc7db153574a5b40a3a8dc3b727adb54ad038acc5
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-43">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">recipient_address</td>
+<td>string</td>
+<td>address</td>
+<td><code style="font-size:10px">^([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">amount</td>
+<td>string</td>
+<td>satoshis</td>
+<td><code style="font-size:10px">^-?[0-9]+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="send_tokens">send_tokens</h2>
+
+<p><strong>Group</strong>: Account Management</p>
+
+<p>Send a particular type of tokens to the given <code class="highlighter-rouge">ADDRESS</code>.  Right now, only supported <code class="highlighter-rouge">TOKEN-TYPE</code> is <code class="highlighter-rouge">STACKS</code>.  Optionally include a memo string (<code class="highlighter-rouge">MEMO</code>) up to 34 characters long.</p>
+
+<p>If the command succeeds, it prints out a transaction ID.  You can track the confirmations on the transaction via the <code class="highlighter-rouge">get_confirmations</code> command.  Once the transaction has 7 confirmations, the Blockstack peer network will have processed it, and your payment key balance and recipient balance will be updated.</p>
+
+<p>At this time, token transfers are encoded as Bitcoin transactions.  As such, you will need to pay a transaction fee in Bitcoin.  Your payment key should have both a Bitcoin balance and a Stacks balance (you can check with the <code class="highlighter-rouge">balance</code> command).</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # check balances of sender and recipient before sending.
+$ # address of the key below is SP2SC16ASH76GX549PT7J5WQZA4GHMFBKYMBQFF9V
+$ export PAYMENT="bfeffdf57f29b0cc1fab9ea197bb1413da2561fe4b83e962c7f02fbbe2b1cd5401"
+$ export BTC_PAYMENT="4be95a5987ec727c033aa48a3fb1dbadb750446c1c63a02707a0b1c28e7ec17801"
+$ blockstack-cli balance SP2SC16ASH76GX549PT7J5WQZA4GHMFBKYMBQFF9V
+{
+  "BTC": "125500"
+  "STACKS": "10000000"
+}
+$ blockstack-cli balance SP1P10PS2T517S4SQGZT5WNX8R00G1ECTRKYCPMHY
+{
+  "BTC": "0"
+  "STACKS": "0"
+}
+
+$ # send tokens
+$ blockstack-cli send_tokens SP1P10PS2T517S4SQGZT5WNX8R00G1ECTRKYCPMHY STACKS 12345 "$PAYMENT" "$BTC_PAYMENT"
+a9d387a925fb0ba7a725fb1e11f2c3f1647473699dd5a147c312e6453d233456
+
+$ # wait 7 confirmations
+$ blockstack-cli get_confirmations a9d387a925fb0ba7a725fb1e11f2c3f1647473699dd5a147c312e6453d233456
+{
+  "blockHeight": 567890,
+  "confirmations": 7,
+}
+
+$ # check balance again.  The recipient receives some dust to encode the Stacks transfer,
+$ # and the sender pays for the transaction fee.
+$ blockstack-cli balance SP2SC16ASH76GX549PT7J5WQZA4GHMFBKYMBQFF9V
+{
+  "BTC": "117000"
+  "STACKS": "9987655"
+}
+$ blockstack-cli balance SP1P10PS2T517S4SQGZT5WNX8R00G1ECTRKYCPMHY
+{
+  "BTC": "5500"
+  "STACKS": "12345"
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-44">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">address</td>
+<td>string</td>
+<td>address</td>
+<td><code style="font-size:10px">^([0123456789ABCDEFGHJKMNPQRSTVWXYZ]+)$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">type</td>
+<td>string</td>
+<td>token-type</td>
+<td><code style="font-size:10px">^^([0-9a-z_-]{1,19})$$|^STACKS$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">amount</td>
+<td>string</td>
+<td>integer</td>
+<td><code style="font-size:10px">^[0-9]+$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">bitcoin_fee_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">memo</td>
+<td>string</td>
+<td>string</td>
+<td><code style="font-size:10px">^.{0,34}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="transfer">transfer</h2>
+
+<p><strong>Group</strong>: Blockstack ID Management</p>
+
+<p>Transfer a Blockstack ID to a new address (<code class="highlighter-rouge">NEW_ID_ADDRESS</code>).  Optionally preserve its zone file (<code class="highlighter-rouge">KEEP_ZONEFILE</code>).  If the command succeeds, it will print a transaction ID.  Once the transaction reaches 7 confirmations, the Blockstack peer network will transfer the Blockstack ID to the new ID-address.  You can track the transaction’s confirmations with the <code class="highlighter-rouge">get_confirmations</code> command.</p>
+
+<p>NOTE: This command only works for on-chain Blockstack IDs.  It does not yet work for subdomains.</p>
+
+<p>An ID-address can only own up to 25 Blockstack IDs.  In practice, you should generate a new owner key and ID-address for each name you receive (via the <code class="highlighter-rouge">get_owner_keys</code> command).</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Tip: you can get your owner key from your backup phrase with "get_owner_keys".
+$ # Tip: you can get your payment key from your backup phrase with "get_payment_key".
+$ export OWNER="136ff26efa5db6f06b28f9c8c7a0216a1a52598045162abfe435d13036154a1b01"
+$ export PAYMENT="bfeffdf57f29b0cc1fab9ea197bb1413da2561fe4b83e962c7f02fbbe2b1cd5401"
+$ blockstack-cli transfer example.id ID-1HJA1AJvWef21XbQVL2AcTv71b6JHGPfDX true "$OWNER" "$PAYMENT"
+e09dc158e586d0c09dbcdcba917ec394e6c6ac2b9c91c4b55f32f5973e4f08fc
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-45">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>on-chain-blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">new_id_address</td>
+<td>string</td>
+<td>id-address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">keep_zonefile</td>
+<td>string</td>
+<td>true-or-false</td>
+<td><code style="font-size:10px">^true$|^false$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="tx_preorder">tx_preorder</h2>
+
+<p><strong>Group</strong>: Blockstack ID Management</p>
+
+<p>Generate and send <code class="highlighter-rouge">NAME_PREORDER</code> transaction, for a Blockstack ID to be owned by a given <code class="highlighter-rouge">ID_ADDRESS</code>.  The name cost will be paid for by the gven <code class="highlighter-rouge">PAYMENT_KEY</code>.  The ID-address should be a never-before-seen address, since it will be used as a salt when generating the name preorder hash.</p>
+
+<p>This is a low-level command that only experienced Blockstack developers should use.  If you just want to register a name, use the “register” command.</p>
+
+<h3 class="no_toc" id="arguments-46">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>on-chain-blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">id_address</td>
+<td>string</td>
+<td>id-address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="tx_register">tx_register</h2>
+
+<p><strong>Group</strong>: Blockstack ID Management</p>
+
+<p>Generate and send a <code class="highlighter-rouge">NAME_REGISTRATION</code> transaction, assigning the given <code class="highlighter-rouge">BLOCKSTACK_ID</code> to the given <code class="highlighter-rouge">ID_ADDRESS</code>.  Optionally pair the Blockstack ID with a zone file (<code class="highlighter-rouge">ZONEFILE</code>) or the hash of the zone file (<code class="highlighter-rouge">ZONEFILE_HASH</code>).  You will need to push the zone file to the peer network after the transaction confirms (i.e. with <code class="highlighter-rouge">zonefile_push</code>).</p>
+
+<p>This is a low-level command that only experienced Blockstack developers should use.  If you just want to register a name, you should use the <code class="highlighter-rouge">register</code> command.</p>
+
+<h3 class="no_toc" id="arguments-47">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>on-chain-blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">id_address</td>
+<td>string</td>
+<td>id-address</td>
+<td><code style="font-size:10px">^ID-[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile_hash</td>
+<td>string</td>
+<td>zoenfile_hash</td>
+<td><code style="font-size:10px">^([0-9a-f]{40})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="update">update</h2>
+
+<p><strong>Group</strong>: Blockstack ID Management</p>
+
+<p>Update the zonefile for an on-chain Blockstack ID.  You can generate a well-formed zone file using the <code class="highlighter-rouge">make_zonefile</code> command, or you can supply your own.  Zone files can be up to 40Kb.  Alternatively, if you only want to announce the hash of a zone file (or any arbitrary 20-byte hex string), you can do so by passing a value for <code class="highlighter-rouge">ZONEFILE_HASH</code>.  If <code class="highlighter-rouge">ZONEFILE_HASH</code> is given, then the value for <code class="highlighter-rouge">ZONEFILE</code> will be ignored.</p>
+
+<p>If this command succeeds, it prints out a transaction ID.  Once the transaction has 7 confirmations, the Blockstack peer network will set the name’s zone file hash to the <code class="highlighter-rouge">RIPEMD160</code>(SHA256) hash of the given zone file (or it will simply set it to the hash given in <code class="highlighter-rouge">ZONEFILE_HASH</code>).</p>
+
+<p>Once the transaction confirms, you will need to replicate the zone file to the Blockstack peer network.  This can be done with the <code class="highlighter-rouge">zonefile_push</code> command.  Until you do so, no Blockstack clients will be able to obtain the zone file announced by this command.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # Tip: you can get your owner and payment keys from your 12-word backup phrase using the get_owner_keys and get_payment_key commands.
+$ export OWNER="6e50431b955fe73f079469b24f06480aee44e4519282686433195b3c4b5336ef01"
+$ export PAYMENT="bfeffdf57f29b0cc1fab9ea197bb1413da2561fe4b83e962c7f02fbbe2b1cd5401"
+$ # make a new zone file
+$ blockstack-cli make_zonefile example.id ID-1ArdkA2oLaKnbNbLccBaFhEV4pYju8hJ82 https://my.gaia.hub/hub &gt; /tmp/zonefile.txt
+
+$ # update the name to reference this new zone file
+$ blockstack-cli update example.id /tmp/zonefile.txt "$OWNER" "$PAYMENT"
+8e94a5b6647276727a343713d3213d587836e1322b1e38bc158406f5f8ebe3fd
+
+$ # check confirmations
+$ blockstack-cli get_confirmations e41ce043ab64fd5a5fd382fba21acba8c1f46cbb1d7c08771ada858ce7d29eea
+{
+  "blockHeight": 567890,
+  "confirmations": 7,
+}
+
+$ # send out the new zone file to a Blockstack peer
+$ blockstack-cli -H https://core.blockstack.org zonefile_push /tmp/zonefile.txt
+[
+  "https://core.blockstack.org"
+]
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-48">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>on-chain-blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">owner_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">payment_key</td>
+<td>string</td>
+<td>private_key</td>
+<td><code style="font-size:10px">^([0-9a-f]{64,66})$|^([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^segwit:p2sh:([0-9]+),([0-9a-f]{64,66},)*([0-9a-f]{64,66})$|^nosign:[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{1,35}$</code></td>
+</tr>
+
+  
+<tr>
+<td class="uk-text-bold">zonefile_hash</td>
+<td>string</td>
+<td>zonefile_hash</td>
+<td><code style="font-size:10px">^([0-9a-f]{40})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="whois">whois</h2>
+
+<p><strong>Group</strong>: Querying Blockstack IDs</p>
+
+<p>Look up the zone file and owner of a Blockstack ID.  Works with both on-chain and off-chain names.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli whois example.id
+{
+  "address": "1ArdkA2oLaKnbNbLccBaFhEV4pYju8hJ82",
+  "block_renewed_at": 567890,
+  "blockchain": "bitcoin",
+  "expire_block": 687010,
+  "grace_period": false,
+  "last_transaction_height": "567891",
+  "last_txid": "a564aa482ee43eb2bdfb016e01ea3b950bab0cfa39eace627d632e73c7c93e48",
+  "owner_script": "76a9146c1c2fc3cf74d900c51e9b5628205130d7b98ae488ac",
+  "renewal_deadline": 692010,
+  "resolver": null,
+  "status": "registered",
+  "zonefile": "$ORIGIN example.id\n$TTL 3600\n_http._tcp URI 10 1 \"https://gaia.blockstack.org/hub/1ArdkA2oLaKnbNbLccBaFhEV4pYju8hJ82/profile.json\"\n",
+  "zonefile_hash": "ae4ee8e7f30aa890468164e667e2c203266f726e"
+}
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-49">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">blockstack_id</td>
+<td>string</td>
+<td>blockstack_id</td>
+<td><code style="font-size:10px">^([0-9a-z_.+-]{3,37})$|^([0-9a-z_+-]{1,37}).([0-9a-z_.+-]{3,37})$</code></td>
+</tr>
+
+  
+</table>
+
+<h2 id="zonefile_push">zonefile_push</h2>
+
+<p><strong>Group</strong>: Peer Services</p>
+
+<p>Push a zone file on disk to the Blockstack peer network.  The zone file must correspond to a zone file hash that has already been announced.  That is, you use this command in conjunction with the <code class="highlighter-rouge">register</code>, <code class="highlighter-rouge">update</code>, <code class="highlighter-rouge">renew</code>, or <code class="highlighter-rouge">name_import</code> commands.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-cli -H https://core.blockstack.org zonefile_push /path/to/zonefile.txt
+[
+  "https://core.blockstack.org"
+]
+</code></pre></div></div>
+
+<h3 class="no_toc" id="arguments-50">Arguments</h3>
+
+<table class="uk-table uk-table-small uk-table-striped">
+<tr>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Value</th>
+  <th>Format</th>
+</tr>
+  
+<tr>
+<td class="uk-text-bold">zonefile</td>
+<td>string</td>
+<td>path</td>
+<td><code style="font-size:10px">.+</code></td>
+</tr>
+
+  
+</table>
+
+<p><a name="installCommandLine">&nbsp;</a></p>
+
+<h2 class="no_toc" id="how-to-install-the-command-line">How to install the command line</h2>
+
+<p>You must have <a href="https://nodejs.org/en/download/">Node.js</a> v8 or higher (v10 recommended). MacOS and Linux users can avoid <code class="highlighter-rouge">sudo</code> or <a href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally">permissions problems</a> or by using <a href="https://github.com/nvm-sh/nvm"><code class="highlighter-rouge">nvm</code></a>. These instructions assume you are using a macOS or Linux system.</p>
+
+<p>To install the command line, do the following:</p>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/blockstack/cli-blockstack" target="\_blank">Download or <code class="highlighter-rouge">git clone</code> the command line repository code</a>.</p>
+
+    <p>Downloading or cloning the repo creates a <code class="highlighter-rouge">cli-blockstack</code> repository on your system.</p>
+  </li>
+  <li>
+    <p>Change directory into the <code class="highlighter-rouge">cli-blockstack</code> directory.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd cli-blockstack
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Install the dependencies with <code class="highlighter-rouge">npm</code>.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Build the command line command.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Link the command.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo npm link
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="troubleshooting-the-cli-installation">Troubleshooting the CLI installation</h3>
+
+<p>If you run into <code class="highlighter-rouge">EACCES</code> permissions errors, try the following:</p>
+<ul>
+  <li>See https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally.</li>
+  <li>Use <a href="https://github.com/nvm-sh/nvm"><code class="highlighter-rouge">Node Version Manager</code></a>.</li>
+</ul>
+
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=blockstack_cli reference&url=https://docs.blockstack.org/storage/cliDocs.html&via=blockstack&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+</div>
+
+                        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. <br> &copy; 2019 Blockstack Public Benefit Corp.</div>
+
+    </div>
+</footer>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+
+
+                    <!-- <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+ -->
+
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      showErrors: true,
+      accessibility: {
+        isMainContent: true
+      },
+      /* A CSS selector that points to your search  box */
+      layout: {
+        navigation: {
+            position: "top"
+        },
+        mobile: {
+            showUrl: true
+        },
+        desktop: {
+            showUrl: true
+        }
+      },
+      searchBox: {
+        selector: '#searchBox'
+      },
+      results: {
+         embedConfig: undefined, 
+         fullScreenConfig: undefined, 
+         caption: 'Found #COUNT# search results for \"#QUERY#\"', 
+         group: true, 
+         filters: undefined,
+         num: 96, 
+         highlightQueryTerms: true, 
+         moreResultsButton: "Show more results", 
+         noResultsText: 'Sorry, we have not found any matches for your query.', 
+         queryCorrectionText: 'Did you mean "#CORRECTION#"?',
+         searchQueryParamName: 'ss360Query', 
+         linksOpenNewTab: false, 
+         showSearchBoxLayover: true, 
+         moreResultsPagingSize: 12, 
+         orderByRelevanceText: "Relevance" 
+      },
+      suggestions: {
+         show: true,  
+         maxQuerySuggestions: 3,
+         querySuggestionHeadline: undefined, 
+         emptyQuerySuggestions: undefined,
+         showImages: false, 
+         num: 6, 
+         minChars: 3, 
+         maxWidth: 'auto', 
+         throttleTime: 300,
+         extraHtml: undefined, 
+         highlight: true
+       },
+       smart404: { 
+             caption: 'These links might be useful', 
+             identifier: 'Page not found', 
+             resultSelector: '#ss360-404'
+        }
+   };
+</script>
+<script type="module" src="https://cdn.sitesearch360.com/sitesearch360-v12.mjs"></script>
+<script nomodule src="https://cdn.sitesearch360.com/sitesearch360-v12.min.js" async></script>
+    
+
+
+    <script>
+    anchors.options = {
+      placement: 'left',
+      visible: 'hover'
+    };
+       anchors.add();
+     </script>
+    </body>
+
+</html>

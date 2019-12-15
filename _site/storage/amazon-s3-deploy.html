@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <!-- Begin Jekyll GTM tag v1.0.1 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TPGGRT5');</script>
+<!-- End Jekyll GTM tag v1.0.1 -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configure a hub on Amazon EC2</title>
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="Configure a hub on Amazon EC2" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Storing user data with Blockstack" />
+<meta property="og:description" content="Storing user data with Blockstack" />
+<link rel="canonical" href="https://docs.blockstack.org/storage/amazon-s3-deploy.html" />
+<meta property="og:url" content="https://docs.blockstack.org/storage/amazon-s3-deploy.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-16T03:04:34+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@blockstack" />
+<meta name="twitter:creator" content="@Blockstack" />
+<script type="application/ld+json">
+{"description":"Storing user data with Blockstack","headline":"Configure a hub on Amazon EC2","@type":"BlogPosting","image":"https://docs.blockstack.org/assets/img/touch-icon.png","url":"https://docs.blockstack.org/storage/amazon-s3-deploy.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/storage/amazon-s3-deploy.html"},"author":{"@type":"Person","name":"Blockstack"},"dateModified":"2019-12-16T03:04:34+08:00","datePublished":"2019-12-16T03:04:34+08:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Configure a hub on Amazon EC2 | Blockstack</title>
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="Configure a hub on Amazon EC2" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Storing user data with Blockstack" />
+<meta property="og:description" content="Storing user data with Blockstack" />
+<link rel="canonical" href="https://docs.blockstack.org/storage/amazon-s3-deploy.html" />
+<meta property="og:url" content="https://docs.blockstack.org/storage/amazon-s3-deploy.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-16T03:04:34+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@blockstack" />
+<meta name="twitter:creator" content="@Blockstack" />
+<script type="application/ld+json">
+{"description":"Storing user data with Blockstack","headline":"Configure a hub on Amazon EC2","@type":"BlogPosting","image":"https://docs.blockstack.org/assets/img/touch-icon.png","url":"https://docs.blockstack.org/storage/amazon-s3-deploy.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/storage/amazon-s3-deploy.html"},"author":{"@type":"Person","name":"Blockstack"},"dateModified":"2019-12-16T03:04:34+08:00","datePublished":"2019-12-16T03:04:34+08:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js" ></script>
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125894815-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125894815-1');
+</script>
+
+  
+  <!-- https://www.bryanbraun.com/anchorjs/  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+  <script type"text/javascript" src="https://code.jquery.com/jquery-latest.min.js">
+    switcherTab('uk-tab-instance');
+
+    function switcherTab(id){
+        $('#'+id+' a[href = "'+window.location.hash+'"]').parent('li').click();
+
+        $('#'+id+' a').click(function(){
+            var val = $(this).attr('href');
+            window.location.hash = val.replace("#", "");
+        });
+    }
+  </script>
+  	<!-- Load jquery.cookie plugin (optional) -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.cookie.js"></script>
+	<!-- Load jquery.navgoco plugin js and css files -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.navgoco.js"></script>
+  <link rel="stylesheet" href="/assets/navgoco/jquery.navgoco.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.nav').navgoco({
+          caretHtml: '<i class="some-random-icon-class"></i>',
+          accordion: true,
+          openClass: 'open',
+          slide: {
+            duration: 400,
+            easing: 'swing'
+          }
+        });
+    });
+  </script>
+</head>
+
+
+    <body>
+    <!-- Begin Jekyll GTM tag v1.0.1 -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPGGRT5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.1 -->
+
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left uk-visible@m">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
+             &nbsp;&nbsp;&nbsp;
+
+             <svg style="width:141.602;height:11.487px" viewBox="0 0 141.602 11.487" enable-background="new 0 0 141.602 11.487"><path fill="#000000" d="M5.471,7.791c0,0.511-0.16,0.875-0.488,1.111C4.631,9.158,4.097,9.287,3.398,9.287H2.387V6.456h1.011 C5.256,6.456,5.471,7.219,5.471,7.791z M4.554,4.223C4.29,4.448,3.82,4.562,3.16,4.562H2.387V2.2h0.821 c0.611,0,1.066,0.094,1.352,0.279C4.81,2.641,4.933,2.907,4.933,3.292C4.933,3.704,4.809,4.008,4.554,4.223z M6.004,5.338 c0.325-0.181,0.59-0.418,0.79-0.709c0.327-0.476,0.493-1.001,0.493-1.562c0-0.53-0.105-0.989-0.313-1.362 c-0.208-0.374-0.5-0.677-0.867-0.9C5.754,0.59,5.333,0.432,4.855,0.335C4.391,0.24,3.879,0.192,3.334,0.192h-3.06 C0.123,0.192,0,0.317,0,0.471v10.545c0,0.154,0.123,0.278,0.274,0.278h3.315c0.591,0,1.143-0.065,1.645-0.194 c0.513-0.132,0.966-0.339,1.345-0.615c0.388-0.283,0.694-0.641,0.91-1.067C7.702,8.992,7.811,8.488,7.811,7.92 c0-0.78-0.226-1.413-0.672-1.879C6.847,5.737,6.467,5.502,6.004,5.338z M22.197,9.158h-4.595V0.471c0-0.153-0.123-0.278-0.274-0.278 h-1.824c-0.151,0-0.273,0.125-0.273,0.278v10.545c0,0.154,0.122,0.278,0.273,0.278h6.693c0.151,0,0.274-0.124,0.274-0.278v-1.58 C22.47,9.282,22.348,9.158,22.197,9.158z M35.076,5.695c0,0.567-0.051,1.086-0.151,1.543c-0.1,0.45-0.24,0.836-0.416,1.149 c-0.167,0.299-0.37,0.53-0.603,0.688c-0.461,0.312-1.061,0.3-1.505-0.001c-0.233-0.157-0.436-0.389-0.604-0.688 c-0.175-0.313-0.312-0.699-0.407-1.146c-0.096-0.458-0.144-0.978-0.144-1.546c0-1.126,0.187-2.013,0.556-2.638 c0.346-0.587,0.791-0.873,1.36-0.873c0.568,0,1.012,0.285,1.359,0.873C34.889,3.682,35.076,4.569,35.076,5.695z M36.319,1.541 c-0.378-0.494-0.844-0.879-1.381-1.144c-1.076-0.529-2.477-0.529-3.553,0c-0.538,0.265-1.003,0.65-1.381,1.144 c-0.373,0.487-0.669,1.09-0.879,1.792c-0.208,0.696-0.313,1.49-0.313,2.362c0,0.882,0.105,1.685,0.313,2.386 c0.21,0.706,0.504,1.318,0.876,1.821c0.378,0.511,0.844,0.908,1.382,1.179c0.538,0.27,1.136,0.407,1.779,0.407 c0.642,0,1.24-0.137,1.778-0.408c0.538-0.27,1.003-0.667,1.382-1.178c0.372-0.503,0.667-1.115,0.876-1.821 c0.208-0.7,0.314-1.502,0.314-2.386c0-0.873-0.105-1.667-0.314-2.363C36.988,2.631,36.692,2.028,36.319,1.541z M51.29,8.346 c-0.052-0.058-0.125-0.092-0.203-0.092c-0.077,0-0.151,0.033-0.203,0.092c-0.273,0.308-0.566,0.549-0.871,0.715 c-0.602,0.33-1.469,0.308-2.099,0.002c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.423-0.675-0.554-1.116 c-0.134-0.45-0.203-0.968-0.203-1.539c0-0.56,0.068-1.07,0.203-1.515c0.132-0.437,0.316-0.81,0.548-1.111 c0.227-0.293,0.504-0.522,0.825-0.68c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.543,0.333,0.775,0.568 c0.054,0.054,0.147,0.088,0.2,0.081c0.075-0.002,0.146-0.036,0.196-0.092l1.03-1.161c0.098-0.11,0.094-0.278-0.01-0.383 c-0.355-0.361-0.799-0.687-1.317-0.968c-1.105-0.597-2.643-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149 c-0.451,0.498-0.809,1.113-1.064,1.827c-0.253,0.71-0.381,1.521-0.381,2.408c0,0.899,0.128,1.712,0.381,2.417 c0.255,0.709,0.614,1.317,1.066,1.805c0.454,0.489,0.993,0.865,1.603,1.115c0.607,0.249,1.268,0.374,1.966,0.374 c0.695,0,1.333-0.142,1.897-0.423c0.559-0.279,1.068-0.684,1.513-1.204c0.09-0.106,0.089-0.264-0.004-0.368L51.29,8.346z M64.109,4.608l3.075-3.966c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.245-0.157h-2.046 c-0.084,0-0.163,0.039-0.215,0.106l-3.254,4.218V0.47c0-0.153-0.123-0.277-0.274-0.277h-1.855c-0.151,0-0.274,0.124-0.274,0.277 v10.546c0,0.153,0.122,0.278,0.274,0.278h1.855c0.151,0,0.274-0.125,0.274-0.278V8.034l1.185-1.483l2.392,4.594 c0.048,0.091,0.141,0.148,0.242,0.148h2.046c0.097,0,0.186-0.052,0.236-0.138c0.049-0.085,0.05-0.19,0.003-0.276L64.109,4.608z M81.006,6.088c-0.218-0.244-0.478-0.462-0.773-0.647c-0.286-0.179-0.606-0.339-0.94-0.47l-1.368-0.598 c-0.235-0.097-0.461-0.189-0.679-0.276c-0.196-0.079-0.371-0.169-0.516-0.27c-0.134-0.092-0.24-0.197-0.315-0.311 c-0.065-0.099-0.097-0.22-0.097-0.369c0-0.297,0.112-0.514,0.351-0.683c0.263-0.187,0.64-0.281,1.12-0.281 c0.437,0,0.833,0.074,1.179,0.22c0.355,0.151,0.702,0.36,1.03,0.623c0.116,0.094,0.287,0.074,0.381-0.044l0.952-1.193 c0.091-0.114,0.079-0.279-0.026-0.38c-0.456-0.429-0.993-0.775-1.597-1.028c-1.114-0.467-2.435-0.495-3.459-0.144 c-0.469,0.161-0.88,0.389-1.221,0.678c-0.345,0.292-0.618,0.638-0.815,1.031c-0.199,0.398-0.299,0.834-0.299,1.296 c0,0.422,0.072,0.806,0.213,1.141c0.139,0.33,0.328,0.623,0.561,0.873c0.228,0.243,0.488,0.454,0.771,0.626 c0.277,0.169,0.564,0.312,0.841,0.42l1.425,0.634c0.249,0.095,0.479,0.19,0.692,0.285c0.198,0.088,0.367,0.184,0.504,0.285 c0.122,0.09,0.216,0.193,0.281,0.308c0.06,0.107,0.091,0.246,0.091,0.411c0,0.322-0.121,0.563-0.381,0.76 c-0.278,0.21-0.709,0.316-1.28,0.316c-0.467,0-0.934-0.103-1.388-0.307C75.78,8.788,75.358,8.514,74.99,8.18 c-0.056-0.05-0.127-0.077-0.201-0.07c-0.073,0.005-0.141,0.039-0.189,0.096l-1.078,1.274c-0.095,0.113-0.087,0.283,0.02,0.385 c0.541,0.516,1.167,0.92,1.862,1.2c0.695,0.281,1.434,0.423,2.195,0.423c0.63,0,1.205-0.09,1.707-0.265 c0.506-0.178,0.942-0.422,1.294-0.729c0.355-0.309,0.632-0.673,0.823-1.085c0.191-0.412,0.288-0.858,0.288-1.328 c0-0.419-0.062-0.797-0.185-1.123C81.404,6.632,81.229,6.339,81.006,6.088z M96.557,0.192h-8.374c-0.151,0-0.273,0.124-0.273,0.278 v1.58c0,0.154,0.122,0.278,0.273,0.278h2.994v8.687c0,0.154,0.122,0.278,0.274,0.278h1.84c0.151,0,0.273-0.124,0.273-0.278V2.328 h2.994c0.151,0,0.274-0.124,0.274-0.278v-1.58C96.831,0.317,96.708,0.192,96.557,0.192z M107.143,2.902 c0.074,0.282,0.149,0.566,0.226,0.851l0.725,2.664h-1.906l0.265-0.934c0.159-0.561,0.315-1.135,0.469-1.723 C106.996,3.473,107.071,3.188,107.143,2.902z M108.512,0.384c-0.037-0.114-0.142-0.192-0.261-0.192h-2.157 c-0.118,0-0.223,0.077-0.26,0.192l-3.362,10.546c-0.027,0.085-0.012,0.177,0.04,0.249c0.051,0.072,0.134,0.115,0.221,0.115h1.871 c0.122,0,0.229-0.082,0.263-0.201l0.752-2.653h3.044l0.736,2.651c0.034,0.12,0.141,0.203,0.263,0.203h1.951 c0.088,0,0.17-0.043,0.221-0.115c0.052-0.071,0.066-0.164,0.039-0.249L108.512,0.384z M125.302,8.346 c-0.104-0.117-0.302-0.117-0.406,0c-0.273,0.308-0.566,0.548-0.87,0.715c-0.603,0.329-1.469,0.308-2.1,0.002 c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.422-0.675-0.554-1.116c-0.134-0.449-0.202-0.966-0.202-1.539 c0-0.561,0.068-1.071,0.202-1.515c0.132-0.437,0.316-0.811,0.549-1.111c0.226-0.293,0.503-0.522,0.823-0.68 c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.544,0.332,0.775,0.567c0.053,0.055,0.131,0.089,0.2,0.082 c0.075-0.002,0.146-0.035,0.196-0.092l1.031-1.161c0.098-0.11,0.093-0.278-0.01-0.383c-0.355-0.361-0.8-0.687-1.318-0.968 c-1.105-0.597-2.644-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149c-0.451,0.498-0.809,1.113-1.063,1.827 c-0.254,0.71-0.382,1.521-0.382,2.409c0,0.899,0.128,1.712,0.382,2.417c0.254,0.709,0.612,1.317,1.065,1.805 c0.453,0.489,0.993,0.864,1.604,1.115c0.606,0.249,1.268,0.374,1.965,0.374c0.695,0,1.333-0.142,1.897-0.423 c0.559-0.279,1.067-0.684,1.514-1.204c0.09-0.106,0.089-0.264-0.004-0.368L125.302,8.346z M141.567,10.88l-3.448-6.272l3.075-3.966 c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.246-0.157h-2.045c-0.084,0-0.164,0.039-0.215,0.106l-3.254,4.217 V0.47c0-0.153-0.122-0.277-0.274-0.277h-1.856c-0.151,0-0.274,0.124-0.274,0.277v10.546c0,0.153,0.123,0.278,0.274,0.278h1.856 c0.151,0,0.274-0.125,0.274-0.278V8.035l1.185-1.484l2.392,4.594c0.047,0.091,0.141,0.148,0.242,0.148h2.045 c0.097,0,0.187-0.052,0.236-0.138C141.614,11.071,141.615,10.966,141.567,10.88z"></path></svg>
+        </a>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                  <!--  -->
+                    
+                    
+                         <h5>Introduction to Gaia storage</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/overview.html">A decentralized storage architecture</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/authentication.html">Authentication and Gaia</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/write-to-read.html">Storage write and read</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/hub-choice.html">Hubs and user choice</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>How to hub</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/hub-operation.html">Understand hub operation</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class="uk-active"><a href="/storage/amazon-s3-deploy.html">Configure a hub on Amazon EC2</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/hello-hub-choice.html">Hello hub choice tutorial</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/gaia-admin.html">Use the admin service</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Reference</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/config-schema.html">Hub configuration parameters</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/android_ref.html">Blockstack Android Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/ios_ref.html">Blockstack iOS Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/storage/cliDocs.html">blockstack_cli reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/core_ref.html">Blockstack CORE API</a></li>
+                    
+                    </ul>
+                    
+                  <!--  -->
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article markdown="span" class="uk-article">
+
+                    <h1 class="uk-article-title">Configure a hub on Amazon EC2</h1>
+
+                    
+
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2019-12-16T03:04:34+08:00" itemprop="datePublished">
+    
+    Dec 16, 2019
+    <!--  -->
+
+
+<a "target="_blank" href="https://github.com/blockstack/docs.blockstack/blob/master/_storage/amazon-s3-deploy.md" class="btn btn-default githubEditButton" role="button">
+  <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+  
+</time>
+
+                    </div>
+
+                    <div markdown="span" class="article-content">
+                        
+<p class="no_toc">This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordable and convenient cloud computing provider. This example uses Amazon EC2 instance together with an <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html">EBS</a> disk for file storage.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#prerequisites-you-need" id="markdown-toc-prerequisites-you-need">Prerequisites you need</a></li>
+  <li><a href="#task-1-launch-an-ec2-instance" id="markdown-toc-task-1-launch-an-ec2-instance">Task 1: Launch an EC2 instance</a></li>
+  <li><a href="#task-2-connect-your-gaia-server-to-your-domain" id="markdown-toc-task-2-connect-your-gaia-server-to-your-domain">Task 2: Connect your Gaia server to your domain</a></li>
+  <li><a href="#task-3-configure-a-domain-name" id="markdown-toc-task-3-configure-a-domain-name">Task 3: Configure a domain name</a></li>
+  <li><a href="#aws-hub-tips-and-tricks" id="markdown-toc-aws-hub-tips-and-tricks">AWS hub tips and tricks</a>    <ul>
+      <li><a href="#ssh-into-the-host" id="markdown-toc-ssh-into-the-host">SSH into the Host</a></li>
+      <li><a href="#displaying-the-docker-services" id="markdown-toc-displaying-the-docker-services">Displaying the docker services</a></li>
+      <li><a href="#locations-of-key-files" id="markdown-toc-locations-of-key-files">Locations of key files</a></li>
+      <li><a href="#restart-services-and-reload-certificates" id="markdown-toc-restart-services-and-reload-certificates">Restart services and reload certificates</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="uk-card uk-card-default uk-card-body">
+<h5>Is this tutorial for you?</h5>
+
+<p>This documentation is appropriate for advanced power users who are familiar with command line tools, <code>ssh</code>, and basic editing configuration files.</p>
+
+<p>If you are planning on running an <em>open-membership hub</em> or an <em>application-specific hub</em>, see <a href="hub-operation.html">the section on Hub Operation</a>.</p>
+
+</div>
+
+<h2 id="prerequisites-you-need">Prerequisites you need</h2>
+
+<p>This procedure uses Amazon AWS to choose and configure an Amazon Machine Image
+(AMI) running a Gaia service. For this reason, you should have an AWS account
+on the <a href="https://aws.amazon.com/free/" target="\_blank">Amazon AWS free
+tier</a>, personal account, or corporate account.  These instructions assume you
+are using a free tier account.</p>
+
+<p>These instructions assume you have already created a free <a href="https://www.freenom.com" target="\_blank">domain through the freenom
+service</a>. If you have another domain, you can use that instead.</p>
+
+<p>Finally, setting up the SSL certificates on your EC2 instance requires you to use the terminal command line on your workstation. Make sure you have the <code class="highlighter-rouge">watch</code> command installed using the <code class="highlighter-rouge">which</code> command.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ which watch
+/usr/local/bin/watch
+</code></pre></div></div>
+
+<p>If <code class="highlighter-rouge">watch</code> is not located, install it on your workstation.</p>
+
+<h2 id="task-1-launch-an-ec2-instance">Task 1: Launch an EC2 instance</h2>
+
+<ol>
+  <li>
+    <p>Visit the <a href="https://aws.amazon.com/free/" target="\_blank">AWS Free Tier page</a> and choose <strong>Sign in to the Console</strong>.</p>
+
+    <p><img src="/storage/images/aws-console.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Make sure your region is set to one close to you.</p>
+
+    <p><img src="/storage/images/us-west-2.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Under  <strong>Build a solution</strong> choose <strong>Launch a virtual machine</strong>.</p>
+
+    <p>The system opens the EC2 dashboard.</p>
+  </li>
+  <li>
+    <p>Enter <code class="highlighter-rouge">blockstack-gaia</code> in the search bar.</p>
+
+    <p>The system finds AMIs in the Marketplace and the Community.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Community AMIs</strong>.</p>
+
+    <p>The system displays the available Gaia hub images.</p>
+
+    <p><img src="/storage/images/gaia-community.png" alt="" /></p>
+
+    <p>Each image name has this format:</p>
+
+    <p><code class="highlighter-rouge">blockstack-gaia_hub-STORAGETYPE-VERSION-hvm - ami-BUILDTAG</code></p>
+
+    <p>You can choose an image that uses <strong>ephemeral</strong> or <strong>EBS</strong> storage. The ephemeral
+ storage is very small but free. Only choose this if you plan to test or use
+ a personal hub. Otherwise, choose the AMI for elastic block storage (EBS) which provides a persistent data store on a separate disk backed by <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html">EBS</a>.</p>
+
+    <p>So, the <code class="highlighter-rouge">blockstack-gaia_hub-ephemeral-2.5.3-hvm - ami-0c8fc48c10a42737e</code> image uses ephemeral storage, is at version <code class="highlighter-rouge">2.5.3</code> and has the <code class="highlighter-rouge">0c8fc48c10a42737e</code> tag.</p>
+  </li>
+  <li>
+    <p>Select the most recent version image with the storage you want. The images are not sorted; The most recent images is not necessarily at the top of the list.</p>
+
+    <p>After you select an image, the system displays <strong>Step 2: Choose an Instance Type</strong> page.</p>
+
+    <p><img src="/storage/images/tier-2-image.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Select <strong>t2.micro</strong> and choose <strong>Next: Configure Instance Details</strong>.</p>
+
+    <p>To configure instance details, do the following:</p>
+
+    <div class="uk-card uk-card-body">
+<ol>
+   <li>
+      <p>Select a VPC.</p>
+      <p>A default VPC is created with a free tier account. You can use this
+         default VPC. Or you can choose another VPC. If you choose another VPC,
+         ensure the <code class="highlighter-rouge">Subnet</code> value is set to a subnet reachable by a public IP.
+      </p>
+      <div class="uk-alert-warning uk-alert" uk-alert=""><b>Important:</b> If you're using a private subnet, you
+         should attach an elastic IP (EIP) to the VM. This EIP allows you to
+         reboot the instance without worrying whether the address will reset. To
+         attach an IP, <strong>press allocate new address</strong> and follow the
+         instructions to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating" target="_blank">attach the EIP</a> to your new EC2 instance.
+      </div>
+   </li>
+   <li>
+      <p>Set <strong>Protect against accidental termination</strong>.</p>
+      <p>If you terminate a Gaia instance, you lose all the data associated with it. Protection adds an extra step to terminating your Gaia instance.</p>
+   </li>
+   <li>
+      <p>Open the <strong>Advanced Details</strong>.</p>
+      <p>At this point, you are going to configure environment variables for your instance.</p>
+   </li>
+   <li>
+      <p>Paste the following into the <strong>Advanced Details</strong>.</p>
+
+      <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  
+      {
+         "ignition": { "version": "2.2.0" },
+         "storage": {
+            "files": [{
+            "filesystem": "root",
+            "path": "/etc/environment",
+            "mode": 420,
+            "contents": {
+               "source": "data:application/octet-stream,API_KEY%3DKEYPHRASE%0ADOMAIN%3DNAME_OF_DOMAIN%0ASTAGING%3DSTAGING_VALUE"
+            }
+            }]
+         }
+      }
+      </code></pre></div>        </div>
+   </li>
+   <li>
+      <p>Replace the following values in the JSON.</p>
+      <table class="uk-table uk-table-small uk-table-divider">
+         <tbody>
+            <tr>
+               <th>Value</th>
+               <th>Description</th>
+            </tr>
+            <tr>
+               <td><code>&lt;KEYPHRASE&gt;</code></td>
+               <td>A phrase to pass when using the hub admin. For example, <code>hubba</code> is a fun key phrase.</td>
+            </tr>
+            <tr>
+               <td><code>&lt;NAME_OF_DOMAIN&gt;</code></td>
+               <td>Your hub's domain name. For example, <code>maryhub.ml</code> is the domain name in this example.</td>
+            </tr>
+            <tr>
+               <td><code>&lt;STAGING_VALUE&gt;</code></td>
+               <td>
+                  <p>Indicates what type of SSL to create, testing (`1`) or production (`0`). Set testing if you want to test without worrying about rate limiting. A testing cerificate is not secure.</p>
+                  <p>For this tutorial, use production (`0`).</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </li>
+   <li>
+     <p>Check your <strong>Advanced Details</strong> they should look similar to the following:</p>
+
+            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+         "ignition": { "version": "2.2.0" },
+         "storage": {
+            "files": [{
+            "filesystem": "root",
+            "path": "/etc/environment",
+            "mode": 420,
+            "contents": {
+               "source": "data:application/octet-stream,API_KEY%3Dhubba%0ADOMAIN%3Dmaryhub.ml%0ASTAGING%3D0"
+            }
+            }]
+         }
+      }
+      </code></pre></div>        </div>
+   </li>
+</ol>
+</div>
+
+    <p>At this point, you have configured your instance details.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Next: Add Storage</strong>.</p>
+
+    <p><img src="/storage/images/add-storage.png" alt="" /></p>
+
+    <p>The storage is set according to the AMI you selected.</p>
+  </li>
+  <li>Choose <strong>Next: Add tags</strong>.</li>
+  <li>
+    <p>Optionally, add the following tags:</p>
+
+    <p>The tags are not required, they just apply searchable labels to an instance on an EC2 console.</p>
+
+    <ul>
+      <li><strong>Key</strong> of <code class="highlighter-rouge">Purpose</code> with the <strong>Value</strong> <code class="highlighter-rouge">gaia</code></li>
+      <li><strong>Key</strong> of <code class="highlighter-rouge">Name</code> with the <strong>Value</strong> <code class="highlighter-rouge">gaia-hub</code></li>
+      <li><strong>Key</strong> of <code class="highlighter-rouge">Version</code> with the <strong>Value</strong> <code class="highlighter-rouge">2.5.3</code> (This value is an example, your version may be different.)</li>
+    </ul>
+
+    <p><img src="/storage/images/tag-add.png" alt="" /></p>
+  </li>
+  <li>Choose <strong>Next: Configure Security Group</strong>.</li>
+  <li>
+    <p>Create a security group with the following three types:</p>
+
+    <table class="uk-table uk-table-small uk-table-divider">
+  <tr>
+    <th>Type</th>
+    <th>Protocol</th>
+    <th>Port Range</th>
+    <th>Source</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>SSH</td>
+    <td>TCP</td>
+    <td>22</td>
+    <td>My IP</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>HTTP</td>
+    <td>TCP</td>
+    <td>80</td>
+    <td>Anywhere</td>
+    <td>optional</td>
+  </tr>
+  <tr>
+    <td>HTTPS</td>
+    <td>TCP</td>
+    <td>443</td>
+    <td>Anywhere</td>
+    <td>optional</td>
+  </tr>
+</table>
+  </li>
+  <li>
+    <p>Choose <strong>Review and Launch</strong>.</p>
+
+    <p>The system may warn you that the selection is not free tier eligible. You can ignore this for now.</p>
+  </li>
+  <li>
+    <p>Press <strong>Launch</strong>.</p>
+
+    <p>The system prompts you for a key pair.</p>
+  </li>
+  <li>Select <strong>Create a new keypair</strong> or <strong>Choose an existing key pair</strong>.</li>
+  <li>
+    <p>Select <strong>Launch Instances</strong>.</p>
+
+    <p>The system launches your instance.</p>
+
+    <p><img src="/storage/images/aws-launch-status.png" alt="" /></p>
+  </li>
+</ol>
+
+<p>During the launch process the machine starts and runs some initial setup processes. These processes take a few minutes depending on the network, typically launching does not take more than 10 minutes. While this is happening the instance <strong>Status Checks</strong> reflect the <strong>Initializing</strong> status.</p>
+
+<p><img src="/storage/images/instance-initialize.png" alt="" /></p>
+
+<h2 id="task-2-connect-your-gaia-server-to-your-domain">Task 2: Connect your Gaia server to your domain</h2>
+
+<p>Now, you are ready to test your Gaia server. This procedure ensures the Gaia services started correctly and they are configured to the domain name you provided in <strong>Advanced Details</strong> above.</p>
+
+<ol>
+  <li>
+    <p>Visit the <a href="https://aws.amazon.com/free/" target="\_blank">AWS Free Tier page</a> and choose <strong>Sign in to the Console</strong>.</p>
+
+    <p><img src="/storage/images/aws-console.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose <strong>All services &gt; EC2</strong>.</p>
+
+    <p>The system displays the <strong>EC2 Dashboard</strong>.</p>
+
+    <p><img src="/storage/images/ec2-dashboard.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Select <strong>Running Instances</strong>.</p>
+
+    <p>The system displays your running instances.</p>
+  </li>
+  <li>
+    <p>Locate your recently launched Gaia server.</p>
+
+    <p>Make sure the instance shows as running and <strong>Status Checks</strong> are complete.
+Completed status checks ensures the Gaia processes and service were started.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Description</strong> tab.</p>
+
+    <p><img src="/storage/images/ec2-instance.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Locate the <strong>IPv4 Public IP</strong> value.</p>
+
+    <p>The public IP must match the DNS configured for the domain you entered in <strong>Advanced Details</strong> in the previous procedure.</p>
+  </li>
+  <li>
+    <p>Copy the IP and paste it in your browser.</p>
+
+    <table class="uk-table uk-table-small uk-table-divider">
+  <tr>
+    <th>If the response is</th>
+    <th>Do this...</th>
+  </tr>
+  <tr>
+    <td><img src="/storage/images/private-connection.png" /></td>
+    <td> You should see a message that your connection is not private.
+ Everything is fine, continue to the next step, step 8.</td>
+  </tr>
+  <tr>
+    <td><img src="/storage/images/bad-connection.png" /></td>
+    <td>
+    <ol>
+    <li>Check that your domain's DNS configuration matches the public IP address of your instance.</li>
+    <li>Update the DNS site's configuration.</li>
+    <li>Restart your EC2 instance as per the <a href="#restart-services-and-reload-certificates">Restart and reload certificates</a> procedure on this page.</li>
+    <li>Continue with next step, step 8.</li>
+    </ol>
+    </td>
+  </tr>
+</table>
+  </li>
+  <li>Press <strong>Advanced</strong>.</li>
+  <li>Choose to proceed.</li>
+  <li>
+    <p>Extend the IP with the <code class="highlighter-rouge">PUBLIC_IP/hub_info</code> tag like so.</p>
+
+    <p>You should see a response from your Gaia hub!</p>
+
+    <p><img src="/storage/images/aws-hub.png" alt="Hub test" /></p>
+
+    <p>At this point, you should see a <strong>Not secure</strong> message in the browser.
+That’s because you haven’t yet enabled SSL certification. While <code class="highlighter-rouge">HTTPS</code> is
+not required simple to run the hub services, Blockstack will only connect to
+a hub and write to its storage over a valid <code class="highlighter-rouge">HTTPS</code> connection.</p>
+  </li>
+</ol>
+
+<h2 id="task-3-configure-a-domain-name">Task 3: Configure a domain name</h2>
+
+<p>At this point, you can point a domain to your Gaia hub. Although it’s not required, it is highly recommended. If you use a domain, you can migrate your instance to a different server (or even provider such as Azure or Dropbox) at any time, and still access it through the domain URL. Just point your domain at the IP address for your EC2 instance. Use an <code class="highlighter-rouge">A Record</code> DNS type.</p>
+
+<p>These instructions assume you have already created a free <a href="https://www.freenom.com" target="\_blank">domain through the freenom service</a>. To point this freenom domain to your Gaia hub, do the following:</p>
+
+<ol>
+  <li>Log into your freenom account.</li>
+  <li>Choose the <strong>Manage Freenom Domain</strong> tab.</li>
+  <li>
+    <p>Add an <strong>A</strong> record leave the <strong>Name</strong> field blank.</p>
+
+    <p>This points your entire domain to the hub IP.</p>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+  </li>
+  <li>
+    <p>Create a CNAME record.</p>
+
+    <p>For example, you can use the prefix <code class="highlighter-rouge">www</code> with your domain name. When you are done, your</p>
+  </li>
+  <li>
+    <p>Save your changes.</p>
+
+    <p>At this point, your DNS management should look similar to the following except that with your domain rather than the <code class="highlighter-rouge">maryhub.ga</code> domain.</p>
+
+    <p><img src="/storage/images/aws-dns-fields.png" alt="DNS fields" /></p>
+  </li>
+  <li>
+    <p>After your changes propagate, visit your new domain at the <code class="highlighter-rouge">hub_info</code> page.</p>
+
+    <p><img src="/storage/images/domain-test.png" alt="Domain test" /></p>
+
+    <p>If you receive another <strong>Your connection is not private</strong> dialogs, take the option to proceed to your domain. The <em>Not secure</em> message should no longer appear in the browser bar. If the message does appear, try waiting a few minutes for your recent changes to propagate across the net domain servers. Then, refresh the page.</p>
+  </li>
+  <li>
+    <p>Check the SSL certificate for your hub.</p>
+
+    <p>Each browser has its own check procedure, for example, Chrome:</p>
+
+    <p><img src="/storage/images/cert-check.png" alt="" /></p>
+  </li>
+</ol>
+
+<p>At this point, you have the following. An EC2 instance running Gaia and a DNS
+record pointing your domain to this instance.</p>
+
+<h2 id="aws-hub-tips-and-tricks">AWS hub tips and tricks</h2>
+
+<p>Once your Gaia storage hub is up and running on AWS, you may occassionally need to troubleshoot. This section contains some useful information for interacting with your EC2 instance.</p>
+
+<h3 id="ssh-into-the-host">SSH into the Host</h3>
+
+<p>To SSH to the EC2 host directly:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-t</span> <span class="nt">-i</span> &lt;your keyfile.pem&gt; core@&lt;public ip address&gt;
+</code></pre></div></div>
+
+<h3 id="displaying-the-docker-services">Displaying the docker services</h3>
+
+<p>Your EC2 instance is running several <code class="highlighter-rouge">docker</code> services that support the Gaia hub. You can list these services using the <code class="highlighter-rouge">docker ps</code> command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker ps <span class="nt">--format</span> <span class="s2">"table {{.ID}}</span><span class="se">\t</span><span class="s2">{{.Image}}</span><span class="se">\t</span><span class="s2">{{.Command}}</span><span class="se">\t</span><span class="s2">{{.Names}}"</span>
+CONTAINER ID        IMAGE                                   COMMAND                  NAMES
+6b170ce9b0d6        nginx:alpine                            <span class="s2">"nginx -g 'daemon of…"</span>   nginx
+91c5ff651586        quay.io/blockstack/gaia-hub:v2.5.3      <span class="s2">"docker-entrypoint.s…"</span>   gaia-hub
+16b229a20320        quay.io/blockstack/gaia-reader:v2.5.3   <span class="s2">"node lib/index.js"</span>      gaia-reader
+89739e338573        quay.io/blockstack/gaia-admin:v2.5.3    <span class="s2">"docker-entrypoint.s…"</span>   gaia-admin
+</code></pre></div></div>
+
+<p>Each service plays a particular role in running your Gaia hub.</p>
+
+<table class="uk-table uk-table-small uk-table-divider">
+   <thead>
+      <tr>
+         <th>Service</th>
+         <th>Description</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><code>certbot</code></td>
+         <td>This service runs every 12 hours so you may not see it in the output. The service runs Let's Encrypt <code>certbot</code> client to support SSL. Certbot renews your certificates and reloads Nginx to pick up the changes. This service will run 2x per day checking if the certificate needs to be renewed. </td>
+      </tr>
+      <tr>
+         <td><code>nginx</code></td>
+         <td>Runs an Nginx proxy in front of the Gaia Hub. This service does things like rate-limiting, SSL termination, and redirects to HTTPS.  Your nginx service relies on your hub's <code>readURL</code> to make requests. Changes to a hub's <code>readURL</code> must be reflected in the <code>nginx</code> service configuration in <code>/gaia/nginx/conf.d/default.conf</code></td>
+      </tr>
+      <tr>
+         <td><code>gaia-admin</code></td>
+         <td>A simple administrative service that allows you to administer the Gaia hub. Use REST calls with this service to get and set hub configuration values.</td>
+      </tr>
+      <tr>
+         <td><code>gaia-reader</code></td>
+         <td>The Gaia read side-car services get file requests on URLs that start with
+         your Gaia hub's <code>readURL</code>.  You can determine your Gaia hub's read URL by either
+         looking for the <code>readURL</code> key in your Gaia hub's config file. This value is  or by looking for
+         the <code>read_url_prefix</code> field in the data returned by a <code>HUB_URL/hub_info</code> page on your
+         Gaia hub.</td>
+      </tr>
+      <tr>
+         <td><code>gaia-hub</code></td>
+         <td>The Gaia hub service.</td>
+      </tr>
+   </tbody>
+</table>
+
+<h3 id="locations-of-key-files">Locations of key files</h3>
+
+<table class="uk-table uk-table-small uk-table-divider">
+   <thead>
+      <tr>
+         <th>File or Directory</th>
+         <th>Description</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><code>/etc/systemd/system</code></td>
+         <td>Contains systemd unit-files for managing your Gaia hub.</td>
+      </tr>
+      <tr>
+         <td><code>/etc/environment</code></td>
+         <td>Contains the <code>DOMAIN</code> and <code>STAGING</code> variables you entered when creating your EC2 instance.
+         </td>
+      </tr>
+      <tr>
+         <td><code>/gaia/gaia.env</code></td>
+         <td>Contains the environment variables used by the Gaia <code>systemd</code> unit-files.
+         </td>
+      </tr>
+      <tr>
+         <td><code>/etc/systemd/system/reset-ssl-certs.service</code></td>
+         <td>A service that removes all existing certificates and restarts all the Gaia hub services. Use this sparingly, since the Lets Encrypt service will throttle too many requests for certificates.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/hub-config</code></td>
+         <td>Configuration for the Gaia Hub service.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/admin-config</code></td>
+         <td>Configuration for the Gaia Hub admin service.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/reader-config</code></td>
+         <td>Configuration for the Gaia Hub reader service.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/nginx/conf.d</code></td>
+         <td>Configuration files for the Nginx service.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/nginx/certbot/conf</code></td>
+         <td>Lets Encrypt SSL certificates/configs.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/scripts</code></td>
+         <td>Scripts run by the systemd services on startup.</td>
+      </tr>
+   </tbody>
+</table>
+
+<p>You can <code class="highlighter-rouge">cat</code> the various services to see what settings they are using.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /etc/systemd/system/reset-ssl-certs.service
+# reset-ssl-certs.service
+[Unit]
+Description=Reset Gaia to first boot
+ConditionFileIsExecutable=/gaia/scripts/reset-certs.sh
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+EnvironmentFile=/gaia/gaia.env
+EnvironmentFile=/etc/environment
+ExecStart=/bin/bash /gaia/scripts/reset-certs.sh
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div></div>
+
+<h3 id="restart-services-and-reload-certificates">Restart services and reload certificates</h3>
+
+<p>This procedures requires you to interact from a workstation command line with your running EC2 instance.</p>
+
+<ol>
+  <li>Open a terminal on your local workstation.</li>
+  <li>
+    <p>Confirm the hub DNS is set correctly with the following command:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>watch <span class="nt">-n</span> 2 <span class="nt">-t</span> <span class="nt">-g</span> <span class="nt">-x</span> host &lt;domain&gt;
+</code></pre></div>    </div>
+
+    <p>Substitute your domain name for the <code class="highlighter-rouge">&lt;domain&gt;</code> variable. For example:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>watch <span class="nt">-n</span> 2 <span class="nt">-t</span> <span class="nt">-g</span> <span class="nt">-x</span> host maryhub.ga
+maryhub.ml has address 34.219.71.143
+</code></pre></div>    </div>
+
+    <p>If the command returns the correct IP, the same as appears on your EC2 dashboard, stop the process with a<code class="highlighter-rouge"> CTRL-C</code> on your keyboard.</p>
+  </li>
+  <li>
+    <p>Change the permissions on your downloaded <code class="highlighter-rouge">.pem</code> file.</p>
+
+    <p>For example, this</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chmod 400 &lt;location-of-pem&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>SSH from your workstation and restart Gaia Hub:</p>
+
+    <p>This process requires that you know the location of the <code class="highlighter-rouge">.pem</code> file you downloaded when you created the keypair.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh -t -i &lt;your keyfile.pem&gt; -A core@&lt;public ip address&gt; "sudo systemctl restart gaia.service"
+</code></pre></div>    </div>
+
+    <p>For example:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart gaia.service"
+Connection to 34.219.71.143 closed.
+</code></pre></div>    </div>
+
+    <p>This will restart all services required for running a Gaia Hub (nginx, hub, reader, admin, certbot)</p>
+  </li>
+  <li>
+    <p>SSH from your workstation to reset back to first boot:</p>
+
+    <p>** This process will stop Gaia Hub, Nginx and remove any existing SSL certificates. It will then start the process of retrieving certificates and setting up the services again. This will not affect any existing data stored on the server.</p>
+
+    <p>This process requires that you know the location of the <code class="highlighter-rouge">.pem</code> file you downloaded when you created the keypair.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh -t -i &lt;your keyfile.pem&gt; -A core@&lt;public ip address&gt; "sudo systemctl restart reset-ssl-certs.service"
+</code></pre></div>    </div>
+
+    <p>For example:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart reset-ssl-certs.service"
+Connection to 34.219.71.143 closed.
+</code></pre></div>    </div>
+    <p>After a few minutes, all Gaia Hub services will restart automatically and will retrieve a new SSL certificate.</p>
+  </li>
+</ol>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=Configure a hub on Amazon EC2&url=https://docs.blockstack.org/storage/amazon-s3-deploy.html&via=blockstack&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+</div>
+
+                        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. <br> &copy; 2019 Blockstack Public Benefit Corp.</div>
+
+    </div>
+</footer>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+
+
+                    <!-- <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+ -->
+
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      showErrors: true,
+      accessibility: {
+        isMainContent: true
+      },
+      /* A CSS selector that points to your search  box */
+      layout: {
+        navigation: {
+            position: "top"
+        },
+        mobile: {
+            showUrl: true
+        },
+        desktop: {
+            showUrl: true
+        }
+      },
+      searchBox: {
+        selector: '#searchBox'
+      },
+      results: {
+         embedConfig: undefined, 
+         fullScreenConfig: undefined, 
+         caption: 'Found #COUNT# search results for \"#QUERY#\"', 
+         group: true, 
+         filters: undefined,
+         num: 96, 
+         highlightQueryTerms: true, 
+         moreResultsButton: "Show more results", 
+         noResultsText: 'Sorry, we have not found any matches for your query.', 
+         queryCorrectionText: 'Did you mean "#CORRECTION#"?',
+         searchQueryParamName: 'ss360Query', 
+         linksOpenNewTab: false, 
+         showSearchBoxLayover: true, 
+         moreResultsPagingSize: 12, 
+         orderByRelevanceText: "Relevance" 
+      },
+      suggestions: {
+         show: true,  
+         maxQuerySuggestions: 3,
+         querySuggestionHeadline: undefined, 
+         emptyQuerySuggestions: undefined,
+         showImages: false, 
+         num: 6, 
+         minChars: 3, 
+         maxWidth: 'auto', 
+         throttleTime: 300,
+         extraHtml: undefined, 
+         highlight: true
+       },
+       smart404: { 
+             caption: 'These links might be useful', 
+             identifier: 'Page not found', 
+             resultSelector: '#ss360-404'
+        }
+   };
+</script>
+<script type="module" src="https://cdn.sitesearch360.com/sitesearch360-v12.mjs"></script>
+<script nomodule src="https://cdn.sitesearch360.com/sitesearch360-v12.min.js" async></script>
+    
+
+
+    <script>
+    anchors.options = {
+      placement: 'left',
+      visible: 'hover'
+    };
+       anchors.add();
+     </script>
+    </body>
+
+</html>

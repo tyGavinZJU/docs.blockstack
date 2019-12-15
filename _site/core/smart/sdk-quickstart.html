@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <!-- Begin Jekyll GTM tag v1.0.1 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TPGGRT5');</script>
+<!-- End Jekyll GTM tag v1.0.1 -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quickstart for the SDK</title>
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="Quickstart for the SDK" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Blockstack Network docs for investors, users, and developers." />
+<meta property="og:description" content="Blockstack Network docs for investors, users, and developers." />
+<link rel="canonical" href="https://docs.blockstack.org/core/smart/sdk-quickstart.html" />
+<meta property="og:url" content="https://docs.blockstack.org/core/smart/sdk-quickstart.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-16T03:04:34+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@blockstack" />
+<meta name="twitter:creator" content="@Blockstack" />
+<script type="application/ld+json">
+{"description":"Blockstack Network docs for investors, users, and developers.","headline":"Quickstart for the SDK","@type":"BlogPosting","image":"https://docs.blockstack.org/assets/img/touch-icon.png","url":"https://docs.blockstack.org/core/smart/sdk-quickstart.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/core/smart/sdk-quickstart.html"},"author":{"@type":"Person","name":"Blockstack"},"dateModified":"2019-12-16T03:04:34+08:00","datePublished":"2019-12-16T03:04:34+08:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Quickstart for the SDK | Blockstack</title>
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="Quickstart for the SDK" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Blockstack Network docs for investors, users, and developers." />
+<meta property="og:description" content="Blockstack Network docs for investors, users, and developers." />
+<link rel="canonical" href="https://docs.blockstack.org/core/smart/sdk-quickstart.html" />
+<meta property="og:url" content="https://docs.blockstack.org/core/smart/sdk-quickstart.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-16T03:04:34+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@blockstack" />
+<meta name="twitter:creator" content="@Blockstack" />
+<script type="application/ld+json">
+{"description":"Blockstack Network docs for investors, users, and developers.","headline":"Quickstart for the SDK","@type":"BlogPosting","image":"https://docs.blockstack.org/assets/img/touch-icon.png","url":"https://docs.blockstack.org/core/smart/sdk-quickstart.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/core/smart/sdk-quickstart.html"},"author":{"@type":"Person","name":"Blockstack"},"dateModified":"2019-12-16T03:04:34+08:00","datePublished":"2019-12-16T03:04:34+08:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js" ></script>
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125894815-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125894815-1');
+</script>
+
+  
+  <!-- https://www.bryanbraun.com/anchorjs/  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+  <script type"text/javascript" src="https://code.jquery.com/jquery-latest.min.js">
+    switcherTab('uk-tab-instance');
+
+    function switcherTab(id){
+        $('#'+id+' a[href = "'+window.location.hash+'"]').parent('li').click();
+
+        $('#'+id+' a').click(function(){
+            var val = $(this).attr('href');
+            window.location.hash = val.replace("#", "");
+        });
+    }
+  </script>
+  	<!-- Load jquery.cookie plugin (optional) -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.cookie.js"></script>
+	<!-- Load jquery.navgoco plugin js and css files -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.navgoco.js"></script>
+  <link rel="stylesheet" href="/assets/navgoco/jquery.navgoco.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.nav').navgoco({
+          caretHtml: '<i class="some-random-icon-class"></i>',
+          accordion: true,
+          openClass: 'open',
+          slide: {
+            duration: 400,
+            easing: 'swing'
+          }
+        });
+    });
+  </script>
+</head>
+
+
+    <body>
+    <!-- Begin Jekyll GTM tag v1.0.1 -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPGGRT5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.1 -->
+
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left uk-visible@m">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
+             &nbsp;&nbsp;&nbsp;
+
+             <svg style="width:141.602;height:11.487px" viewBox="0 0 141.602 11.487" enable-background="new 0 0 141.602 11.487"><path fill="#000000" d="M5.471,7.791c0,0.511-0.16,0.875-0.488,1.111C4.631,9.158,4.097,9.287,3.398,9.287H2.387V6.456h1.011 C5.256,6.456,5.471,7.219,5.471,7.791z M4.554,4.223C4.29,4.448,3.82,4.562,3.16,4.562H2.387V2.2h0.821 c0.611,0,1.066,0.094,1.352,0.279C4.81,2.641,4.933,2.907,4.933,3.292C4.933,3.704,4.809,4.008,4.554,4.223z M6.004,5.338 c0.325-0.181,0.59-0.418,0.79-0.709c0.327-0.476,0.493-1.001,0.493-1.562c0-0.53-0.105-0.989-0.313-1.362 c-0.208-0.374-0.5-0.677-0.867-0.9C5.754,0.59,5.333,0.432,4.855,0.335C4.391,0.24,3.879,0.192,3.334,0.192h-3.06 C0.123,0.192,0,0.317,0,0.471v10.545c0,0.154,0.123,0.278,0.274,0.278h3.315c0.591,0,1.143-0.065,1.645-0.194 c0.513-0.132,0.966-0.339,1.345-0.615c0.388-0.283,0.694-0.641,0.91-1.067C7.702,8.992,7.811,8.488,7.811,7.92 c0-0.78-0.226-1.413-0.672-1.879C6.847,5.737,6.467,5.502,6.004,5.338z M22.197,9.158h-4.595V0.471c0-0.153-0.123-0.278-0.274-0.278 h-1.824c-0.151,0-0.273,0.125-0.273,0.278v10.545c0,0.154,0.122,0.278,0.273,0.278h6.693c0.151,0,0.274-0.124,0.274-0.278v-1.58 C22.47,9.282,22.348,9.158,22.197,9.158z M35.076,5.695c0,0.567-0.051,1.086-0.151,1.543c-0.1,0.45-0.24,0.836-0.416,1.149 c-0.167,0.299-0.37,0.53-0.603,0.688c-0.461,0.312-1.061,0.3-1.505-0.001c-0.233-0.157-0.436-0.389-0.604-0.688 c-0.175-0.313-0.312-0.699-0.407-1.146c-0.096-0.458-0.144-0.978-0.144-1.546c0-1.126,0.187-2.013,0.556-2.638 c0.346-0.587,0.791-0.873,1.36-0.873c0.568,0,1.012,0.285,1.359,0.873C34.889,3.682,35.076,4.569,35.076,5.695z M36.319,1.541 c-0.378-0.494-0.844-0.879-1.381-1.144c-1.076-0.529-2.477-0.529-3.553,0c-0.538,0.265-1.003,0.65-1.381,1.144 c-0.373,0.487-0.669,1.09-0.879,1.792c-0.208,0.696-0.313,1.49-0.313,2.362c0,0.882,0.105,1.685,0.313,2.386 c0.21,0.706,0.504,1.318,0.876,1.821c0.378,0.511,0.844,0.908,1.382,1.179c0.538,0.27,1.136,0.407,1.779,0.407 c0.642,0,1.24-0.137,1.778-0.408c0.538-0.27,1.003-0.667,1.382-1.178c0.372-0.503,0.667-1.115,0.876-1.821 c0.208-0.7,0.314-1.502,0.314-2.386c0-0.873-0.105-1.667-0.314-2.363C36.988,2.631,36.692,2.028,36.319,1.541z M51.29,8.346 c-0.052-0.058-0.125-0.092-0.203-0.092c-0.077,0-0.151,0.033-0.203,0.092c-0.273,0.308-0.566,0.549-0.871,0.715 c-0.602,0.33-1.469,0.308-2.099,0.002c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.423-0.675-0.554-1.116 c-0.134-0.45-0.203-0.968-0.203-1.539c0-0.56,0.068-1.07,0.203-1.515c0.132-0.437,0.316-0.81,0.548-1.111 c0.227-0.293,0.504-0.522,0.825-0.68c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.543,0.333,0.775,0.568 c0.054,0.054,0.147,0.088,0.2,0.081c0.075-0.002,0.146-0.036,0.196-0.092l1.03-1.161c0.098-0.11,0.094-0.278-0.01-0.383 c-0.355-0.361-0.799-0.687-1.317-0.968c-1.105-0.597-2.643-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149 c-0.451,0.498-0.809,1.113-1.064,1.827c-0.253,0.71-0.381,1.521-0.381,2.408c0,0.899,0.128,1.712,0.381,2.417 c0.255,0.709,0.614,1.317,1.066,1.805c0.454,0.489,0.993,0.865,1.603,1.115c0.607,0.249,1.268,0.374,1.966,0.374 c0.695,0,1.333-0.142,1.897-0.423c0.559-0.279,1.068-0.684,1.513-1.204c0.09-0.106,0.089-0.264-0.004-0.368L51.29,8.346z M64.109,4.608l3.075-3.966c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.245-0.157h-2.046 c-0.084,0-0.163,0.039-0.215,0.106l-3.254,4.218V0.47c0-0.153-0.123-0.277-0.274-0.277h-1.855c-0.151,0-0.274,0.124-0.274,0.277 v10.546c0,0.153,0.122,0.278,0.274,0.278h1.855c0.151,0,0.274-0.125,0.274-0.278V8.034l1.185-1.483l2.392,4.594 c0.048,0.091,0.141,0.148,0.242,0.148h2.046c0.097,0,0.186-0.052,0.236-0.138c0.049-0.085,0.05-0.19,0.003-0.276L64.109,4.608z M81.006,6.088c-0.218-0.244-0.478-0.462-0.773-0.647c-0.286-0.179-0.606-0.339-0.94-0.47l-1.368-0.598 c-0.235-0.097-0.461-0.189-0.679-0.276c-0.196-0.079-0.371-0.169-0.516-0.27c-0.134-0.092-0.24-0.197-0.315-0.311 c-0.065-0.099-0.097-0.22-0.097-0.369c0-0.297,0.112-0.514,0.351-0.683c0.263-0.187,0.64-0.281,1.12-0.281 c0.437,0,0.833,0.074,1.179,0.22c0.355,0.151,0.702,0.36,1.03,0.623c0.116,0.094,0.287,0.074,0.381-0.044l0.952-1.193 c0.091-0.114,0.079-0.279-0.026-0.38c-0.456-0.429-0.993-0.775-1.597-1.028c-1.114-0.467-2.435-0.495-3.459-0.144 c-0.469,0.161-0.88,0.389-1.221,0.678c-0.345,0.292-0.618,0.638-0.815,1.031c-0.199,0.398-0.299,0.834-0.299,1.296 c0,0.422,0.072,0.806,0.213,1.141c0.139,0.33,0.328,0.623,0.561,0.873c0.228,0.243,0.488,0.454,0.771,0.626 c0.277,0.169,0.564,0.312,0.841,0.42l1.425,0.634c0.249,0.095,0.479,0.19,0.692,0.285c0.198,0.088,0.367,0.184,0.504,0.285 c0.122,0.09,0.216,0.193,0.281,0.308c0.06,0.107,0.091,0.246,0.091,0.411c0,0.322-0.121,0.563-0.381,0.76 c-0.278,0.21-0.709,0.316-1.28,0.316c-0.467,0-0.934-0.103-1.388-0.307C75.78,8.788,75.358,8.514,74.99,8.18 c-0.056-0.05-0.127-0.077-0.201-0.07c-0.073,0.005-0.141,0.039-0.189,0.096l-1.078,1.274c-0.095,0.113-0.087,0.283,0.02,0.385 c0.541,0.516,1.167,0.92,1.862,1.2c0.695,0.281,1.434,0.423,2.195,0.423c0.63,0,1.205-0.09,1.707-0.265 c0.506-0.178,0.942-0.422,1.294-0.729c0.355-0.309,0.632-0.673,0.823-1.085c0.191-0.412,0.288-0.858,0.288-1.328 c0-0.419-0.062-0.797-0.185-1.123C81.404,6.632,81.229,6.339,81.006,6.088z M96.557,0.192h-8.374c-0.151,0-0.273,0.124-0.273,0.278 v1.58c0,0.154,0.122,0.278,0.273,0.278h2.994v8.687c0,0.154,0.122,0.278,0.274,0.278h1.84c0.151,0,0.273-0.124,0.273-0.278V2.328 h2.994c0.151,0,0.274-0.124,0.274-0.278v-1.58C96.831,0.317,96.708,0.192,96.557,0.192z M107.143,2.902 c0.074,0.282,0.149,0.566,0.226,0.851l0.725,2.664h-1.906l0.265-0.934c0.159-0.561,0.315-1.135,0.469-1.723 C106.996,3.473,107.071,3.188,107.143,2.902z M108.512,0.384c-0.037-0.114-0.142-0.192-0.261-0.192h-2.157 c-0.118,0-0.223,0.077-0.26,0.192l-3.362,10.546c-0.027,0.085-0.012,0.177,0.04,0.249c0.051,0.072,0.134,0.115,0.221,0.115h1.871 c0.122,0,0.229-0.082,0.263-0.201l0.752-2.653h3.044l0.736,2.651c0.034,0.12,0.141,0.203,0.263,0.203h1.951 c0.088,0,0.17-0.043,0.221-0.115c0.052-0.071,0.066-0.164,0.039-0.249L108.512,0.384z M125.302,8.346 c-0.104-0.117-0.302-0.117-0.406,0c-0.273,0.308-0.566,0.548-0.87,0.715c-0.603,0.329-1.469,0.308-2.1,0.002 c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.422-0.675-0.554-1.116c-0.134-0.449-0.202-0.966-0.202-1.539 c0-0.561,0.068-1.071,0.202-1.515c0.132-0.437,0.316-0.811,0.549-1.111c0.226-0.293,0.503-0.522,0.823-0.68 c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.544,0.332,0.775,0.567c0.053,0.055,0.131,0.089,0.2,0.082 c0.075-0.002,0.146-0.035,0.196-0.092l1.031-1.161c0.098-0.11,0.093-0.278-0.01-0.383c-0.355-0.361-0.8-0.687-1.318-0.968 c-1.105-0.597-2.644-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149c-0.451,0.498-0.809,1.113-1.063,1.827 c-0.254,0.71-0.382,1.521-0.382,2.409c0,0.899,0.128,1.712,0.382,2.417c0.254,0.709,0.612,1.317,1.065,1.805 c0.453,0.489,0.993,0.864,1.604,1.115c0.606,0.249,1.268,0.374,1.965,0.374c0.695,0,1.333-0.142,1.897-0.423 c0.559-0.279,1.067-0.684,1.514-1.204c0.09-0.106,0.089-0.264-0.004-0.368L125.302,8.346z M141.567,10.88l-3.448-6.272l3.075-3.966 c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.246-0.157h-2.045c-0.084,0-0.164,0.039-0.215,0.106l-3.254,4.217 V0.47c0-0.153-0.122-0.277-0.274-0.277h-1.856c-0.151,0-0.274,0.124-0.274,0.277v10.546c0,0.153,0.123,0.278,0.274,0.278h1.856 c0.151,0,0.274-0.125,0.274-0.278V8.035l1.185-1.484l2.392,4.594c0.047,0.091,0.141,0.148,0.242,0.148h2.045 c0.097,0,0.187-0.052,0.236-0.138C141.614,11.071,141.615,10.966,141.567,10.88z"></path></svg>
+        </a>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                    <ul class="nav">
+                    
+                        
+                            <li ><a href='#'>Overview</a>
+                        
+                            <ul>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/introduction.html">Blockstack 域名系统(BNS)</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/architecture.html">Understand the Architecture</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/namespaces.html">Understand Namespaces</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/comparison.html">Naming system feature comparison</a></li>
+                            
+                            </ul>
+                            </li> 
+                    
+                        
+                            <li ><a href='#'>Tutorials & Cookbooks</a>
+                        
+                            <ul>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/tutorial_subdomains.html">Subdomain Design and Implementation</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/search.html">How to build a Profile Search Index</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/faq_technical.html">How to build a Profile Search Index</a></li>
+                            
+                            </ul>
+                            </li> 
+                    
+                        
+                            <li ><a href='#'>Clarity Smart Contracts</a>
+                        
+                            <ul>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/smart/overview.html">Welcome to Clarity</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/smart/principals.html">Principals</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/smart/functions.html">Define functions and data maps</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/smart/tutorial.html">Hello Clarity tutorial</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/smart/clarityRef.html">Clarity language reference</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/smart/clarityCLI.html">clarity-cli command line</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class="active"><a href="/core/smart/sdk-quickstart.html">Quickstart for the SDK</a></li>
+                            
+                            </ul>
+                            </li> 
+                    
+                        
+                            <li ><a href='#'>How to use BNS</a>
+                        
+                            <ul>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/pickname.html">Choose a name</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/creationhowto.html">Creating a Namespace</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/resolving.html">Resolve a name</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/register.html">Register a name</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/manage.html">Manage BNS Names</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/subdomains.html">BNS Subdomains</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/naming/forks.html">BNS Forks</a></li>
+                            
+                            </ul>
+                            </li> 
+                    
+                        
+                            <li ><a href='#'>Atlas</a>
+                        
+                            <ul>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/atlas/overview.html">Overview of the Atlas network</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/atlas/howitworks.html">How Atlas Works</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/atlas/howtouse.html">How to Use the Atlas Network</a></li>
+                            
+                            </ul>
+                            </li> 
+                    
+                        
+                            <li ><a href='#'>Reference</a>
+                        
+                            <ul>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/cmdLineRef.html">blockstack_cli reference</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/common/android_ref.html">Blockstack Android Reference</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/common/ios_ref.html">Blockstack iOS Reference</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/common/core_ref.html">Blockstack CORE API</a></li>
+                            
+                                
+                                <!--  -->
+                                
+                                <li class=""><a href="/core/wire-format.html">Bitcoin wire format</a></li>
+                            
+                            </ul>
+                            </li> 
+                    
+                    </ul>
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article markdown="span" class="uk-article">
+
+                    <h1 class="uk-article-title">Quickstart for the SDK</h1>
+
+                    
+
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2019-12-16T03:04:34+08:00" itemprop="datePublished">
+    
+    Dec 16, 2019
+    <!--  -->
+
+
+<a "target="_blank" href="https://github.com/blockstack/docs.blockstack/blob/master/_core/smart/sdk-quickstart.md" class="btn btn-default githubEditButton" role="button">
+  <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+  
+</time>
+
+                    </div>
+
+                    <div markdown="span" class="article-content">
+                        
+<p class="no_toc">You can use the software developer kit (SDK) to develop, test, and deploy Clarity smart contracts. The SDK goes beyond the basic test environment to allow for development of Javascript or TypeScript clients that call upon Clarity contracts.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#about-this-tutorial-and-the-prerequisites-you-need" id="markdown-toc-about-this-tutorial-and-the-prerequisites-you-need">About this tutorial and the prerequisites you need</a></li>
+  <li><a href="#task-1-generate-an-initial-clarity-project" id="markdown-toc-task-1-generate-an-initial-clarity-project">Task 1: Generate an initial Clarity project</a></li>
+  <li><a href="#task-2-investigate-the-generated-project" id="markdown-toc-task-2-investigate-the-generated-project">Task 2: Investigate the generated project</a></li>
+  <li><a href="#task-3-try-to-expand-the-contract" id="markdown-toc-task-3-try-to-expand-the-contract">Task 3: Try to expand the contract</a></li>
+</ul>
+
+<div class="uk-card uk-card-default uk-card-body">
+<h5>Clarity is in pre-release</h5>
+<p>Clarity, its accompanying toolset, and the SDK are in pre-release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href="https://github.com/blockstack/blockstack-core/issues" target="_blank">blockstack/blockstack-core</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href="https://forum.blockstack.org/c/clarity" target="_blank">Smart Contracts</a></strong> topic in the Blockstack Forum.
+</p>
+</div>
+
+<h2 id="about-this-tutorial-and-the-prerequisites-you-need">About this tutorial and the prerequisites you need</h2>
+
+<div class="uk-alert-primary" uk-alert=""><b>Note:</b> This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to "translate" appropriately for your operating system.</div>
+
+<p>For this tutorial, you will use  <code class="highlighter-rouge">npm</code> to manage dependencies and scripts. The tutorial relies on the <code class="highlighter-rouge">npm</code> dependency manager. Before you begin, verify you have installed <code class="highlighter-rouge">npm</code> using the <code class="highlighter-rouge">which</code> command to verify.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which npm
+/usr/local/bin/npm
+</code></pre></div></div>
+
+<p>If you don’t find <code class="highlighter-rouge">npm</code> in your system, <a href="https://www.npmjs.com/get-npm">install
+it</a>.</p>
+
+<p>You use <code class="highlighter-rouge">npm</code> to install Yeoman. Yeoman is a generic scaffolding system that
+helps users rapidly start new projects and streamline the maintenance of
+existing projects. Verify you have installed <code class="highlighter-rouge">yo</code> using the <code class="highlighter-rouge">which</code> command.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ which yo
+/usr/local/bin/yo
+</code></pre></div></div>
+
+<p>If you don’t have Yeoman, you can install it with the <code class="highlighter-rouge">npm install -g yo</code> command.</p>
+
+<h2 id="task-1-generate-an-initial-clarity-project">Task 1: Generate an initial Clarity project</h2>
+
+<p>The SDK uses Yeoman to generate a project scaffold — an initial set of directories and files.</p>
+
+<ol>
+  <li>
+    <p>Create a new directory for your project.</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir hello-clarity-sdk
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Change into your new project directory.</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>hello-clarity-sdk
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use the <code class="highlighter-rouge">npm</code> command to initialize a Clarity project.</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm init yo clarity-dev
+ npx: installed 15 <span class="k">in </span>1.892s
+   create package.json
+   create .vscode/extensions.json
+ ...
+ Project created at /private/tmp/hello-clarity-sdk
+ ✔ create-yo ok!
+</code></pre></div>    </div>
+
+    <p>Depending on your connection speed, it may take time to construct the scaffolding.</p>
+  </li>
+</ol>
+
+<h2 id="task-2-investigate-the-generated-project">Task 2: Investigate the generated project</h2>
+
+<p>Your project should contain three directories:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Directory</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">contracts</code></td>
+      <td>Contains <code class="highlighter-rouge">.clar</code> files (Clarity contract files) here.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">test</code></td>
+      <td>Contains files for testing your application.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">node_modules</code></td>
+      <td>Contains packages the project depends on. Added by <code class="highlighter-rouge">npm</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code class="highlighter-rouge">contracts</code> directory contains a single file in <code class="highlighter-rouge">sample/hello-world.clar</code> file.</p>
+
+<div class="language-cl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">say-hi</span><span class="p">)</span>
+   <span class="s">"hello world"</span><span class="p">)</span>
+
+<span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">echo-number</span> <span class="p">(</span><span class="nv">val</span> <span class="nv">int</span><span class="p">))</span>
+   <span class="nv">val</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The contract exposes 2 rudimentary functions. The <strong>say-hi</strong> returns a <code class="highlighter-rouge">hello world</code> string. The <strong>increment-number</strong>: echos  <code class="highlighter-rouge">val</code>.</p>
+
+<p>The project also includes <code class="highlighter-rouge">tests/hello-world.ts</code> file. The test is written in Typescript. You can also write tests in Javascript.</p>
+
+<figure class="highlight"><pre><code class="language-cl" data-lang="cl"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="code"><pre><span class="nb">import</span> <span class="nv">{</span> <span class="nv">Client,</span> <span class="nv">Provider,</span> <span class="nv">ProviderRegistry,</span> <span class="nv">Result</span> <span class="nv">}</span> <span class="nv">from</span> <span class="s">"@blockstack/clarity"</span><span class="c1">;</span>
+<span class="nb">import</span> <span class="nv">{</span> <span class="nb">assert</span> <span class="nv">}</span> <span class="nv">from</span> <span class="s">"chai"</span><span class="c1">;</span>
+
+<span class="nb">describe</span><span class="p">(</span><span class="s">"hello world contract test suite"</span><span class="o">,</span> <span class="p">()</span> <span class="nv">=&gt;</span> <span class="nv">{</span>
+  <span class="k">let</span> <span class="nv">helloWorldClient:</span> <span class="nv">Client</span><span class="c1">;</span>
+  <span class="k">let</span> <span class="nv">provider:</span> <span class="nv">Provider</span><span class="c1">;</span>
+
+  <span class="nv">before</span><span class="p">(</span><span class="nv">async</span> <span class="p">()</span> <span class="nv">=&gt;</span> <span class="nv">{</span>
+    <span class="nv">provider</span> <span class="nb">=</span> <span class="nv">await</span> <span class="nv">ProviderRegistry.createProvider</span><span class="p">()</span><span class="c1">;</span>
+    <span class="nv">helloWorldClient</span> <span class="nb">=</span> <span class="nv">new</span> <span class="nv">Client</span><span class="p">(</span><span class="s">"hello-world"</span><span class="o">,</span> <span class="s">"sample/hello-world"</span><span class="o">,</span> <span class="nv">provider</span><span class="p">)</span><span class="c1">;</span>
+  <span class="nv">}</span><span class="p">)</span><span class="c1">;</span>
+
+  <span class="nv">it</span><span class="p">(</span><span class="s">"should have a valid syntax"</span><span class="o">,</span> <span class="nv">async</span> <span class="p">()</span> <span class="nv">=&gt;</span> <span class="nv">{</span>
+    <span class="nv">await</span> <span class="nv">helloWorldClient.checkContract</span><span class="p">()</span><span class="c1">;</span>
+  <span class="nv">}</span><span class="p">)</span><span class="c1">;</span>
+
+  <span class="nb">describe</span><span class="p">(</span><span class="s">"deploying an instance of the contract"</span><span class="o">,</span> <span class="p">()</span> <span class="nv">=&gt;</span> <span class="nv">{</span>
+    <span class="nv">before</span><span class="p">(</span><span class="nv">async</span> <span class="p">()</span> <span class="nv">=&gt;</span> <span class="nv">{</span>
+      <span class="nv">await</span> <span class="nv">helloWorldClient.deployContract</span><span class="p">()</span><span class="c1">;</span>
+    <span class="nv">}</span><span class="p">)</span><span class="c1">;</span>
+
+    <span class="nv">it</span><span class="p">(</span><span class="s">"should return 'hello world'"</span><span class="o">,</span> <span class="nv">async</span> <span class="p">()</span> <span class="nv">=&gt;</span> <span class="nv">{</span>
+      <span class="nv">const</span> <span class="nv">query</span> <span class="nb">=</span> <span class="nv">helloWorldClient.createQuery</span><span class="p">(</span><span class="nv">{</span> <span class="nv">method:</span> <span class="nv">{</span> <span class="nv">name:</span> <span class="s">"say-hi"</span><span class="o">,</span> <span class="nv">args:</span> <span class="nv">[]</span> <span class="nv">}</span> <span class="nv">}</span><span class="p">)</span><span class="c1">;</span>
+      <span class="nv">const</span> <span class="nv">receipt</span> <span class="nb">=</span> <span class="nv">await</span> <span class="nv">helloWorldClient.submitQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">)</span><span class="c1">;</span>
+      <span class="nv">const</span> <span class="nv">result</span> <span class="nb">=</span> <span class="nv">Result.unwrap</span><span class="p">(</span><span class="nv">receipt</span><span class="p">)</span><span class="c1">;</span>
+      <span class="nv">const</span> <span class="nv">parsedResult</span> <span class="nb">=</span> <span class="nv">Buffer.from</span><span class="p">(</span><span class="nv">result.replace</span><span class="p">(</span><span class="s">"0x"</span><span class="o">,</span> <span class="s">""</span><span class="p">)</span><span class="o">,</span> <span class="s">"hex"</span><span class="p">)</span><span class="o">.</span><span class="nv">toString</span><span class="p">()</span><span class="c1">;</span>
+      <span class="nv">assert.equal</span><span class="p">(</span><span class="nv">parsedResult,</span> <span class="s">"hello world"</span><span class="p">)</span><span class="c1">;</span>
+    <span class="nv">}</span><span class="p">)</span><span class="c1">;</span>
+
+    <span class="nv">it</span><span class="p">(</span><span class="s">"should echo number"</span><span class="o">,</span> <span class="nv">async</span> <span class="p">()</span> <span class="nv">=&gt;</span> <span class="nv">{</span>
+      <span class="nv">const</span> <span class="nv">query</span> <span class="nb">=</span> <span class="nv">helloWorldClient.createQuery</span><span class="p">(</span><span class="nv">{</span>
+        <span class="nv">method:</span> <span class="nv">{</span> <span class="nv">name:</span> <span class="s">"echo-number"</span><span class="o">,</span> <span class="nv">args:</span> <span class="nv">[</span><span class="s">"123"</span><span class="nv">]</span> <span class="nv">}</span>
+      <span class="nv">}</span><span class="p">)</span><span class="c1">;</span>
+      <span class="nv">const</span> <span class="nv">receipt</span> <span class="nb">=</span> <span class="nv">await</span> <span class="nv">helloWorldClient.submitQuery</span><span class="p">(</span><span class="nv">query</span><span class="p">)</span><span class="c1">;</span>
+      <span class="nv">const</span> <span class="nv">result</span> <span class="nb">=</span> <span class="nv">Result.unwrap</span><span class="p">(</span><span class="nv">receipt</span><span class="p">)</span><span class="c1">;</span>
+      <span class="nv">assert.equal</span><span class="p">(</span><span class="nv">result,</span> <span class="s">"123"</span><span class="p">)</span><span class="c1">;</span>
+    <span class="nv">}</span><span class="p">)</span><span class="c1">;</span>
+  <span class="nv">}</span><span class="p">)</span><span class="c1">;</span>
+
+  <span class="nv">after</span><span class="p">(</span><span class="nv">async</span> <span class="p">()</span> <span class="nv">=&gt;</span> <span class="nv">{</span>
+    <span class="nv">await</span> <span class="nv">provider.close</span><span class="p">()</span><span class="c1">;</span>
+  <span class="nv">}</span><span class="p">)</span><span class="c1">;</span>
+<span class="nv">}</span><span class="p">)</span><span class="c1">;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>The <code class="highlighter-rouge">hello-world.ts</code> test file is a client that runs the <code class="highlighter-rouge">hello-world.clar</code> contract. Tests are critical for smart contracts as they are intended to manipulate assets and their ownership. These manipulations are irreversible within a blockchain. As you create a contracts, you should not be surprise if you end up spending more time and having more code in your <code class="highlighter-rouge">tests</code> than in your <code class="highlighter-rouge">contracts</code> directory. The <code class="highlighter-rouge">tests/hello-world.ts</code> file in the scaffold has the following content:</p>
+
+<p>The first part of the test (lines 1 -10) sets up the test environment. It defines a Clarity <code class="highlighter-rouge">provider</code> and launches it (line 9). The Client instance contains a contract name and the path to the sample code. This test also checks the client (line 14) and then launches it (line 19), this is equivalent to running <code class="highlighter-rouge">clarity-cli check</code> with the command line. The remaining test code exercises the contract. Try running this test.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run <span class="nb">test</span>
+
+<span class="o">&gt;</span> hello-clarity-sdk@0.0.0 <span class="nb">test</span> /private/tmp/hello-clarity-sdk
+<span class="o">&gt;</span> mocha
+
+
+
+  hello world contract <span class="nb">test </span>suite
+    ✓ should have a valid syntax
+    deploying an instance of the contract
+      ✓ should print hello world message
+      ✓ should <span class="nb">echo </span>number
+
+
+  3 passing <span class="o">(</span>182ms<span class="o">)</span>
+</code></pre></div></div>
+
+<p>In the next section, try your hand at expanding the <code class="highlighter-rouge">hello-world.clar</code> program.</p>
+
+<h2 id="task-3-try-to-expand-the-contract">Task 3: Try to expand the contract</h2>
+
+<p>In this task, you are challenged to expand the contents of the <code class="highlighter-rouge">contracts/hello-world.clar</code> file. Use your favorite editor and open the <code class="highlighter-rouge">contracts/hello-world.clar</code> file. If you use Visual Studio Code, you can install the Blockstack Clarity extension. The extension provides <code class="highlighter-rouge">syntax coloration</code> and some <code class="highlighter-rouge">autocompletion</code>.</p>
+
+<p>Edit the <code class="highlighter-rouge">hello-world.clar</code> file.</p>
+
+<div class="language-cl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; Functions</span>
+
+<span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">hello-world</span><span class="p">)</span>
+   <span class="s">"hello world"</span><span class="p">)</span>
+
+<span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">echo-number</span> <span class="p">(</span><span class="nv">val</span> <span class="nv">int</span><span class="p">))</span>
+   <span class="nv">val</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Use the <code class="highlighter-rouge">+</code> function to create a <code class="highlighter-rouge">increment-number-by-10</code> function.</p>
+
+<div class="uk-inline">
+<button class="uk-button uk-button-primary" enter="button">ANSWER</button>
+<div uk-dropdown="">
+<pre>
+;; Functions
+
+(define (say-hi)
+"hello world")
+
+(define (increment-number (number int))
+(+ 1 number))
+
+(define (increment-number-by-10 (number int))
+(+ 10 number))
+</pre>
+</div>
+</div>
+
+<p>Use the <code class="highlighter-rouge">+</code> and <code class="highlighter-rouge">-</code> function to create a <code class="highlighter-rouge">decrement-number</code> user-defined method.</p>
+
+<div class="uk-inline">
+    <button class="uk-button uk-button-primary" enter="button">ANSWER</button>
+    <div uk-dropdown="">
+    <pre>
+    ;; Functions
+
+   (define (say-hi)
+   "hello world")
+
+   (define (increment-number (number int))
+   (+ 1 number))
+
+   (define (increment-number-by-10 (number int))
+   (+ 10 number))
+
+   (define (decrement-number (number int))
+   (- number 1))
+    </pre>
+   </div>
+</div>
+
+<p>Finally, try adding a <code class="highlighter-rouge">counter</code> variable and be sure to store it. Increment <code class="highlighter-rouge">counter</code> in your code<code class="highlighter-rouge"> and add a </code>get-counter<code class="highlighter-rouge"> funtion to return the result. Here is a hint, you can add a </code>var` to a contract by adding the following line (before the function):</p>
+
+<div class="language-cl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; Storage</span>
+
+<span class="p">(</span><span class="nv">define-data-var</span> <span class="nv">internal-value</span> <span class="nv">int</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="uk-inline">
+<button class="uk-button uk-button-primary" enter="button">ANSWER</button>
+<div uk-dropdown="">
+<pre>
+;; Storage
+
+(define-data-var counter int 0)
+
+;; Functions
+
+(define (say-hi)
+"hello world")
+
+(define (increment-number (number int))
+(+ 1 number))
+
+(define (increment-number-by-10 (number int))
+(+ 10 number))
+
+(define (decrement-number (number int))
+(- number 1))
+
+(define (increment-counter)
+  (set-var! counter (+ 1 counter)))
+
+(define (get-counter)
+  (counter))
+
+</pre>
+</div>
+</div>
+
+<p>To review other, longer sample programs visit the <a href="https://github.com/blockstack/clarity-js-sdk/tree/master/packages/clarity-tutorials" target="_blank">clarity-js-sdk</a> repository.</p>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=Quickstart for the SDK&url=https://docs.blockstack.org/core/smart/sdk-quickstart.html&via=blockstack&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+</div>
+
+                        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. <br> &copy; 2019 Blockstack Public Benefit Corp.</div>
+
+    </div>
+</footer>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+
+
+                    <!-- <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+ -->
+
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      showErrors: true,
+      accessibility: {
+        isMainContent: true
+      },
+      /* A CSS selector that points to your search  box */
+      layout: {
+        navigation: {
+            position: "top"
+        },
+        mobile: {
+            showUrl: true
+        },
+        desktop: {
+            showUrl: true
+        }
+      },
+      searchBox: {
+        selector: '#searchBox'
+      },
+      results: {
+         embedConfig: undefined, 
+         fullScreenConfig: undefined, 
+         caption: 'Found #COUNT# search results for \"#QUERY#\"', 
+         group: true, 
+         filters: undefined,
+         num: 96, 
+         highlightQueryTerms: true, 
+         moreResultsButton: "Show more results", 
+         noResultsText: 'Sorry, we have not found any matches for your query.', 
+         queryCorrectionText: 'Did you mean "#CORRECTION#"?',
+         searchQueryParamName: 'ss360Query', 
+         linksOpenNewTab: false, 
+         showSearchBoxLayover: true, 
+         moreResultsPagingSize: 12, 
+         orderByRelevanceText: "Relevance" 
+      },
+      suggestions: {
+         show: true,  
+         maxQuerySuggestions: 3,
+         querySuggestionHeadline: undefined, 
+         emptyQuerySuggestions: undefined,
+         showImages: false, 
+         num: 6, 
+         minChars: 3, 
+         maxWidth: 'auto', 
+         throttleTime: 300,
+         extraHtml: undefined, 
+         highlight: true
+       },
+       smart404: { 
+             caption: 'These links might be useful', 
+             identifier: 'Page not found', 
+             resultSelector: '#ss360-404'
+        }
+   };
+</script>
+<script type="module" src="https://cdn.sitesearch360.com/sitesearch360-v12.mjs"></script>
+<script nomodule src="https://cdn.sitesearch360.com/sitesearch360-v12.min.js" async></script>
+    
+
+
+    <script>
+    anchors.options = {
+      placement: 'left',
+      visible: 'hover'
+    };
+       anchors.add();
+     </script>
+    </body>
+
+</html>

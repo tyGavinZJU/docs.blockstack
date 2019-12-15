@@ -1,0 +1,1 @@
+bundle exec jekyll serve --config staticman.yml,_config.yml

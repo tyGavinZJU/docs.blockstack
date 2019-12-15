@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <!-- Begin Jekyll GTM tag v1.0.1 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TPGGRT5');</script>
+<!-- End Jekyll GTM tag v1.0.1 -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App Miners Guide</title>
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="App Miners Guide" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Marketing insights for Blockstack App miners" />
+<meta property="og:description" content="Marketing insights for Blockstack App miners" />
+<link rel="canonical" href="https://docs.blockstack.org/community/app-miners-guide.html" />
+<meta property="og:url" content="https://docs.blockstack.org/community/app-miners-guide.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-16T03:04:34+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@blockstack" />
+<meta name="twitter:creator" content="@Blockstack" />
+<script type="application/ld+json">
+{"description":"Marketing insights for Blockstack App miners","headline":"App Miners Guide","@type":"BlogPosting","image":"https://docs.blockstack.org/assets/img/touch-icon.png","url":"https://docs.blockstack.org/community/app-miners-guide.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/community/app-miners-guide.html"},"author":{"@type":"Person","name":"Blockstack"},"dateModified":"2019-12-16T03:04:34+08:00","datePublished":"2019-12-16T03:04:34+08:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>App Miners Guide | Blockstack</title>
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="App Miners Guide" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Marketing insights for Blockstack App miners" />
+<meta property="og:description" content="Marketing insights for Blockstack App miners" />
+<link rel="canonical" href="https://docs.blockstack.org/community/app-miners-guide.html" />
+<meta property="og:url" content="https://docs.blockstack.org/community/app-miners-guide.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-16T03:04:34+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@blockstack" />
+<meta name="twitter:creator" content="@Blockstack" />
+<script type="application/ld+json">
+{"description":"Marketing insights for Blockstack App miners","headline":"App Miners Guide","@type":"BlogPosting","image":"https://docs.blockstack.org/assets/img/touch-icon.png","url":"https://docs.blockstack.org/community/app-miners-guide.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/community/app-miners-guide.html"},"author":{"@type":"Person","name":"Blockstack"},"dateModified":"2019-12-16T03:04:34+08:00","datePublished":"2019-12-16T03:04:34+08:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="https://docs.blockstack.org/assets/img/touch-icon.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js" ></script>
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125894815-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125894815-1');
+</script>
+
+  
+  <!-- https://www.bryanbraun.com/anchorjs/  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+  <script type"text/javascript" src="https://code.jquery.com/jquery-latest.min.js">
+    switcherTab('uk-tab-instance');
+
+    function switcherTab(id){
+        $('#'+id+' a[href = "'+window.location.hash+'"]').parent('li').click();
+
+        $('#'+id+' a').click(function(){
+            var val = $(this).attr('href');
+            window.location.hash = val.replace("#", "");
+        });
+    }
+  </script>
+  	<!-- Load jquery.cookie plugin (optional) -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.cookie.js"></script>
+	<!-- Load jquery.navgoco plugin js and css files -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.navgoco.js"></script>
+  <link rel="stylesheet" href="/assets/navgoco/jquery.navgoco.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.nav').navgoco({
+          caretHtml: '<i class="some-random-icon-class"></i>',
+          accordion: true,
+          openClass: 'open',
+          slide: {
+            duration: 400,
+            easing: 'swing'
+          }
+        });
+    });
+  </script>
+</head>
+
+
+    <body>
+    <!-- Begin Jekyll GTM tag v1.0.1 -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPGGRT5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.1 -->
+
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left uk-visible@m">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
+             &nbsp;&nbsp;&nbsp;
+
+             <svg style="width:141.602;height:11.487px" viewBox="0 0 141.602 11.487" enable-background="new 0 0 141.602 11.487"><path fill="#000000" d="M5.471,7.791c0,0.511-0.16,0.875-0.488,1.111C4.631,9.158,4.097,9.287,3.398,9.287H2.387V6.456h1.011 C5.256,6.456,5.471,7.219,5.471,7.791z M4.554,4.223C4.29,4.448,3.82,4.562,3.16,4.562H2.387V2.2h0.821 c0.611,0,1.066,0.094,1.352,0.279C4.81,2.641,4.933,2.907,4.933,3.292C4.933,3.704,4.809,4.008,4.554,4.223z M6.004,5.338 c0.325-0.181,0.59-0.418,0.79-0.709c0.327-0.476,0.493-1.001,0.493-1.562c0-0.53-0.105-0.989-0.313-1.362 c-0.208-0.374-0.5-0.677-0.867-0.9C5.754,0.59,5.333,0.432,4.855,0.335C4.391,0.24,3.879,0.192,3.334,0.192h-3.06 C0.123,0.192,0,0.317,0,0.471v10.545c0,0.154,0.123,0.278,0.274,0.278h3.315c0.591,0,1.143-0.065,1.645-0.194 c0.513-0.132,0.966-0.339,1.345-0.615c0.388-0.283,0.694-0.641,0.91-1.067C7.702,8.992,7.811,8.488,7.811,7.92 c0-0.78-0.226-1.413-0.672-1.879C6.847,5.737,6.467,5.502,6.004,5.338z M22.197,9.158h-4.595V0.471c0-0.153-0.123-0.278-0.274-0.278 h-1.824c-0.151,0-0.273,0.125-0.273,0.278v10.545c0,0.154,0.122,0.278,0.273,0.278h6.693c0.151,0,0.274-0.124,0.274-0.278v-1.58 C22.47,9.282,22.348,9.158,22.197,9.158z M35.076,5.695c0,0.567-0.051,1.086-0.151,1.543c-0.1,0.45-0.24,0.836-0.416,1.149 c-0.167,0.299-0.37,0.53-0.603,0.688c-0.461,0.312-1.061,0.3-1.505-0.001c-0.233-0.157-0.436-0.389-0.604-0.688 c-0.175-0.313-0.312-0.699-0.407-1.146c-0.096-0.458-0.144-0.978-0.144-1.546c0-1.126,0.187-2.013,0.556-2.638 c0.346-0.587,0.791-0.873,1.36-0.873c0.568,0,1.012,0.285,1.359,0.873C34.889,3.682,35.076,4.569,35.076,5.695z M36.319,1.541 c-0.378-0.494-0.844-0.879-1.381-1.144c-1.076-0.529-2.477-0.529-3.553,0c-0.538,0.265-1.003,0.65-1.381,1.144 c-0.373,0.487-0.669,1.09-0.879,1.792c-0.208,0.696-0.313,1.49-0.313,2.362c0,0.882,0.105,1.685,0.313,2.386 c0.21,0.706,0.504,1.318,0.876,1.821c0.378,0.511,0.844,0.908,1.382,1.179c0.538,0.27,1.136,0.407,1.779,0.407 c0.642,0,1.24-0.137,1.778-0.408c0.538-0.27,1.003-0.667,1.382-1.178c0.372-0.503,0.667-1.115,0.876-1.821 c0.208-0.7,0.314-1.502,0.314-2.386c0-0.873-0.105-1.667-0.314-2.363C36.988,2.631,36.692,2.028,36.319,1.541z M51.29,8.346 c-0.052-0.058-0.125-0.092-0.203-0.092c-0.077,0-0.151,0.033-0.203,0.092c-0.273,0.308-0.566,0.549-0.871,0.715 c-0.602,0.33-1.469,0.308-2.099,0.002c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.423-0.675-0.554-1.116 c-0.134-0.45-0.203-0.968-0.203-1.539c0-0.56,0.068-1.07,0.203-1.515c0.132-0.437,0.316-0.81,0.548-1.111 c0.227-0.293,0.504-0.522,0.825-0.68c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.543,0.333,0.775,0.568 c0.054,0.054,0.147,0.088,0.2,0.081c0.075-0.002,0.146-0.036,0.196-0.092l1.03-1.161c0.098-0.11,0.094-0.278-0.01-0.383 c-0.355-0.361-0.799-0.687-1.317-0.968c-1.105-0.597-2.643-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149 c-0.451,0.498-0.809,1.113-1.064,1.827c-0.253,0.71-0.381,1.521-0.381,2.408c0,0.899,0.128,1.712,0.381,2.417 c0.255,0.709,0.614,1.317,1.066,1.805c0.454,0.489,0.993,0.865,1.603,1.115c0.607,0.249,1.268,0.374,1.966,0.374 c0.695,0,1.333-0.142,1.897-0.423c0.559-0.279,1.068-0.684,1.513-1.204c0.09-0.106,0.089-0.264-0.004-0.368L51.29,8.346z M64.109,4.608l3.075-3.966c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.245-0.157h-2.046 c-0.084,0-0.163,0.039-0.215,0.106l-3.254,4.218V0.47c0-0.153-0.123-0.277-0.274-0.277h-1.855c-0.151,0-0.274,0.124-0.274,0.277 v10.546c0,0.153,0.122,0.278,0.274,0.278h1.855c0.151,0,0.274-0.125,0.274-0.278V8.034l1.185-1.483l2.392,4.594 c0.048,0.091,0.141,0.148,0.242,0.148h2.046c0.097,0,0.186-0.052,0.236-0.138c0.049-0.085,0.05-0.19,0.003-0.276L64.109,4.608z M81.006,6.088c-0.218-0.244-0.478-0.462-0.773-0.647c-0.286-0.179-0.606-0.339-0.94-0.47l-1.368-0.598 c-0.235-0.097-0.461-0.189-0.679-0.276c-0.196-0.079-0.371-0.169-0.516-0.27c-0.134-0.092-0.24-0.197-0.315-0.311 c-0.065-0.099-0.097-0.22-0.097-0.369c0-0.297,0.112-0.514,0.351-0.683c0.263-0.187,0.64-0.281,1.12-0.281 c0.437,0,0.833,0.074,1.179,0.22c0.355,0.151,0.702,0.36,1.03,0.623c0.116,0.094,0.287,0.074,0.381-0.044l0.952-1.193 c0.091-0.114,0.079-0.279-0.026-0.38c-0.456-0.429-0.993-0.775-1.597-1.028c-1.114-0.467-2.435-0.495-3.459-0.144 c-0.469,0.161-0.88,0.389-1.221,0.678c-0.345,0.292-0.618,0.638-0.815,1.031c-0.199,0.398-0.299,0.834-0.299,1.296 c0,0.422,0.072,0.806,0.213,1.141c0.139,0.33,0.328,0.623,0.561,0.873c0.228,0.243,0.488,0.454,0.771,0.626 c0.277,0.169,0.564,0.312,0.841,0.42l1.425,0.634c0.249,0.095,0.479,0.19,0.692,0.285c0.198,0.088,0.367,0.184,0.504,0.285 c0.122,0.09,0.216,0.193,0.281,0.308c0.06,0.107,0.091,0.246,0.091,0.411c0,0.322-0.121,0.563-0.381,0.76 c-0.278,0.21-0.709,0.316-1.28,0.316c-0.467,0-0.934-0.103-1.388-0.307C75.78,8.788,75.358,8.514,74.99,8.18 c-0.056-0.05-0.127-0.077-0.201-0.07c-0.073,0.005-0.141,0.039-0.189,0.096l-1.078,1.274c-0.095,0.113-0.087,0.283,0.02,0.385 c0.541,0.516,1.167,0.92,1.862,1.2c0.695,0.281,1.434,0.423,2.195,0.423c0.63,0,1.205-0.09,1.707-0.265 c0.506-0.178,0.942-0.422,1.294-0.729c0.355-0.309,0.632-0.673,0.823-1.085c0.191-0.412,0.288-0.858,0.288-1.328 c0-0.419-0.062-0.797-0.185-1.123C81.404,6.632,81.229,6.339,81.006,6.088z M96.557,0.192h-8.374c-0.151,0-0.273,0.124-0.273,0.278 v1.58c0,0.154,0.122,0.278,0.273,0.278h2.994v8.687c0,0.154,0.122,0.278,0.274,0.278h1.84c0.151,0,0.273-0.124,0.273-0.278V2.328 h2.994c0.151,0,0.274-0.124,0.274-0.278v-1.58C96.831,0.317,96.708,0.192,96.557,0.192z M107.143,2.902 c0.074,0.282,0.149,0.566,0.226,0.851l0.725,2.664h-1.906l0.265-0.934c0.159-0.561,0.315-1.135,0.469-1.723 C106.996,3.473,107.071,3.188,107.143,2.902z M108.512,0.384c-0.037-0.114-0.142-0.192-0.261-0.192h-2.157 c-0.118,0-0.223,0.077-0.26,0.192l-3.362,10.546c-0.027,0.085-0.012,0.177,0.04,0.249c0.051,0.072,0.134,0.115,0.221,0.115h1.871 c0.122,0,0.229-0.082,0.263-0.201l0.752-2.653h3.044l0.736,2.651c0.034,0.12,0.141,0.203,0.263,0.203h1.951 c0.088,0,0.17-0.043,0.221-0.115c0.052-0.071,0.066-0.164,0.039-0.249L108.512,0.384z M125.302,8.346 c-0.104-0.117-0.302-0.117-0.406,0c-0.273,0.308-0.566,0.548-0.87,0.715c-0.603,0.329-1.469,0.308-2.1,0.002 c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.422-0.675-0.554-1.116c-0.134-0.449-0.202-0.966-0.202-1.539 c0-0.561,0.068-1.071,0.202-1.515c0.132-0.437,0.316-0.811,0.549-1.111c0.226-0.293,0.503-0.522,0.823-0.68 c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.544,0.332,0.775,0.567c0.053,0.055,0.131,0.089,0.2,0.082 c0.075-0.002,0.146-0.035,0.196-0.092l1.031-1.161c0.098-0.11,0.093-0.278-0.01-0.383c-0.355-0.361-0.8-0.687-1.318-0.968 c-1.105-0.597-2.644-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149c-0.451,0.498-0.809,1.113-1.063,1.827 c-0.254,0.71-0.382,1.521-0.382,2.409c0,0.899,0.128,1.712,0.382,2.417c0.254,0.709,0.612,1.317,1.065,1.805 c0.453,0.489,0.993,0.864,1.604,1.115c0.606,0.249,1.268,0.374,1.965,0.374c0.695,0,1.333-0.142,1.897-0.423 c0.559-0.279,1.067-0.684,1.514-1.204c0.09-0.106,0.089-0.264-0.004-0.368L125.302,8.346z M141.567,10.88l-3.448-6.272l3.075-3.966 c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.246-0.157h-2.045c-0.084,0-0.164,0.039-0.215,0.106l-3.254,4.217 V0.47c0-0.153-0.122-0.277-0.274-0.277h-1.856c-0.151,0-0.274,0.124-0.274,0.277v10.546c0,0.153,0.123,0.278,0.274,0.278h1.856 c0.151,0,0.274-0.125,0.274-0.278V8.035l1.185-1.484l2.392,4.594c0.047,0.091,0.141,0.148,0.242,0.148h2.045 c0.097,0,0.187-0.052,0.236-0.138C141.614,11.071,141.615,10.966,141.567,10.88z"></path></svg>
+        </a>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+             <h1 class="uk-article-title">&nbsp;</h1>
+                  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#before-you-begin">Before you begin</a></li>
+<li class="toc-entry toc-h2"><a href="#recommendations-from-blockstack-pbc">Recommendations from Blockstack PBC</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#marketing-and-growth">Marketing and Growth</a></li>
+<li class="toc-entry toc-h3"><a href="#design-and-interaction">Design and Interaction</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#recommendations-from-trymyui">Recommendations from TryMyUI</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#the-trymyui-score">The TryMyUI Score</a></li>
+<li class="toc-entry toc-h3"><a href="#how-to-use-your-trymyui-videos--data">How to use your TryMyUI videos &amp; data</a></li>
+<li class="toc-entry toc-h3"><a href="#uiux-recommendations">UI/UX Recommendations</a></li>
+<li class="toc-entry toc-h3"><a href="#analyzing-and-improving-your-ux">Analyzing and improving your UX</a></li>
+</ul>
+</li>
+</ul>
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article markdown="span" class="uk-article">
+
+                    <h1 class="uk-article-title">App Miners Guide</h1>
+
+                    
+
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2019-12-16T03:04:34+08:00" itemprop="datePublished">
+    
+    Dec 16, 2019
+    <!--  -->
+
+
+<a "target="_blank" href="https://github.com/blockstack/docs.blockstack/blob/master/_community/app-miners-guide.md" class="btn btn-default githubEditButton" role="button">
+  <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+  
+</time>
+
+                    </div>
+
+                    <div markdown="span" class="article-content">
+                        <p class="uk-text-lead">A guide featuring insights from App Reviewers and the Blockstack PBC team</p>
+
+<p class="uk-text-meta"><strong>Disclaimer</strong>: App Mining is currently being piloted by Blockstack PBC with the intent of refining it to the point it can be implemented at the protocol level on the Stacks Blockchain. The program is constantly improving thanks to feedback collected via the forum, Github, and ongoing App Mining calls with miners. </p>
+
+<h2 class="no_toc" id="introduction">Introduction</h2>
+
+<p>App Mining is built (and constantly refined) in a way that should help bootstrap quality applications that people want to use. As an app improves relative to others in the App Mining pool, so too should its rank and therefore the associated payout. Different independent App Reviewers focus on different aspects of what makes an app high-quality or successful, the aspect they focus on being a function of their expertise. In this guide we’ll feature advice from each of these App Reviewers so you can best understand how to score well with each, thus improving your overall score.</p>
+
+<p class="uk-text-meta">It's worth noting that if at any point as an App Miner, you feel compelled to do something to improve your score that you don't feel is also improving your app or helping you acquire users, it's a potential area for feedback that could improve App Mining, so please don't hesitate to use the forum or regular call to do so. </p>
+
+<h2 id="before-you-begin">Before you begin</h2>
+
+<table class="uk-table">
+    <tbody>
+        <tr>
+            <td> <img src="images/zero-to-dapp.png" alt="" /></td>
+            <td>
+            <h4>Zero-to-Dapp Tutorial</h4>
+            <p class="uk-text-meta">If you've found this guide and have not yet built an app, please start with the <a href="/develop/zero_to_dapp_1.html" target="\_blank" style="color:#0666b1;">Zero to Dapp Tutorial</a>. It's the easiest way for anyone to start building on Blockstack. The tutorial will not only help you start building, but will guide you through the App Mining submission process as well!</p>
+            </td>
+        </tr>
+                <tr>
+            <td><img src="images/your-app.png" alt="" /></td>
+            <td>
+            <h4>How App Mining Rankings Work</h4>
+            <p class="uk-text-meta">If you haven't yet, check out these two resources on how the ranking works. It's not required know how everything is calculated, but it's openly shared and calculated in the interest of transparency. This post covers the full process including a <a href="https://blog.blockstack.org/app-mining-game-theory-algorithm-design/" target="\_blank" style="color:#0666b1;">video explainer and the white paper.
+Recommendations from Blockstack PBC</a></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="recommendations-from-blockstack-pbc">Recommendations from Blockstack PBC</h2>
+
+<h3 id="marketing-and-growth">Marketing and Growth</h3>
+
+<p>Don’t make Marketing and Growth an afterthought. Content and social media interaction attracts new users. Apps with more users get more feedback. More feedback means better apps. Sooner than later, you’ll need to be growing your user base so don’t neglect these activities early on as they’ll support you in building and maintaining a viable project in the long-term.</p>
+
+<div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid="">
+    <div>
+        <div class="uk-card uk-card-default">
+            <img src="images/appsumo.jpg" alt="" />
+            <h4 class="uk-card-title uk-padding-small uk-padding-remove-vertical">How AppSumo Beat the Tech Giants</h4>
+            <p class="uk-padding-small uk-padding-remove-top"><a class="uk-button uk-button-secondary" href="https://appsumo.com/appsumo-study/">Download</a></p>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default">
+            <img src="images/hubspot.png" alt="" />
+            <h4 class="uk-card-title uk-padding-small uk-padding-remove-vertical">Free Ebook: The Ultimate How-to Marketing Guide</h4>
+                <p class="uk-padding-small uk-padding-remove-top"><a class="uk-button uk-button-secondary" href="https://offers.hubspot.com/ultimate-how-to-marketing-guide">Download</a></p>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default">
+        <img src="images/business-camera-coff.jpg" alt="" />
+            <h4 class="uk-card-title uk-padding-small uk-padding-remove-vertical">Definitive Guide to 40 Marketing Guides</h4>
+                <p class="uk-padding-small uk-padding-remove-top"><a class="uk-button uk-button-secondary" href="https://www.campaignmonitor.com/blog/email-marketing/2016/03/definitive-guide-to-40-definitive-marketing-guides/">All the Guides</a></p>
+        </div>
+    </div>
+</div>
+
+<h4 class="no_toc" id="dont-lead-with-decentralized">Don’t lead with ‘decentralized’</h4>
+
+<p>Most people don’t care how your app works behind the scenes. The decentralized nature of Blockstack and your app is a means to an end. Focus on the value your app provides to your users instead of how it provides it. Show that your app is more secure or private, that users own their data at all times, that their data is not sold, etc. Decentralization will likely come up in describing your app, but don’t make the mistake of thinking many will jump at the app simply because it’s decentralized.</p>
+
+<h4 class="no_toc" id="do-things-that-dont-scale">Do things that don’t scale</h4>
+
+<p>Get your hands dirty, <a href="http://paulgraham.com/ds.html">do things that don’t scale</a>. Paul Graham of Y Combinator recommends this method and it’s one that will help you find product market fit faster and more cheaply. Here are <a href="https://ducttapemarketing.com/activities-that-win-customers/">a handful of ways</a> to find users that aren’t that scalable, but will work. Here’s another list of <a href="https://www.singlegrain.com/growth/14-ways-to-acquire-your-first-100-customers/">17 ways to find your first 100 customers</a>. You get the idea, there are more of these out there if you look and it’s that kind of hustle that will get your user acquisition kick-started. Beyond that, you’ll be learning along the way how to talk about your app the right way—take notes on what works so you can weave those learnings into scalable efforts down the road.</p>
+
+<h4 class="no_toc" id="publish-content-and-interact">Publish content and interact</h4>
+
+<p>While there isn’t currently a direct measure for number of users, having real users is critical to your success. Not only do they provide the opportunity for you to build a sustainable business, they also provide feedback. Do everything you can to reach new users. In the earliest days, a mix of less scalable activities like those above and the longer-term investment in content is important. Creating content has SEO benefits (people need to find you) in addition to establishing your brand as trustworthy. Create content regularly and distribute it via social networks, groups you’re a part of, your personal network, to relevant bloggers and media, investors if you have them, your customers, and other influencers willing to listen. Start with <a href="https://moz.com/beginners-guide-to-content-marketing">Moz’s Beginner’s Guide to Content Marketing</a>.</p>
+
+<h4 class="no_toc" id="hone-your-message">Hone your message</h4>
+
+<p>Chances are the first way you describe your app and its value proposition won’t be the most effective ones. Find ways to test what sticks with people and converts new users. A small spend on social or search ads will let you quickly learn what works. You should also experiment with landing pages for specific audiences. There are countless tools to make this easy, you can also pull down free templates for whatever CMS you may be working on. Check out this <a href="https://neilpatel.com/blog/beginners-guide-to-landing-pages/">Beginner’s Guide to Landing Pages from Neil Patel</a> and work on <a href="https://blog.hubspot.com/marketing/brand-story">the story of your brand/app/project</a>.</p>
+
+<h3 id="design-and-interaction">Design and Interaction</h3>
+
+<p>With TryMyUI officially onboard, UI is not just important, but a critical piece of the score you receive.</p>
+
+<h4 class="no_toc" id="get-more-feedback">Get more feedback</h4>
+
+<p>In addition to the feedback you’ll get each month from TryMyUI, you should gather your own information too. This <a href="https://www.helpscout.com/blog/customer-feedback/">guide from Help Scout</a> has some great tips for ways you can gather feedback of all kinds from customers. Real people using your app will provide you invaluable feedback.</p>
+
+<h4 class="no_toc" id="keep-a-close-eye-on-visitor-behavior">Keep a close eye on visitor behavior</h4>
+
+<p>Going hand in hand with gathering feedback from users, you should find ways to ethically track website visitors so you can make strategic decisions about where they are falling off in your funnels. Analytics tools such as <a href="https://usefathom.com/">Fathom</a>, Fullstory, and many more will give you insights, but be sure to take advantage of the options they provide to obfuscate personally identifiable information. Everything from the color of a button, to the image you chose, to the copy you wrote can have an effect on potential new users dropping off. An experienced designer should be able to quickly help you fix problem areas with better design and get more people all the way from your site to into your app.</p>
+
+<h4 class="no_toc" id="invest-in-graphic-design-work-even-if-lightly">Invest in graphic design work (even if lightly)</h4>
+
+<p>First impressions of your app (even just the logo appearing on a blog) can be the difference between someone taking your app seriously or just scrolling right past. Quality design work can be found in many places, here’s a quick list of resources you can try:</p>
+
+<ul>
+  <li><a href="https://www.upwork.com/">Upwork</a></li>
+  <li><a href="https://www.fiverr.com/">Fiverr</a></li>
+  <li><a href="https://www.toptal.com/designers">Toptal</a></li>
+  <li><a href="https://www.canva.com/">Canva (DIY)</a></li>
+  <li><a href="https://graphicriver.net/">Graphic River</a></li>
+</ul>
+
+<h2 id="recommendations-from-trymyui">Recommendations from TryMyUI</h2>
+
+<h3 id="the-trymyui-score">The TryMyUI Score</h3>
+
+<p>TryMyUI’s panelists will score using a special survey they developed expressly for the App Mining program: the ALF Questionnaire (Adoption Likelihood Factors). Answers to this questionnaire will be used to calculate an overall score reflecting the following 4 factors:</p>
+
+<table class="uk-table">
+   <tr>
+      <td>
+         <ol>
+            <li><strong>Usability</strong>: Is the app intuitive and easy to interact with? Can users perform the central functions without difficulty?</li>
+            <li><strong>Usefulness</strong>: Does the app meet a real need? Does it provide a valuable solution to a problem that users face?</li>
+            <li><strong>Credibility</strong>: Does the app inspire trust in users? Do they feel that it is safe to use? Does the information on the app feel authoritative and believable?</li>
+            <li><strong>Desirability</strong>: Do users enjoy being on the app? Does it make them want to return for future use? Are they excited about the app and what it allows them to do?</li>
+         </ol>
+      </td>
+      <td class="uk-width-1-3"><img src="images/alf-score.png" alt="" /></td>
+   </tr>
+</table>
+
+<p>Each factor corresponds to 4 questionnaire items, for a total 16 items that comprise the ALFQ. Users mark their answers on a 5-point Likert scale, with 5 meaning “Strongly agree” and 1 meaning “Strongly disagree.” The final result is a score for each of the 4 factors, and a composite ALF score.</p>
+
+<h3 id="how-to-use-your-trymyui-videos--data">How to use your TryMyUI videos &amp; data</h3>
+
+<p>Every month after the scores are released, you will be given access to 8 user videos from your app, with the accompanying ALF scores and written survey responses. This data will contain deep insights into the User Experience of your app – what you’re doing well, and where you can improve.
+All of this will be really helpful over the next few weeks as you work to improve your app design for the next month’s round of testing. Here’s our tips for diving into your TryMyUI test data:</p>
+
+<table class="uk-table uk-table-small uk-table-striped">
+    <thead>
+        <tr>
+            <th class="uk-width-1-3">Tip</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Check your ALF scores first.</td>
+            <td>You'll be able to see each individual tester's score. Check who had the best and worst experiences. This will be helpful to know before you start watching the videos. </td>
+        </tr>
+        <tr>
+            <td>Scan your written survey responses.</td>
+            <td> Look for themes that appear across multiple testers' answers. Keep an eye out for any glaring issues that may have specially impacted users' experiences.</td>
+        </tr>
+        <tr>
+            <td>Formulate an attack plan.</td>
+            <td>Now that you've reviewed the ALF scores and written responses, start watching your videos. You already have an idea of the kinds of issues you'll find, and which users experienced those issues, so start there. This will allow you to quickly identify your main areas for improvement, and to understand why users are having trouble in those spots. </td>
+        </tr>
+        <tr>
+            <td>Take notes.</td>
+            <td>As you watch your videos, take notes on what you see. Users will give verbal feedback as they go, explaining their thoughts, reactions, and impressions of your app. Look in particular for gaps between what they expected and the actual experience your app delivered. </td>
+        </tr>
+        <tr>
+            <td>Read between the lines.</td>
+            <td>Observe what users do as well as what they say. The verbal feedback is important, but sometimes users won't comment on every issue, or even realize that something has gone wrong! Pay close attention to behaviors that are different from what you anticipated, or things that are hindering users' progress towards your desired outcomes. </td>
+        </tr>
+        <tr>
+            <td>Interpret your findings.</td>
+            <td>Figure out what users' feedback means for your roadmap by identifying the problem at the root of their complaints. For example, a user might wish for a video tutorial, but that doesn't necessarily mean you should add a video tutorial. Instead, think about what's missing from the information you currently provide that caused the user to feel so disoriented.</td>
+        </tr>
+    <tr>
+            <td>Look for positives too!</td>
+            <td>Your TryMyUI data won't just show you where things aren't working smoothly, it will also show you what you're doing right. It's important to take note of these insights, so you can emphasize those elements and avoid eliminating features that people like.
+</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="uiux-recommendations">UI/UX Recommendations</h3>
+
+<p>Here are some quick tips from the TryMyUI team on improving your app’s design and providing better experiences for your users:</p>
+
+<ul>
+  <li>
+    <p>First impressions matter! Clearly communicate your main value proposition up front. If visitors don’t understand what you can do for them, they won’t even bother moving on to the next step.</p>
+  </li>
+  <li>
+    <p>Pretty isn’t everything, but a visually attractive design <a href="https://conversionxl.com/blog/first-impressions-matter-the-importance-of-great-visual-design/">increases your credibility</a> and makes users feel more comfortable using your app. A good-looking homepage will start you off on the right foot with users.</p>
+  </li>
+  <li>
+    <p>Show, don’t tell. People never read as much as you think. Wherever possible, try to explain your app’s benefits and functionalities with a combination of text, illustration, and interaction.</p>
+  </li>
+  <li>
+    <p>Define <a href="https://www.romanpichler.com/blog/10-tips-writing-good-user-stories/">user personas and stories</a>, and design your app based on these. If you can step into the shoes of your users, you’ll be better able to create something they’ll want to use.</p>
+  </li>
+  <li>
+    <p>Simplify. <a href="https://www.trymyui.com/blog/2015/05/27/is-your-design-drowning-out-your-message/">Trim the fat</a> in your designs. Simple is better – focus on the main actions, and minimize distractions.</p>
+  </li>
+</ul>
+
+<h3 id="analyzing-and-improving-your-ux">Analyzing and improving your UX</h3>
+
+<div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid="">
+    <div>
+        <div class="uk-card uk-card-default">
+            <img src="images/flowers.png" alt="" />
+            <p class="uk-padding-small uk-padding-remove-vertical uk-text-meta">TryMyUI.com</p>
+            <h4 class="uk-card-title uk-padding-small uk-padding-remove-vertical">Understanding first impressions on your site</h4>
+            <p class="uk-padding-small uk-padding-remove-top"><a class="uk-button uk-button-secondary" href="https://www.trymyui.com/blog/2016/06/09/understanding-users-first-impressions-of-website/">Read More</a></p>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default">
+            <img src="images/pineapple.png" alt="" />
+            <p class="uk-padding-small uk-padding-remove-vertical uk-text-meta">TryMyUI.com</p>
+            <h4 class="uk-card-title uk-padding-small uk-padding-remove-vertical">5 psychology principles for better UX design</h4>
+                <p class="uk-padding-small uk-padding-remove-top"><a class="uk-button uk-button-secondary" href="https://www.trymyui.com/blog/2018/08/21/5-psychology-principles-better-ux-design/">Read More</a></p>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default">
+        <img src="images/business-camera-coff.jpg" alt="" />
+                <p class="uk-padding-small uk-padding-remove-vertical uk-text-meta">Smashing Magazine</p>
+                <h4 class="uk-card-title uk-padding-small uk-padding-remove-vertical">A Comprehensive Guide To Mobile App Design</h4>
+                <p class="uk-padding-small uk-padding-remove-top"><a class="uk-button uk-button-secondary" href="https://www.smashingmagazine.com/2018/02/comprehensive-guide-to-mobile-app-design/">See the Guide</a></p>
+        </div>
+    </div>
+</div>
+
+<h2 class="no_toc" id="thank-you">Thank you!</h2>
+
+<p>We hope you enjoyed this guide and are enjoying your App Mining experience. Please contact <a href="mailto:mining@app.co">mining@app.co</a> at any time with suggestions or questions.</p>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=App Miners Guide&url=https://docs.blockstack.org/community/app-miners-guide.html&via=blockstack&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+</div>
+
+                        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. <br> &copy; 2019 Blockstack Public Benefit Corp.</div>
+
+    </div>
+</footer>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+
+
+                    <!-- <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+ -->
+
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      showErrors: true,
+      accessibility: {
+        isMainContent: true
+      },
+      /* A CSS selector that points to your search  box */
+      layout: {
+        navigation: {
+            position: "top"
+        },
+        mobile: {
+            showUrl: true
+        },
+        desktop: {
+            showUrl: true
+        }
+      },
+      searchBox: {
+        selector: '#searchBox'
+      },
+      results: {
+         embedConfig: undefined, 
+         fullScreenConfig: undefined, 
+         caption: 'Found #COUNT# search results for \"#QUERY#\"', 
+         group: true, 
+         filters: undefined,
+         num: 96, 
+         highlightQueryTerms: true, 
+         moreResultsButton: "Show more results", 
+         noResultsText: 'Sorry, we have not found any matches for your query.', 
+         queryCorrectionText: 'Did you mean "#CORRECTION#"?',
+         searchQueryParamName: 'ss360Query', 
+         linksOpenNewTab: false, 
+         showSearchBoxLayover: true, 
+         moreResultsPagingSize: 12, 
+         orderByRelevanceText: "Relevance" 
+      },
+      suggestions: {
+         show: true,  
+         maxQuerySuggestions: 3,
+         querySuggestionHeadline: undefined, 
+         emptyQuerySuggestions: undefined,
+         showImages: false, 
+         num: 6, 
+         minChars: 3, 
+         maxWidth: 'auto', 
+         throttleTime: 300,
+         extraHtml: undefined, 
+         highlight: true
+       },
+       smart404: { 
+             caption: 'These links might be useful', 
+             identifier: 'Page not found', 
+             resultSelector: '#ss360-404'
+        }
+   };
+</script>
+<script type="module" src="https://cdn.sitesearch360.com/sitesearch360-v12.mjs"></script>
+<script nomodule src="https://cdn.sitesearch360.com/sitesearch360-v12.min.js" async></script>
+    
+
+
+    <script>
+    anchors.options = {
+      placement: 'left',
+      visible: 'hover'
+    };
+       anchors.add();
+     </script>
+    </body>
+
+</html>
