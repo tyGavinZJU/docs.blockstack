@@ -1,0 +1,25 @@
+{
+    "version": "THEVERSION",
+    "collections": [
+       {
+        "name": "browser",
+        "repo": "https://github.com/tyGavinZJU/blockstack-docs-CN"
+      },
+      {
+       "name": "core",
+       "repo": "https://github.com/tyGavinZJU/blockstack-docs-CN"
+     },
+     {
+      "name": "android",
+      "repo": "https://github.com/tyGavinZJU/blockstack-docs-CN"
+    },
+    {
+     "name": "ios",
+     "repo": "https://github.com/tyGavinZJU/blockstack-docs-CN"
+   },
+   {
+    "name": "gaia",
+    "repo": "https://github.com/tyGavinZJU/blockstack-docs-CN"
+    }
+      ]
+  }
