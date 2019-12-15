@@ -1,31 +1,31 @@
 # Categories home page navigation
 
-- title: Evaluate the Blockstack Ecosystem
-  desc: Learn the components that make up the Blockstack Ecosystem. Understand the value a blockchain offers.
+- title: 评估Blockstack生态系统
+  desc: 了解构成Blockstack生态系统的组件。了解区块链提供的价值。
   icon: info
   doc: org/overview
 
-- title: Use Blockchain Applications
-  desc: Learn about the New Internet and blockchain applications. Create an identity and learn how to use it.
+- title: 使用区块链应用
+  desc: 了解新的互联网和区块链应用程序。创建一个身份并学习如何使用它。
   icon: settings
   doc: browser/browser-introduction
 
-- title: Build Blockchain Applications
-  desc: Learn how to build a blockchain application with Blockstack. Work through web and mobile tutorials.
+- title: 构建区块链应用
+  desc: 了解如何使用Blockstack构建区块链应用程序。 通过网络和移动教程进行工作。
   icon: code
   doc: develop/zero_to_dapp_1
 
-- title: Blockstack Core 
-  desc: Work with our Core node, smart contracts, namespaces, zone files, and other advanced topics.
+- title: Blockstack 核心
+  desc: 使用我们的核心节点，智能合约，名称空间，区域文件和其他高级主题。
   icon: cog
   doc: core/naming/introduction
 
-- title: Implement Storage with Gaia
-  desc: Backend storage drivers and interactions between developer APIs and the Gaia service.
+- title: 使用Gaia进行存储
+  desc: 后端存储驱动以及开发人员API与Gaia服务之间的交互。
   icon: database
   doc: storage/overview
 
-- title: Blockstack Community
-  desc: view upcoming events, become a contributor or evangelist.
+- title: Blockstack 社区
+  desc: 查看即将发生的事件，成为贡献者或传播者。
   icon: user
   doc: common/community_ref
