@@ -1,146 +1,96 @@
 ---
 layout: core
-description: "Blockstack naming service (BNS)"
 permalink: /:collection/:path.html
 ---
-# Blockstack Naming Service (BNS)
+# Blockstack 域名系统(BNS)
 {:.no_toc}
 
-This document gives an overview of how the Blockstack Naming Service work. This
-section introduces you to BNS and explains the following concepts:
+本篇文档概述了Blockstack域名系统（BNS）是如何工作的。 本节向您介绍BNS，并说明以下概念：
 
 * TOC
 {:toc}
 
-The ([Blockstack Core](https://github.com/blockstack/blockstack-core))
-repository is the reference implementation of the Blockstack Naming Service.
+([Blockstack Core](https://github.com/blockstack/blockstack-core))
+库是“Blockstack域名系统（BNS）”的参考实现.
 
 
-## What is BNS
+## 什么是BNS
 
-The Blockstack Naming Service (BNS) is a network system that binds names
-to off-chain state without relying on any central points of control.
-It does so by embedding a log of its control-plane messages within a public blockchain, like Bitcoin.
+Blockstack域名系统（BNS）是一个将域名绑定到链下状态的网络系统，而无需依赖任何中央控制点。它通过将其控制平面消息的日志嵌入到比特币之类的公共区块链中来做到这一点。
 
-Each BNS peer determines the state of each name by indexing these specially-crafted
-transactions.  In doing so, each peer independently calculates the same global
-name state.
+每个BNS对等节点通过索引这些特制的交易来确定每个域名的状态。这样，每个对等节点（端）独立地计算相同的全局域名状态。
 
-Names in BNS have three properties:
+BNS中的域名具有三个属性:
 
-* **Names are globally unique.**  The protocol does not allow name collisions, and all
-  well-behaved nodes resolve a given name to the same state.
-* **Names are human-meaningful.**  Each name is chosen by its creator.
-* **Names are strongly-owned.**  Only the name's owner can change the state it
-  resolves to.  Specifically, a name is owned by one or more ECDSA private keys.
+* **域名是全局唯一的**  该协议不允许域名冲突，并且所有行为良好的节点都将给定的域名解析为相同的状态。
+* **域名是有意义的**  每个域名均由其创建者选择。
+* **域名是具备强所有权**  只有域名的所有者可以更改其解析状态。 具体来说，域名由一个或多个ECDSA私钥拥有。
 
-Internally, a BNS node implements a replicated name database.  Each BNS node keeps itself
-synchronized to all of the other ones in the world, so queries on one BNS node
-will be the same on other nodes.  BNS nodes allow a name's owner to bind
-up to 40Kb of off-chain state to their name, which will be replicated to all
-BNS nodes via the [Atlas network]({{ site.baseurl }}/core/atlas/overview.html).
+BNS节点内部实现了一个复制的**域名**数据库。 每个BNS节点都会使其自己与世界上所有其他节点保持同步，因此，在一个BNS节点上的查询返回的结果与在其他节点上是相同的。
+BNS节点允许域名所有者将最多40Kb的链下状态绑定到其域名，该域名将通过[Atlas网络]({{ site.baseurl }}/core/atlas/overview.html).复制到所有BNS节点 ）。
 
-BNS nodes extract the name database log from an underlying blockchain (Blockstack
-Core currently uses Bitcoin, and had used Namecoin in the past).
-BNS uses the blockchain to establish a shared "ground truth" for the system:  as long as
-two nodes have the same view of the blockchain, then they will build up the same
-database.
 
-The biggest consequence for developers is that in BNS, reading name state is
-fast and cheap but writing name state is slow and expensive.  This is because
-registering and modifying names requires one or more transactions to be sent to
-the underlying blockchain, and BNS nodes will not process them until they are
-sufficiently confirmed.  Users and developers need to acquire and spend
-the requisite cryptocurrency (i.e. Bitcoin) to send BNS transactions.
+BNS节点从底层区块链中提取域名数据库日志（Blockstack Core当前使用比特币，过去使用过Namecoin）。
+BNS使用区块链为系统建立一个共享的“基础事实”：只要两个节点对区块链具有相同的看法，它们就将建立相同的数据库。
 
-## Motivation behind naming services
+对于开发人员而言，最大的后果就是在BNS系统中，读取域名状态既快速又便宜，而写入域名状态又慢又昂贵。
+这是因为注册和修改域名需要将一个或多个交易发送到基础区块链，并且BNS节点直到得到该基础区块链充分确认后才会对其进行处理。
+用户和开发人员需要获取并花费必要的加密货币（即比特币）来发送BNS交易。
 
-We rely on naming systems in everyday life, and they play a critical
-role in many different applications.  For example, when you look up a
-friend on social media, you are using the platform's naming service to resolve
-their name to their profile.  When you look up a website, you are using the
-Domain Name Service to
-resolve the hostname to its host's IP address.  When you check out a Git branch, you
-are using your Git client to resolve the branch name to a commit hash.
-When you look up someone's PGP key on a keyserver, you are resolving
-their key ID to their public key.
+## 域名服务背后的动机
 
-What kinds of things do we want to be true about names?  In BNS, names are
-globally unique, names are human-meaningful, and names are strongly-owned.
-However, if you look at these examples, you'll see that each of them only
-guarantees *two* of these properties.  This limits how useful they can be.
+我们在日常生活中依赖域名系统，它们在许多不同的应用程序中都扮演着至关重要的角色。
+例如，当您在社交媒体上查找朋友时，您正在使用平台的命名服务将他们的名字解析为他们的个人资料。
+当您查找网站时，您正在使用域名服务将主机名解析为其主机的IP地址。
+签出Git分支时，您正在使用Git客户端将分支域名解析为提交哈希。
+当您在密钥服务器上查找某人的PGP密钥时，您正在将其密钥ID解析为他们的公共密钥。
 
-* In DNS and social media, names are globally unique and human-readable, but not
-strongly-owned.  The system operator has the
-final say as to what each names resolves to.
-   * **Problem**:  Clients must trust the system to make the right
-     choice in what a given name resolves to.  This includes trusting that
-     no one but the system administrators can make these changes.
+我们想对这些域名做些什么？ 在BNS中，域名在全球范围内是唯一的，域名具有人类意义，并且域名具有很强的所有权。
+但是，如果查看这些示例，您将看到它们每个都仅保证其中两个属性。 这限制了它们的有用性。
 
-* In Git, branch names are human-meaningful
-and strongly-owned, but not globally unique.  Two different Git nodes may resolve the same
-branch name to different unrelated repository states.
-   * **Problem**:  Since names can refer to conflicting state, developers
-     have to figure out some other mechanism to resolve ambiguities.  In Git's
-     case, the user has to manually intervene.
+* 在DNS和社交媒体中，域名在全球范围内是唯一的，并且易于人读，但并非所有人都拥有。 而对于每个名称的含义，系统操作员拥有最终决定权。
+   * **问题**:  客户必须信任系统才能正确选择一个给定的域名究竟是什么。 这也包括你只能相信系统管理员才能进行这些更改。
 
-* In PGP, names are key IDs.  They are
-are globally unique and cryptographically owned, but not human-readable.  PGP
-key IDs are derived from the keys they reference.
-   * **Problem**:  These names are difficult for most users to
-     remember since they do not carry semantic information relating to their use in the system.
+* 在Git中，分支名称是具有人类意义的且具有很强的所有权，但并非全球唯一。 两个不同的Git节点可以将相同的分支名称解析为不同的不相关存储库状态。
+   * **问题**: 由于域名可能出现冲突状态，因此开发人员必须找出其他机制来解决歧义。 在Git的这个例子中，用户必须手动进行干预。
 
-BNS names have all three properties, and none of these problems.  This makes it a
-powerful tool for building all kinds of network applications.  With BNS, we
-can do the following and more:
+* 在PGP中，域名是密钥ID。 它们在全球范围内是唯一的，并且是加密拥有的，但不是人可读的。 PGP密钥ID是从它们引用的密钥派生出来的。
+   * **问题**:  对于大多数用户而言，这些域名很难记住，因为它们不携带与系统中与用户使用有关的语义信息。
 
-* Build domain name services where hostnames can't be hijacked.
-* Build social media platforms where user names can't be stolen by phishers.
-* Build version control systems where repository branches do not conflict.
-* Build public-key infrastructure where it's easy for users to discover and
-  remember each other's keys.
+BNS域名具有所有三个属性，而这些都不是问题。 这使其成为构建各种网络应用程序的强大工具。 
+使用BNS，我们可以做以下以及更多事情：
+* 建立无法被劫持主机名的域名服务。
+* 建立社交媒体平台，防止网络钓鱼者窃取用户名。
+* 建立版本控制系统，其中存储库分支不会冲突。
+* 建立公共密钥基础设施，使用户可以轻松发现和记住彼此的密钥。
 
 
 # Organization of BNS
 
-BNS names are organized into a global name hierarchy.  There are three different
-layers in this hierarchy related to naming:
+BNS域名被组织成一个全局域名层级。 在此层级结构中，有三个不同的层与域名相关：
 
-* **Namespaces**.  These are the top-level names in the hierarchy.  An analogy
-  to BNS namespaces are DNS top-level domains.  Existing BNS namespaces include
-`.id`, `.podcast`, and `.helloworld`.  All other names belong to exactly one
-namespace.  Anyone can create a namespace, but in order for the namespace
-to be persisted, it must be *launched* so that anyone can register names in it.
-Namespaces are not owned by their creators.
+* **命名空间**。这些是层级结构中的顶级域名。与BNS命名空间类似的是DNS顶级域。现有的BNS命名空间包括 **.id** ，**.podcast** 和 **.helloworld**。 所有其他域名仅属于一个命名空间。任何人都可以创建一个命名空间，但是为了使该命名空间得以保留，必须“启动”该命名空间，以便任何人都可以在其中注册域名。命名空间不归其创建者所有。
 
-* **BNS names**.  These are names whose records are stored directly on the
-  blockchain.  The ownership and state of these names are controlled by sending
-blockchain transactions.  Example names include `verified.podcast` and
-`muneeb.id`.  Anyone can create a BNS name, as long as the namespace that
-contains it exists already.  The state for BNS names is usually stored in the [Atlas
-network]({{ site.baseurl }}/core/atlas/overview.html).
+* **BNS 域名**。这些是将记录直接存储在区块链上的域名。 这些域名的所有权和状态通过发送区块链交易来控制。 示例域名包括`verified.podcast`和`muneeb.id`。 任何人都可以创建一个BNS域名，只要包含它的命名空间已经存在即可。 BNS域名的状态通常存储在 [Atlas网络]({{ site.baseurl}}/core/atlas/overview.html) 中
 
-* **BNS subdomains**.  These are names whose records are stored off-chain,
-but are collectively anchored to the blockchain.  The ownership and state for
-these names lives within the [Atlas network]({{ site.baseurl }}/core/atlas/overview.html).  While BNS
-subdomains are owned by separate private keys, a BNS name owner must
-broadcast their subdomain state.  Example subdomains include `jude.personal.id`
-and `podsaveamerica.verified.podcast`.  Unlike BNS namespaces and names, the
-state of BNS subdomains is *not* part of the blockchain consensus rules.
+* **BNS 子域名**.  这些是其记录存储在链外的域名，但它们共同锚定在区块链上。
+这些域名的所有权和状态位于[Atlas网络]({{ site.baseurl}}/core/atlas/overview.html)中。
+虽然BNS子域由单独的私钥拥有，但BNS名称所有者必须广播其子域状态。
+子域名示例包括“jude.personal.id” 和 “ podsaveamerica.verified.podcast” 。
+与BNS命名空间和域名不同，BNS子域名的状态不是区块链共识规则的一部分。
 
-A feature comparison matrix summarizing the similarities and differences
-between these name objects is presented below:
+下面展示了一个功能比较的表格，总结了这些域名对象之间的相似性和差异：
 
-| Feature | **Namespaces** | **BNS names** | **BNS Subdomains** |
+| 特性 | **命名空间** | **BNS 域名** | **BNS 子域名** |
 |---------|----------------|---------------|--------------------|
-| Globally unique | X | X | X |
-| Human-meaningful | X | X | X |
-| Owned by a private key |  | X | X |
-| Anyone can create | X | X | [1] |
-| Owner can update |   | X  | [1] |
-| State hosted on-chain | X | X |  |
-| State hosted off-chain |  | X | X |
-| Behavior controlled by consensus rules | X | X |  |
-| May have an expiration date |  | X  |  |
+| 全局唯一 | X | X | X |
+| 域名可读性 | X | X | X |
+| 由私钥拥有 |  | X | X |
+| 任何人可创建 | X | X | [1] |
+| 创建者可更新 |   | X  | [1] |
+| 状态托管在链上 | X | X |  |
+| 状态托管在链下 |  | X | X |
+| 行为受到共识层控制 | X | X |  |
+| 可能会有有效期 |  | X  |  |
 
-[1] Requires the cooperation of a BNS name owner to broadcast its transactions
+[1] 需要BNS域名所有者的合作以广播其交易
