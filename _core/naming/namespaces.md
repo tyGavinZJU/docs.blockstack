@@ -1,6 +1,5 @@
 ---
 layout: core
-description: "Blockstack naming service (BNS)"
 permalink: /:collection/:path.html
 ---
 # Understand Namespaces
