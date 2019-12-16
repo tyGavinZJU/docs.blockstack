@@ -1,23 +1,23 @@
 ---
 layout: home
 hero:
-    title: What would you like to know?
-    subtitle: Welcome to the documentation on everything Blockstack.
+    title: 您想要了解什么？
+    subtitle: 欢迎使用关于Blockstack的文档。
     image: touch-icon.png
     search: true
 categories:
     columns: 3
-    title: Browse by topic or technology category
+    title: 按主题或技术类别浏览
     subitle:
 featured:
-    title: Popular Articles
+    title: 热门文章
     tag: featured
 section:
     title:
 cta:
-    title: Didn't find an answer to your question?
+    title: 没有找到你要的答案？
     subtitle:
-    button_text: Contact us!
+    button_text: 联系我们!
     button_url: /contact/
 ---
 
