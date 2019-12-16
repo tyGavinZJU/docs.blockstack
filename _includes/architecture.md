@@ -1,22 +1,12 @@
 
 ![Blockstack Architecture](/common/images/architecture.png)
 
-Blockchains require consensus among large numbers of people, so they can be slow. Additionally, a blockchain is not designed to hold a lot of data. This means using a blockchain for every bit of data a user might write and store is expensive. For example, imagine if an application were storing every tweet in the chain.
+区块链需要大量人之间的共识，因此会很慢。 此外，区块链设计的初衷并不是要去容纳大量数据。 这意味着对于用户而言在区块链上写入和存储的每一位数据都非常昂贵。 例如，设想一个应用程序在链中存储了所有tweet。
 
-Blockstack addresses blockchain performance problems using a layered approach. At the base of the system is a blockchain and the Blockstack Naming System (BNS). The blockchain  governs ownership of names (identities)  in the system, names such as domain names, usernames, and application names.
+Blockstack使用分层方法解决了区块链性能问题。 该系统的基础是区块链和Blockstack 域名系统（BNS）。 区块链控制系统中域名（身份）的所有权，域名包含子域名、用户域名、与应用程序域名。
 
-Names in Blockstack correspond to routing data in the OSI stack. The routing data is stored in the Atlas Peer Network, the second layer. Every core node that joins the Blockstack Network is able to obtain an entire copy of this routing data. Blockstack uses the routing data to associate names (usernames, domains, and application names) with a particular storage location.
+Blockstack中的域名与OSI（Open Systems Interconnection）中的路由数据相对应。 路由数据存储在第二层Atlas节点网络中。 加入Blockstack网络的每个核心节点都可以获取此路由数据的完整副本。 Blockstack使用路由数据将域名（用户域名，子域名和应用程序域名）与特定的存储位置相关联。
 
-The final layer is the Gaia Storage System. A Gaia system consists of  a _hub
-service_ and storage resource on a cloud software provider such as Azure,
-DigitalOcean, Amazon EC2, and so forth. Typically the compute resource and the
-storage resource belong to same cloud vendor. Gaia currently has
-driver support for S3 and Azure Blob Storage, but the driver model allows for
-other backend support as well.
+最后一层是Gaia存储系统。 Gaia系统由hub服务和云服务提供商（例如Azure，DigitalOcean，Amazon EC2等）上的存储资源组成。 通常，计算资源和存储资源属于同一云供应商。 Gaia当前具有对S3和Azure Blob存储的驱动程序支持，但该驱动程序模型还允许其他后端支持。
 
-Because Gaia stores application and user data off the blockchain, a Blockstack
-DApp is typically more performant than DApps created on other blockchains.
-Moreover, users choose where their data lives, and Gaia enables applications
-to access that user data via a uniform API. When the user logs in,
-the authentication process gives the application the URL of a Gaia hub, which
-then writes to storage on behalf of that user.
+由于Gaia将应用程序和用户数据存储在区块链之外，因此Blockstack DApp通常比在其他区块链上创建的DApp具有更高的性能。 此外，用户可以选择数据的存储位置，Gaia使应用程序可以通过统一的API访问该用户数据。 当用户登录时，身份验证过程将为应用程序提供Gaia hub的URL，然后该hub将代表该用户写入存储。
