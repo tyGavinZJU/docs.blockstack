@@ -1,5 +1,7 @@
 # README for the documentation site
 
+本Github库已经同步到 https://blockstackdocs.netlify.com/ 上
+感兴趣翻译的小伙伴可以提交相关内容
 
 ## Building after a fork
 
