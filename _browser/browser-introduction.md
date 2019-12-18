@@ -3,10 +3,13 @@ layout: usenew
 description: Use a Blockstack ID with a DApp
 permalink: /:collection/:path.html
 ---
-# Introduction to the Blockstack Browser
+# Blockstack 浏览器介绍
 {:.no_toc}
 
 Blockstack浏览器使用户能够探索和使用去中心化的应用程序(DApps)。DApps是一种与互联网互动的新方式。DApps允许用户控制他们的数据。包括他们的个人信息、姓名、生日、电话号码以及他们的职业信息，如访问网站或购买商品等.
+
+* TOC
+{:toc}
 
 ## 理解blockstack浏览器
 

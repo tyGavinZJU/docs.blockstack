@@ -3,10 +3,10 @@ layout: usenew
 description: Use a Blockstack ID with a DApp
 permalink: /:collection/:path.html
 ---
-# Install or uninstall the local browser
+# 安装或卸载本地浏览器
 {:.no_toc}
 
-如果您只想创建、管理和资助一个身份，然后与DApps交互，那么您应该使用[web 版本](browser-introduction.html)。如果您担心网络审查、高度安全问题，或者想自己开发一个DApp，您可能需要下载并安装浏览器的客户端版本;虽然这不是必需的。本页面解释如何在工作站上安装或卸载浏览器客户端.
+如果您只想创建、管理和资助一个身份，然后与DApps交互，那么您应该[使用web 版本](browser-introduction.html)。如果您担心网络审查、高度安全问题，或者想自己开发一个DApp，您可能需要下载并安装浏览器的客户端版本；虽然这不是必需的。本页面解释如何在工作站上安装或卸载浏览器客户端。
 
 * TOC
 {:toc}
@@ -20,7 +20,7 @@ blockstak浏览器安装程序是一个多上下文（_multiple-context_）的�
 
 ### On Mac
 
-安装要求macOS High Sierra 10.12或更高版本。按以下步骤安装:
+安装要求macOS High Sierra 10.12或更高版本。按以下步骤安装：
 
 1. 从[浏览器安装页面](https://blockstack.org/install)下载OSX安装程序
 2. 双击下载的DMG文件启动安装程序。
@@ -40,16 +40,16 @@ blockstak浏览器安装程序是一个多上下文（_multiple-context_）的�
 
    ![](images/browser-on-mac.png)
 
-   如果你已经通过Blockstack web应用程序加载了一个身份，你已经登录到本地应用程序:
+   如果你已经通过Blockstack web应用程序加载了一个身份，你已经登录到本地应用程序：
 
    ![](images/browser-on-mac-1.png)
 
 
 ### On Windows
 
-安装时需要Windows 10或更高版本。按以下步骤安装:
+安装时需要Windows 10或更高版本。按以下步骤安装：
 
-1. 从[浏览器安装页面](https://blockstack.org/install)下载Windows安装程序.
+1. 从[浏览器安装页面](https://blockstack.org/install)下载Windows安装程序。
 2. 双击安装程序包启动它.
 
    ![](images/windows-installer.png)
@@ -58,11 +58,11 @@ blockstak浏览器安装程序是一个多上下文（_multiple-context_）的�
 
    ![](images/windows-start.png)
 
-   系统显示一个Windows安全警告.
+   系统显示一个Windows安全警告。
 
    ![](images/windows-security.png)
 
-4. 选择 **允许访问**.
+4. 选择 **允许访问**。
 
    系统打开Blockstack浏览器应用程序
 
@@ -71,15 +71,15 @@ blockstak浏览器安装程序是一个多上下文（_multiple-context_）的�
 
 ### On Linux
 
-在Linux上安装blockstack需要Docker。在安装Blockstack之前，安装适合您的操作系统的[Docker版本](https://docs.docker.com/install/).
+在Linux上安装blockstack需要Docker。在安装Blockstack之前，安装适合您的操作系统的[Docker版本](https://docs.docker.com/install/)。
 
 >**注意**: 此过程中使用的blockstack脚本运行docker命令。根据在系统上安装和配置Dockered的方式，可能需要也可能不需要root或sudo权限。因此，下面的命令显示了sudo在与脚本或docker可执行文件交互时的用法。如果您的安装允许运行权限较低的Docker，则可以忽略它。
 
 1. 从浏览器安装页面下载[Linux安装程序](https://blockstack.org/install)
 
-   这将下载一个`Blockstack-for-Linux-v0.30.0.sh`脚本到本地.
+   这将下载一个`Blockstack-for-Linux-v0.30.0.sh`脚本到本地。
 
-2. 打开终端并导航到包含下载脚本的目录.
+2. 打开终端并导航到包含下载脚本的目录。
 
    当脚本下载完，它是不可执行的
 
@@ -93,7 +93,7 @@ blockstak浏览器安装程序是一个多上下文（_multiple-context_）的�
 
     ```bash
     $ sudo ./Blockstack-for-Linux-v0.309.0.0.sh
-    blockstack docker launcher commands:
+    blockstack docker launcher commands：
     Install-protocol-handler -> install a protocol handler for blockstack:// links
     ...
     ```
@@ -104,7 +104,7 @@ blockstak浏览器安装程序是一个多上下文（_multiple-context_）的�
     $ sudo ./Blockstack-for-Linux-v0.309.0.0.sh pull
     ```
 
-    根据您的网络速度，这可能需要一些时间.
+    根据您的网络速度，这可能需要一些时间。
 
 7. 使用`docker image ls`命令确认您拥有该镜像
 
@@ -117,7 +117,7 @@ blockstak浏览器安装程序是一个多上下文（_multiple-context_）的�
 8. 安装协议处理程序
 
     ```bash
-    $  sudo ./Blockstack-for-Linux-vO.30.0.sh install-protocol-handler�
+    $  sudo ./Blockstack-for-Linux-vO.30.0.sh install-protocol-handler
     Registering protocol handler
     ```
 
@@ -125,8 +125,8 @@ blockstak浏览器安装程序是一个多上下文（_multiple-context_）的�
 
     ```bash
     $ sudo ./Blockstack-for-Linux-vO.30.0.sh start
-    c3092592e59abe3559fdb49d070a7aa5e99165c7d9f2flla20ecaf4e0dfc2f46�
-    cd92f61ae473d54398da987f5023f5462b29c03f08584ebb3c9fIbb4cd790c69�
+    c3092592e59abe3559fdb49d070a7aa5e99165c7d9f2flla20ecaf4e0dfc2f46
+    cd92f61ae473d54398da987f5023f5462b29c03f08584ebb3c9fIbb4cd790c69
     Registering protocol handler
     ```
 
