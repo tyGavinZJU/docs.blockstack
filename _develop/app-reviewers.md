@@ -12,14 +12,14 @@ Blockstack uses third-party reviewers who interact with, review and provide scor
 
 ## TryMyUI
 
-TryMyUI provides 1.5M application testers around the globe, and apps enrolled in app mining are reviewed by 10 users every other month and rated on the following dimensions:
+TryMyUI provides 1.5M application testers around the globe. New apps enrolled in app mining are reviewed by 10 users, and previously enrolled apps receive 5 user testing videos. Apps are rated on the following dimensions:
 
 * Usability
 * Usefulness
 * Credibility
 * Desirability
 
-TryMyUI drops the highest and lowest test scores and uses the middle 8 scores each month for the rankings and calculates and average of scores for each component. Apps that are not being tested will receive the same scores as the last test round.  TryMyUI has it’s own “history” component to increase reliability of the tests. On average, projects need around 20 user tests to get actionable and reliable feedback. TryMyUI provides a monthly score that reflects 75% of the new month’s score, and 25% from last month’s score. The calculation to find that is: 
+TryMyUI drops the highest and lowest test scores and uses the middle 8 scores for the first rankings and calculates and average of scores for each component. TryMyUI has it’s own “history” component to increase reliability of the tests. On average, projects need around 20 user tests to get actionable and reliable feedback. TryMyUI provides a monthly score that reflects 75% of the new month’s score, and 25% from last month’s score. The calculation to find that is:
 
 ```
 X = raw score of new month
@@ -28,7 +28,7 @@ Y = final (rolled) score from previous month
 0.75X + 0.25Y = new month’s final score
 ```
 
-TryMyUI tests occur from the beginning to middle of the month, and Blockstack PBC cannot provide exact timing of the tests. App founders should not make any breaking changes to the app during this time. TryMyUI testers are English speaking. TryMyUI provides niche audiences based on the type of app.  Founders can take <a href="https://docs.google.com/forms/d/1y_1i5eTYpUQ0119cUieFaj4B9CPfmJilz9zIM5fGjgU/viewform?edit_requested=true" target="_blank">this brief survey</a> to fill out their preferred audiences.  Read more about TryMyUI Scoring and recommendations in our [App Miner's Guide]({{ site.baseurl }}/community/app-miners-guide#recommendations-from-trymyui). 
+TryMyUI tests occur from the beginning to middle of the month, and Blockstack PBC cannot provide exact timing of the tests. App founders should not make any breaking changes to the app during this time. TryMyUI testers are English speaking. TryMyUI provides niche audiences based on the type of app. Founders can take <a href="https://docs.google.com/forms/d/1y_1i5eTYpUQ0119cUieFaj4B9CPfmJilz9zIM5fGjgU/viewform?edit_requested=true" target="_blank">this brief survey</a> to fill out their preferred audiences.  Read more about TryMyUI Scoring and recommendations in our [App Miner's Guide]({{ site.baseurl }}/community/app-miners-guide#recommendations-from-trymyui). 
 
 ## New Internet Labs 
 
@@ -73,7 +73,12 @@ Each of these three pieces will make up 1/3 of your overall Awario score. Some s
 * The first month you have Awario data you won't receive a growth score. This means your score for the first month is only comprised of reach and social.
 * If your reach in the last month was less than 1000, you don't get a growth score. This is designed to prevent huge growth percentage outliers.
 
-{% include note.html content="During the transition to the new Awario scoring method, no app will have a growth score in the first month." %}
+{% include note-list.html content="<ul>
+  <li>To make sure <strong>Mentions</strong> on Instagram are picked up, <a href='https://help.instagram.com/502981923235522' target='_blank'>set your account to a <strong>Business</strong> account</a>.</li>
+  <li>Medium links will not count in your Reach score for the time being. The way Reach is calculated currently on Medium.com is too clumsy. Awario is shipping updates to this soon, so Blockstack can revisit then. Medium Reach will be zeroed out for everyone <a href='https://github.com/blockstack/app-mining/issues/171' target='_blank'>as described here</a>.</li>
+  <li>If you change your app name, you need to let us know. Email <a href='mailto:mining@app.co'>mining@app.co</a> to start the process. Anticipate a month not getting an Awario score to allow for Blockstack to set up and train a new query.</li>
+  <li>Please wait until the audit period to contact us about Mentions you feel are missing. In all the cases where someone has reached out, the Mentions show in the dashboard later as there is a delay as data is processed- you Awario dashboard is not meant to be real-time.</li>
+</ul>" %}
 
 Blockstack publishes the Awario data sheet with all app mentions for auditing at the start of the audit period. Blockstack PBC employee social media accounts are omitted from the reach scores. There is also a manual scan of Awario data to remove any data suspected of a false match.
 
