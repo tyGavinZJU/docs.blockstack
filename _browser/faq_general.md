@@ -3,10 +3,10 @@ layout: usenew
 description: Use a Blockstack ID with a DApp
 permalink: /:collection/:path.html
 ---
-# Users Frequently Asked Questions (FAQ)
+# 用户常见问题(FAQ)
 {:.no_toc}
 
-This is a FAQ intended for users of decentralized applications. A comprehensive list of FAQs that touch on general, technical, and App Mining questions is [also available]({{site.baseurl}}/faqs/allFAQS.html).
+这是一个面向去中心化应用程序用户的常见问题解答。一个全面的常见问题列表，涉及一般，技术，和应用程序挖掘问题[也可用]({{site.baseurl}}/faqs/allFAQS.html)。
 
 * TOC
 {:toc}
