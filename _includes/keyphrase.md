@@ -1,4 +1,3 @@
-Use the following table to answer questions about keys/phrases/values you can share with others (`SHAREABLE`) and ones you should _never_ share but instead keep in a secure place (`PROTECT`).
 
 使用下面的表格来回答关于密钥/短语/值(keys/phrases/values)的问题，您可以与他人共享这些密钥/短语/值(`可共享的`)，以及一些您不应该与他人共享、而应该保存在安全位置(`受保护`)的密钥/短语/值。
 
