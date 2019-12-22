@@ -16,7 +16,7 @@
          <p>用于访问Blockstack区块链上的标识。一个24字的单词序列，例如: </p>
          <p><code>applied binge crisp pictorial fiery</code>
          </p><p><code> dancing agreeable frogs light finish ping apple</code></p>
-         <p>早期的Blockstack恢复Key是12个单词的序列。</p>
+         <p>早期的Blockstack恢复密钥是12个单词的序列。</p>
       </td>
    </tr>
    <tr valign="top">
@@ -27,7 +27,7 @@
          </td>
       <td><p>SHAREABLE</p></td>
       <td>
-         <p>一种在Blockstack网络上识别个人或组织的方法。一个身份标示是唯一的， <code>meepers.id.blockstack</code> 或者 <code>chad.id</code> 是2个IDs例子.</p>
+         <p>一种在Blockstack网络上识别个人或组织的方法。一个身份标示是唯一的， <code>meepers.id.blockstack</code> 或者 <code>chad.id</code> 是两个ID的例子。</p>
       </td>
    </tr>
    <tr valign="top">
